@@ -1,0 +1,17 @@
+---
+import { AstroConfigSchema } from "astro/dist/core/config";
+import Head from "./Head.astro";
+import "../styles/global.css";
+const { title, description, image, data } = Astro.props;
+---
+
+<html lang="en">
+  <Head />
+  <body>
+    <!-- NAVIGATION BAR -->
+    <main>
+      <slot />
+    </main>
+    <!-- FOOTER -->
+  </body>
+</html>
