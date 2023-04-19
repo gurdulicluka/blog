@@ -4,7 +4,7 @@ const blogPost = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.date(),
-    // author: z.enum(["Luka Gurdulić"]),
+    author: z.enum(["Luka Gurdulić"]),
     image: z.object({ src: z.string(), alt: z.string() }),
     description: z
       .string()
