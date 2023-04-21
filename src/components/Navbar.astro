@@ -1,0 +1,31 @@
+---
+import { Icon } from "astro-icon";
+---
+
+<header class="shadow-lg">
+  <div class="container">
+    <nav
+      class="flex flex-col items-center gap-2 py-2 text-sm sm:flex-row sm:gap-0 sm:py-0"
+    >
+      <a href="/">
+        <Icon name="logo" height="48px" />
+      </a>
+      <menu
+        class="flex w-full items-center justify-around font-medium sm:justify-end sm:gap-5 lg:gap-8"
+      >
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/blog">Blog</a>
+        </li>
+        <li>
+          <a href="/about">About</a>
+        </li>
+        <li>
+          <a href="/contact">Contact</a>
+        </li>
+      </menu>
+    </nav>
+  </div>
+</header>
