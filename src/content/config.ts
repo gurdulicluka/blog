@@ -1,6 +1,6 @@
 import { z, defineCollection } from "astro:content";
 
-const blogPost = defineCollection({
+const blog = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.date(),
@@ -13,10 +13,10 @@ const blogPost = defineCollection({
         "For best SEO results, please keep the description under 160 characters."
       ),
     draft: z.boolean().default(false),
-    category: z.enum(["CSS", "Reference Docs", "Astro", "General"]),
+    category: z.enum(["AI"]),
   }),
 });
 
 export const collections = {
-  blogPost: blogPost,
+  blog: blog,
 };
