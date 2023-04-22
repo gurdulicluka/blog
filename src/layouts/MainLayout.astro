@@ -4,11 +4,16 @@ import "../styles/global.css";
 import "../styles/fonts.css";
 import Navbar from "../components/Navbar.astro";
 
-const { title, description, image, data } = Astro.props;
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props as Props;
 ---
 
 <html lang="en" class="font-poppins">
-  <Head />
+  <Head title={title} description={description} />
   <body>
     <Navbar />
     <main>
