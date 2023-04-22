@@ -1,9 +1,9 @@
 ---
 id: 2
 title: "Will AI replace frontend developers in the future?"
-date: 21-04-2023
+date: 2023-04-22
 author: Luka Gurdulić
-image: { src: "/images/2/hero.jpg", alt: "Open Laptop on Desk" }
+image: { src: "/images/2/hero.webp", alt: "Open Laptop on Desk" }
 description: Lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor sit
 draft: false
 category: AI
