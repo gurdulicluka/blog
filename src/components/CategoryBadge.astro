@@ -1,0 +1,14 @@
+---
+interface Props {
+  category: string;
+}
+const { category } = Astro.props as Props;
+---
+
+<!-- TODO Update, pass links to badges dynamically and add colors -->
+<a
+  href="/"
+  class="inline-block w-fit rounded-xl border border-inherit px-4 text-sm xl:text-base"
+>
+  {category}
+</a>

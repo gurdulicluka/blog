@@ -1,0 +1,33 @@
+---
+import { getEntryBySlug } from "astro:content";
+import { slugify, formatDate } from "../js/utils";
+import CategoryBadge from "./CategoryBadge.astro";
+
+const featuredPost = await getEntryBySlug("blog", "ai-in-2023");
+const { data, slug } = featuredPost;
+const { image, description, author, date, title, category } = data;
+---
+
+<!-- TODO More responsive -->
+<section class="xl:container">
+  <div class="relative">
+    <div>
+      <img
+        class="h-[50vh] w-full object-cover object-center sm:h-fit lg:max-h-[700px]"
+        src={image.src}
+        alt={image.alt}
+      />
+    </div>
+    <div
+      class="absolute bottom-0 flex h-fit w-full flex-col justify-end bg-gradient-to-t from-black via-black/70 to-transparent p-6 text-white md:h-fit"
+    >
+      <h3 class="font-danley text-2xl sm:text-4xl">{title}</h3>
+      <p
+        class="my-2 line-clamp-2 text-sm sm:text-lg md:line-clamp-none md:max-w-[65%] xl:my-6"
+      >
+        {description}
+      </p>
+      <CategoryBadge category={category} />
+    </div>
+  </div>
+</section>
