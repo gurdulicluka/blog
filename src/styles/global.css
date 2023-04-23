@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  .navlink {
+    @apply h-full flex-1 text-sm font-semibold;
+  }
+  .navlink > a {
+    @apply flex w-full items-center justify-center py-2 sm:h-full sm:px-4 sm:py-0;
+  }
+
+  /* Devices with hoverability only */
+  @media (hover: hover) {
+    .navlink:hover {
+      @apply bg-[#2B373E] text-white transition duration-[150] ease-in;
+    }
+  }
+}
