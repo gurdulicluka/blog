@@ -2,32 +2,39 @@
 import { getEntryBySlug } from "astro:content";
 import { slugify, formatDate } from "../js/utils";
 import CategoryBadge from "./CategoryBadge.astro";
+import AuthorBadge from "./AuthorBadge.astro";
 
-const featuredPost = await getEntryBySlug("blog", "ai-in-2023");
+const featuredPost = await getEntryBySlug("blog", "ai-threat-to-frontend");
 const { data, slug } = featuredPost;
 const { image, description, author, date, title, category } = data;
 ---
 
-<!-- TODO More responsive -->
 <section class="xl:container">
   <div class="relative">
-    <div>
-      <img
-        class="h-[50vh] w-full object-cover object-center sm:h-fit lg:max-h-[700px]"
-        src={image.src}
-        alt={image.alt}
-      />
-    </div>
+    <img
+      class="h-[50vh] min-h-[450px] w-full object-cover object-center sm:h-[700px] lg:h-[800px] lg:object-top"
+      src={image.src}
+      alt={image.alt}
+    />
     <div
-      class="absolute bottom-0 flex h-fit w-full flex-col justify-end bg-gradient-to-t from-black via-black/70 to-transparent p-6 text-white md:h-fit"
+      class="absolute bottom-0 flex w-full flex-col justify-end bg-gradient-to-t from-black via-black/70 to-transparent p-6 text-white"
     >
-      <h3 class="font-danley text-2xl sm:text-4xl">{title}</h3>
+      <h1>
+        <a
+          href={`/blog/${slug}`}
+          class="w-fit font-danley text-3xl transition ease-in hover:underline sm:text-4xl"
+          >{title}</a
+        >
+      </h1>
       <p
         class="my-2 line-clamp-2 text-sm sm:text-lg md:line-clamp-none md:max-w-[65%] xl:my-6"
       >
         {description}
       </p>
-      <CategoryBadge category={category} />
+      <div class="flex items-center gap-3">
+        <CategoryBadge category={category} type="secondary" />
+        <AuthorBadge author={author} date={date} />
+      </div>
     </div>
   </div>
 </section>

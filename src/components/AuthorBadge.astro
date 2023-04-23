@@ -1,0 +1,14 @@
+---
+import { formatDate } from "../js/utils";
+
+interface Props {
+  author: string;
+  date: Date;
+}
+
+const { author, date } = Astro.props;
+---
+
+<small class="text-xs sm:text-sm">
+  <span class="underline">{author}</span> • <span>{formatDate(date)}</span>
+</small>

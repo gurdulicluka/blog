@@ -1,14 +1,18 @@
 ---
+import { slugify } from "../js/utils";
 interface Props {
   category: string;
+  type?: "secondary";
 }
-const { category } = Astro.props as Props;
+const { category, type } = Astro.props as Props;
 ---
 
-<!-- TODO Update, pass links to badges dynamically and add colors -->
+<!-- TODO Update,dynamically add colors -->
 <a
-  href="/"
-  class="inline-block w-fit rounded-xl border border-inherit px-4 text-sm xl:text-base"
+  href={`/blog/category/${slugify(category)}`}
+  class={`${
+    type && "border-white hover:bg-white hover:text-black"
+  } inline-block w-fit rounded-2xl border border-black px-4 text-sm transition ease-in hover:bg-black hover:text-white xl:text-base`}
 >
   {category}
 </a>
