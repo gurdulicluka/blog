@@ -11,10 +11,14 @@ const { post } = Astro.props;
 const { data, slug } = post;
 ---
 
-<article class="">
+<article>
   <!-- IMAGE  -->
   <div class="relative">
-    <img src={data.image.src} alt={data.image.alt} />
+    <img
+      src={data.image.src}
+      alt={data.image.alt}
+      class="h-[285px] w-full object-cover object-center"
+    />
     <a
       href={slug}
       class="absolute right-[3%] top-[4%] block rounded-2xl bg-gray-300/50 px-3 py-2 text-xs font-medium transition ease-in hover:bg-gray-100"
