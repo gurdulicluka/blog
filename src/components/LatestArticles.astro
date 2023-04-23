@@ -1,0 +1,21 @@
+---
+import { getCollection } from "astro:content";
+import ArticleCard from "./ArticleCard.astro";
+
+const latestPosts = await getCollection("blog");
+---
+
+<section class="container my-16 sm:my-20">
+  <h2 class="mb-8 font-danley text-4xl sm:mb-12 lg:text-6xl">
+    Latest Articles
+  </h2>
+  <div
+    class="grid grid-cols-1 gap-x-[2%] gap-y-[30px] sm:grid-cols-2 lg:grid-cols-3"
+  >
+    {
+      latestPosts.slice(0, 6).map((post) => {
+        return <ArticleCard post={post} />;
+      })
+    }
+  </div>
+</section>
