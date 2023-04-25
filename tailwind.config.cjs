@@ -16,5 +16,5 @@ module.exports = {
       danley: ["danley", "sans-serif"],
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };
