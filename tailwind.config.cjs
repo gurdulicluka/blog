@@ -13,8 +13,7 @@ module.exports = {
       },
     },
     fontFamily: {
-      poppins: ["poppins", "sans-serif"],
-      danley: ["danley", "sans-serif"],
+      poppins: ["Poppins", "sans-serif"],
     },
   },
   plugins: [require("@tailwindcss/typography")],
