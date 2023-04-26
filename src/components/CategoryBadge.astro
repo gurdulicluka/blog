@@ -7,14 +7,14 @@ interface Props {
 const { category, type } = Astro.props as Props;
 ---
 
-<!-- TODO Update,dynamically add colors -->
+<!-- TODO Update,dynamically add colors and LINK/SLUG  -->
 <a
   href={`/blog/category/${slugify(category)}`}
   class={`${
     type === "secondary"
       ? "border-white hover:bg-white hover:text-black"
       : "hover:text-white"
-  } inline-block w-fit rounded-2xl border border-black px-4 text-sm transition ease-in hover:bg-black xl:text-base`}
+  } inline-block w-fit rounded-full border border-black px-4 text-sm transition ease-in hover:bg-black`}
 >
   {category}
 </a>

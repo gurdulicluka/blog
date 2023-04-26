@@ -1,8 +1,10 @@
 ---
 import { getCollection } from "astro:content";
+import { sortByDate } from "../js/utils";
 import ArticleCard from "./ArticleCard.astro";
 
-const latestPosts = await getCollection("blog");
+const posts = await getCollection("blog");
+const latestPosts = sortByDate(posts);
 ---
 
 <section class="container my-16 sm:my-20">
