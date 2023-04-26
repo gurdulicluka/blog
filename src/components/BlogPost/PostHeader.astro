@@ -1,0 +1,32 @@
+---
+import { formatDate } from "../../js/utils";
+// components
+import CategoryBadge from "../CategoryBadge.astro";
+
+const { post } = Astro.props;
+const { category, title, author, date, image } = post;
+---
+
+<div class="mb-20 mt-10">
+  <div
+    class="container flex flex-col justify-between gap-6 text-center sm:flex-row sm:items-end sm:gap-[10%] sm:text-left"
+  >
+    <div class="flex-1">
+      <CategoryBadge category={category} />
+      <h1
+        class="mt-5 font-danley text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl"
+      >
+        {title}
+      </h1>
+    </div>
+    <small class="flex justify-between text-sm sm:flex-col">
+      <span class="font-semibold underline">{author}</span>
+      <span>{formatDate(date)}</span>
+    </small>
+  </div>
+  <img
+    class="mt-5 h-[50vh] min-h-[450px] w-full object-cover object-center lg:container sm:h-[700px] lg:h-[800px] lg:object-top"
+    src={image.src}
+    alt={image.alt}
+  />
+</div>
