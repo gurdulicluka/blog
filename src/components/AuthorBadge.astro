@@ -9,10 +9,11 @@ interface Props {
 const { author, date } = Astro.props;
 ---
 
-<small class="text-xs font-light xl:text-sm">
-  <span class="underline">{author}</span>
-  •
-  <time datetime={date.toISOString()}>
+<div class="text-xs font-medium xl:text-sm">
+  <address class="not-italic">
+    {author}
+  </address>
+  <time class="text-base-content/60" datetime={date.toISOString()}>
     {formatDate(date)}
   </time>
-</small>
+</div>

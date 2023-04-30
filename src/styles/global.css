@@ -3,17 +3,21 @@
 @tailwind utilities;
 
 @layer base {
-  .navlink {
-    @apply h-full flex-1 text-sm font-semibold;
+  .wrapper {
+    @apply mx-auto w-full max-w-screen-xl shadow-xl;
   }
-  .navlink > a {
-    @apply flex w-full items-center justify-center py-2 sm:h-full sm:px-4 sm:py-0;
+  img {
+    @apply animate-fadeIn;
+  }
+  /* THEME STYLES DAISY UI*/
+  [data-theme="light"] header,
+  [data-theme="light"] footer,
+  [data-theme="light"] .articleCard {
+    @apply bg-base-100;
   }
 
-  /* Devices with hoverability only */
-  @media (hover: hover) {
-    .navlink:hover {
-      @apply bg-[#2B373E] text-white transition duration-[150] ease-in;
-    }
+  [data-theme="dark"] header,
+  [data-theme="dark"] footer {
+    @apply bg-base-300;
   }
 }

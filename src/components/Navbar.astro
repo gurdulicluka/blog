@@ -3,17 +3,38 @@ import { Icon } from "astro-icon";
 import ThemeSwitchBtn from "./ThemeSwitchBtn.astro";
 ---
 
-<header class="shadow-lg">
+<header class="shadow-md sticky top-0 w-full z-50">
   <nav
     class="flex flex-col items-center justify-between sm:container sm:h-[60px] sm:flex-row"
   >
-    <a href="/" class="[&>svg>path]:hover:fill-primary [&>svg>path]:transition">
-      <Icon name="logo" height="50" />
-    </a>
-    <menu
-      class="flex h-full w-full items-center justify-around border-t border-gray-400 font-medium sm:w-fit sm:justify-end sm:border-none"
+    <a
+      href="/"
+      aria-label="Go to homepage"
+      class="btn btn-ghost btn-circle no-animation"
     >
+      <Icon name="logo" />
+    </a>
+    <div class="flex items-center">
+      <menu class="flex items-center">
+        <li>
+          <a href="/" class="btn btn-ghost">Home</a>
+        </li>
+        <!-- dropdown -->
+        <li class="dropdown dropdown-click dropdown-bottom dropdown-end">
+          <label tabindex="0" class="btn btn-ghost no-animation m-1"
+            >Category
+          </label>
+          <ul
+            tabindex="0"
+            class="dropdown-content menu p-2 shadow bg-base-300 rounded-box w-52"
+          >
+            <li><a>Item 1</a></li>
+            <li><a>Item 2</a></li>
+            <li><a>Item 3</a></li>
+          </ul>
+        </li>
+      </menu>
       <ThemeSwitchBtn />
-    </menu>
+    </div>
   </nav>
 </header>

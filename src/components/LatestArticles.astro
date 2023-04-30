@@ -8,11 +8,9 @@ const latestPosts = sortByDate(posts);
 ---
 
 <section class="container my-16 sm:my-20">
-  <h2 class="mb-8 font-poppins text-4xl sm:mb-12 lg:text-6xl">
-    Latest Articles
-  </h2>
+  <h2 class="text-4xl mb-6">All blog posts</h2>
   <div
-    class="grid grid-cols-1 gap-x-[2%] gap-y-[50px] sm:grid-cols-2 lg:grid-cols-3"
+    class="grid grid-cols-1 gap-x-[2%] gap-y-[30px] sm:grid-cols-2 lg:grid-cols-3"
   >
     {
       latestPosts.slice(0, 6).map((post) => {

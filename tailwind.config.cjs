@@ -1,19 +1,24 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: "class",
   daisyui: {
     themes: [
       {
         light: {
-          primary: "#10B981",
-          "base-100": "#F9FAFB",
-          neutral: "#171717",
+          primary: "#0D9488",
+          "base-100": "#F8FAFC",
+          "base-200": "#E2E8F0",
+          "base-300": "#CBD5E1",
+          "base-content": "#1F2937",
         },
       },
       {
         dark: {
-          primary: "#047857",
-          "base-100": "#1F2937",
-          neutral: "#171717",
+          primary: "#134E4A",
+          "base-100": "#262626",
+          "base-200": "#404040",
+          "base-300": "#171717",
+          "base-content": "#F9FAFB",
         },
       },
     ],
@@ -28,7 +33,7 @@ module.exports = {
         },
       },
       animation: {
-        fadeIn: "fadeIn 250ms ease-in 1",
+        fadeIn: "fadeIn 200ms ease-out 1",
       },
     },
     container: {
@@ -41,6 +46,7 @@ module.exports = {
     },
     fontFamily: {
       poppins: ["Poppins", "sans-serif"],
+      inter: ["Inter", "sans-serif"],
     },
   },
   plugins: [require("@tailwindcss/typography"), require("daisyui")],
