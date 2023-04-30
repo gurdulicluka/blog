@@ -6,9 +6,25 @@ type Props = { children: any };
   class="container mb-10 flex flex-col border-b border-gray-200 lg:flex-row"
 >
   <section
+    id="post"
     class="prose flex-1 border-b border-gray-300 px-6 pb-8 prose-h3:text-2xl lg:border-none xl:max-w-none xl:prose-p:text-lg"
   >
     <slot />
   </section>
   <slot name="sidebar" />
 </article>
+
+<script>
+  const post = document.getElementById("post");
+  const postContent = post!.querySelectorAll("*"); // NodeList
+
+  let wordCount = 0;
+
+  postContent.forEach((el: HTMLElement) => {
+    const words = el.innerText.split(" ");
+    wordCount += words.length;
+  });
+  const readingTime = wordCount / 200;
+
+  console.log(readingTime);
+</script>
