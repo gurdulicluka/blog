@@ -7,7 +7,6 @@ import MainLayout from "../../layouts/MainLayout.astro";
 import PostHeader from "../../components/BlogPost/PostHeader.astro";
 import PostContent from "../../components/BlogPost/PostContent.astro";
 import RelatedPosts from "../../components/BlogPost/RelatedPosts.astro";
-import KeepReading from "../../components/KeepReading.astro";
 // generate props and params for each path
 export async function getStaticPaths() {
   const allPosts = await getCollection("blog");
@@ -48,5 +47,4 @@ const relatedPosts = formattedPosts
       slot="sidebar"
     />
   </PostContent>
-  <KeepReading />
 </MainLayout>
