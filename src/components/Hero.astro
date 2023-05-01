@@ -1,0 +1,31 @@
+---
+import { getCollection, CollectionEntry } from "astro:content";
+import { sortByDate } from "../js/utils";
+
+//components
+import HeroPost from "./HeroPost.astro";
+import RelatedHeroPost from "./RelatedHeroPost.astro";
+
+const allPosts = await getCollection("blog");
+const formattedPosts = sortByDate(allPosts);
+const latestPost = formattedPosts[0];
+const followingThree = formattedPosts.slice(1, 4);
+---
+
+<section class="container mt-10">
+  <h1 class="text-4xl mb-6">Latest posts</h1>
+  <div class="grid grid-rows-3 grid-cols-2 gap-y-[15px] gap-x-[30px]">
+    <div class="row-span-3 col-span-1">
+      <HeroPost post={latestPost} />
+    </div>
+    {
+      followingThree.map((post) => {
+        return (
+          <div class="row-span-1 col-start-2 rounded-xl h-full">
+            <RelatedHeroPost post={post} />
+          </div>
+        );
+      })
+    }
+  </div>
+</section>
