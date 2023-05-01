@@ -4,15 +4,21 @@ import { formatDate } from "../js/utils";
 interface Props {
   author: string;
   date: Date;
+  horizontal?: true | false;
 }
 
-const { author, date } = Astro.props;
+const { author, date, horizontal } = Astro.props;
 ---
 
-<div class="text-xs font-medium xl:text-sm">
+<div
+  class={`flex ${
+    horizontal ? "flex-row" : "flex-col"
+  } text-xs font-medium xl:text-sm`}
+>
   <address class="not-italic">
     {author}
   </address>
+  {horizontal && <span class="mx-2">&#9679;</span>}
   <time class="text-base-content/60" datetime={date.toISOString()}>
     {formatDate(date)}
   </time>
