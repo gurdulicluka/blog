@@ -12,12 +12,10 @@ const { data, slug } = post;
 ---
 
 <article class="card bg-base-200 articleCard shadow-md">
-  <figure class="px-4 pt-4">
-    <div class="overflow-hidden group rounded-lg relative">
-      <a
-        href={`/blog/${slug}`}
-        class="absolute z-10 h-full w-full"
-        tabindex="-1"></a>
+  <figure>
+    <div class="overflow-hidden group relative">
+      <a href={`/blog/${slug}`} class="absolute z-10 h-full w-full" tabindex="0"
+      ></a>
       <img
         src={data.image.src}
         alt={data.image.alt}
@@ -32,8 +30,8 @@ const { data, slug } = post;
         >Read Article</a
       >
     </div>
-    <h2 class="card-title text-2xl font-bold inline">
-      <a href={`/blog/${slug}`}>{data.title}</a>
+    <h2 class="card-title text-xl font-bold">
+      {data.title}
     </h2>
     <p class="mb-2 line-clamp-3">{data.description}</p>
     <CategoryBadge category={data.category} />
