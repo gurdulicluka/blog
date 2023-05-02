@@ -12,14 +12,15 @@ const { post } = Astro.props;
 const { data, slug } = post;
 ---
 
-<article class="card card-side bg-base-300 articleCard shadow-md h-full">
+<article
+  class="card card-side bg-base-300 overflow-hidden lightBase shadow-md h-full"
+>
   <figure class="relative flex-1">
-    <a href={`/blog/${slug}`} class="absolute z-10 h-full w-full" tabindex="-1"
-    ></a>
+    <a href={`/blog/${slug}`} class="absolute inset-0 z-10" tabindex="-1"></a>
     <img
       src={data.image.src}
       alt={data.image.alt}
-      class="object-cover h-full w-full"
+      class="object-cover w-full h-full"
     />
   </figure>
   <!-- INFO -->

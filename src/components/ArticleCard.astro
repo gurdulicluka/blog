@@ -11,18 +11,16 @@ const { post } = Astro.props;
 const { data, slug } = post;
 ---
 
-<article class="card bg-base-200 articleCard shadow-md">
-  <figure>
-    <div class="overflow-hidden group relative">
-      <a href={`/blog/${slug}`} class="absolute z-10 h-full w-full" tabindex="0"
-      ></a>
-      <img
-        src={data.image.src}
-        alt={data.image.alt}
-        class="group-hover:scale-110 transition duration-300 group-hover:rotate-1"
-      />
-    </div>
+<article class="card bg-base-200 lightBase shadow-md overflow-hidden">
+  <figure class="group relative overflow-hidden">
+    <a href={`/blog/${slug}`} class="absolute z-10 inset-0" tabindex="-1"></a>
+    <img
+      src={data.image.src}
+      alt={data.image.alt}
+      class="lg:group-hover:scale-110 object-cover animate__animated animate__fadeIn h-[285px] transition rounded-t-xl duration-300 lg:group-hover:rotate-1 w-full"
+    />
   </figure>
+  <!-- INFO -->
   <div class="card-body p-6">
     <div class="card-actions justify-between mb-4">
       <AuthorBadge author={data.author} date={data.date} />
