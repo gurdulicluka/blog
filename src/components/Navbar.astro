@@ -1,35 +1,54 @@
 ---
-import { Icon } from "astro-icon";
 import ThemeSwitchBtn from "./misc/ThemeSwitchBtn.astro";
 import Logo from "./misc/Logo.astro";
+import HamburgerBtn from "./misc/HamburgerBtn.astro";
 ---
 
-<header class="shadow-md sticky top-0 w-full z-50">
-  <nav
-    class="flex flex-col items-center justify-between sm:container sm:h-[60px] sm:flex-row"
-  >
+<header
+  x-data="{open: false}"
+  class="shadow-md fixed bg-base-300 top-0 w-full z-50"
+>
+  <nav class="flex items-center container justify-between h-[60px]">
     <Logo />
-    <div class="flex items-center">
+    <div class="items-center hidden sm:flex">
       <menu class="flex items-center">
         <li>
-          <a href="/" class="btn btn-ghost">Home</a>
+          <a href="/" class="btn btn-ghost no-animation">Home</a>
         </li>
-        <!-- dropdown -->
-        <li class="dropdown dropdown-hover dropdown-bottom dropdown-end">
-          <label tabindex="0" class="btn btn-ghost no-animation m-1"
-            >Category
-          </label>
-          <ul
-            tabindex="0"
-            class="dropdown-content menu p-2 shadow-md bg-base-200 rounded-box w-52"
-          >
-            <li><a>Item 1</a></li>
-            <li><a>Item 2</a></li>
-            <li><a>Item 3</a></li>
-          </ul>
+        <li>
+          <a href="/category" class="btn btn-ghost no-animation">Category</a>
+        </li>
+        <ThemeSwitchBtn />
+      </menu>
+    </div>
+    <!-- MOBILE MENU DROPDOWN -->
+    <HamburgerBtn />
+    <div
+      aria-label="sidebar menu"
+      x-cloak
+      x-show="open"
+      id="mobileMenu"
+      x-transition:enter="animate__slideInRight"
+      x-transition:leave="animate__slideOutRight"
+      class="fixed animate__animated h-[calc(100vh-60px)] top-[60px] bg-base-300 border-t-2 w-1/2 border-base-200 right-0"
+    >
+      <menu class="menu p-2 pb-[25vh] rounded-box text-right">
+        <li>
+          <a href="/">Item 1</a>
+        </li>
+        <li>
+          <a href="/">Item 2</a>
+        </li>
+        <li>
+          <a href="/">Item 3</a>
+        </li>
+        <li>
+          <a href="/">Item 4</a>
+        </li>
+        <li>
+          <a href="/">Item 5</a>
         </li>
       </menu>
-      <ThemeSwitchBtn />
     </div>
   </nav>
 </header>
