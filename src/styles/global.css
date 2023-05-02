@@ -6,18 +6,17 @@
   .wrapper {
     @apply mx-auto w-full max-w-screen-xl shadow-xl;
   }
-  img {
-    @apply animate-fadeIn;
-  }
-  /* THEME STYLES DAISY UI*/
-  [data-theme="light"] header,
-  [data-theme="light"] footer,
-  [data-theme="light"] .articleCard {
+  /* THEME DAISY UI*/
+  [data-theme="light"] .lightBase {
     @apply bg-base-100;
   }
-
-  [data-theme="dark"] header,
-  [data-theme="dark"] footer {
-    @apply bg-base-300;
+  /* ANIMATE CSS */
+  .animate__animated.animate__slideInRight,
+  .animate__animated.animate__slideOutRight {
+    --animate-duration: 230ms;
+  }
+  /* ALPINE JS */
+  [x-cloak] {
+    display: none !important;
   }
 }

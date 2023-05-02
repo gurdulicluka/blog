@@ -8,7 +8,7 @@ module.exports = {
           primary: "#0D9488",
           "base-100": "#F8FAFC",
           "base-200": "#E2E8F0",
-          "base-300": "#CBD5E1",
+          "base-300": "#F8FAFC",
           "base-content": "#1F2937",
         },
       },
@@ -25,17 +25,7 @@ module.exports = {
   },
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
-    extend: {
-      keyframes: {
-        fadeIn: {
-          "0%": { opacity: "0" },
-          100: { opacity: "100" },
-        },
-      },
-      animation: {
-        fadeIn: "fadeIn 200ms ease-out 1",
-      },
-    },
+    extend: {},
     container: {
       center: true,
       padding: {
