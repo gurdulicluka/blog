@@ -1,0 +1,46 @@
+---
+import HamburgerBtn from "./HamburgerBtn.astro";
+---
+
+<!-- OPEN SIDEBAR BUTTON -->
+<HamburgerBtn />
+
+<!-- BACKDROP -->
+<div
+  x-cloak
+  x-show="open"
+  @click="open = ! open;"
+  x-transition:enter="animate__fadeIn"
+  x-transition:leave="animate__fadeOut"
+  class="fixed animate__animated bg-base-300/70 backdrop-blur-sm z-40 top-[60px] inset-0"
+>
+</div>
+
+<!-- MENU -->
+<div
+  aria-label="sidebar menu"
+  x-cloak
+  x-show="open"
+  id="mobileMenu"
+  x-transition:enter="animate__slideInRight"
+  x-transition:leave="animate__slideOutRight"
+  class="fixed animate__animated h-[calc(100vh-60px)] z-50 sm:hidden top-[60px] bg-base-300 border-t-2 w-1/2 border-base-200 right-0"
+>
+  <menu class="menu p-2 pb-[100px] rounded-box text-right">
+    <li>
+      <a href="/">Item 1</a>
+    </li>
+    <li>
+      <a href="/">Item 2</a>
+    </li>
+    <li>
+      <a href="/">Item 3</a>
+    </li>
+    <li>
+      <a href="/">Item 4</a>
+    </li>
+    <li>
+      <a href="/">Item 5</a>
+    </li>
+  </menu>
+</div>

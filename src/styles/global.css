@@ -12,7 +12,9 @@
   }
   /* ANIMATE CSS */
   .animate__animated.animate__slideInRight,
-  .animate__animated.animate__slideOutRight {
+  .animate__animated.animate__slideOutRight,
+  .animate__animated.animate__fadeIn,
+  .animate__animated.animate__fadeOut {
     --animate-duration: 230ms;
   }
   /* ALPINE JS */

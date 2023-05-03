@@ -1,0 +1,27 @@
+---
+import ThemeSwitchBtn from "../misc/ThemeSwitchBtn.astro";
+import Logo from "../misc/Logo.astro";
+import MobileMenu from "./MobileMenu.astro";
+---
+
+<header
+  x-data="{open: false}"
+  class="shadow-md fixed bg-base-300 top-0 w-full z-50"
+>
+  <nav class="flex items-center container justify-between h-[60px]">
+    <Logo />
+    <div class="items-center hidden sm:flex">
+      <menu class="flex items-center">
+        <li>
+          <a href="/" class="btn btn-ghost no-animation">Home</a>
+        </li>
+        <li>
+          <a href="/category" class="btn btn-ghost no-animation">Category</a>
+        </li>
+        <ThemeSwitchBtn />
+      </menu>
+    </div>
+    <!-- mobile menu with dropdown button shown till 640px-->
+    <MobileMenu />
+  </nav>
+</header>
