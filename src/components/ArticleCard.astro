@@ -11,35 +11,28 @@ const { post } = Astro.props;
 const { data, slug } = post;
 ---
 
-<article>
-  <!-- IMAGE  -->
-  <div class="relative">
+<article class="card bg-base-200 lightBase shadow-md overflow-hidden">
+  <figure class="group relative overflow-hidden">
+    <a href={`/blog/${slug}`} class="absolute z-10 inset-0" tabindex="-1"></a>
     <img
+      loading="lazy"
       src={data.image.src}
       alt={data.image.alt}
-      class="h-[285px] w-full object-cover object-center"
+      class="lg:group-hover:scale-110 object-cover animate__animated animate__fadeIn h-[285px] transition rounded-t-xl duration-300 lg:group-hover:rotate-1 w-full"
     />
-    <a
-      href={`/blog/${slug}`}
-      class="absolute right-[3%] top-[4%] block rounded-2xl bg-gray-300/50 px-3 py-2 text-xs font-medium transition ease-in hover:bg-gray-100"
-    >
-      Read Article
-    </a>
-  </div>
+  </figure>
   <!-- INFO -->
-  <div class="px-1 py-3">
-    <div class="flex items-center justify-between">
-      <CategoryBadge category={data.category} />
+  <div class="card-body p-6">
+    <div class="card-actions justify-between mb-4">
       <AuthorBadge author={data.author} date={data.date} />
-    </div>
-    <h3 class="my-3">
-      <a
-        href={`/blog/${slug}`}
-        class="font-poppins text-xl hover:underline md:text-2xl">{data.title}</a
+      <a href={`/blog/${slug}`} class="btn btn-primary min-h-0 h-10 capitalize"
+        >Read Article</a
       >
-    </h3>
-    <p class="line-clamp-3 font-light">
-      {data.description}
-    </p>
+    </div>
+    <h2 class="card-title text-xl font-bold">
+      {data.title}
+    </h2>
+    <p class="mb-2 line-clamp-3">{data.description}</p>
+    <CategoryBadge category={data.category} />
   </div>
 </article>

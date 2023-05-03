@@ -1,13 +1,11 @@
 ---
-// NOTE: BLOG POST PAGE //
 import { getCollection, CollectionEntry } from "astro:content";
 import { sortByDate } from "../../js/utils";
+
 // components
 import MainLayout from "../../layouts/MainLayout.astro";
-import PostHeader from "../../components/BlogPost/PostHeader.astro";
-import PostContent from "../../components/BlogPost/PostContent.astro";
-import RelatedPosts from "../../components/BlogPost/RelatedPosts.astro";
-import KeepReading from "../../components/KeepReading.astro";
+import CategoryBadge from "../../components/CategoryBadge.astro";
+
 // generate props and params for each path
 export async function getStaticPaths() {
   const allPosts = await getCollection("blog");
@@ -39,14 +37,24 @@ const relatedPosts = formattedPosts
 ---
 
 <MainLayout title={title} description={description} image={image}>
-  <PostHeader post={post.data} />
-  <PostContent>
-    <Content />
-    <RelatedPosts
-      relatedPosts={relatedPosts}
-      category={category}
-      slot="sidebar"
+  <div class="container">
+    <img
+      src={image.src}
+      alt={image.alt}
+      class="h-[75vh] w-full object-cover object-top brightness-50 rounded-b-md"
     />
-  </PostContent>
-  <KeepReading />
+
+    <section class="w-[95%] -mt-[30vh] relative mx-auto">
+      <div class="mb-10 border-2 border-pink-200 w-[70%]">
+        <div class="mb-4 flex items-center gap-2">
+          <span>Published in</span>
+          <CategoryBadge category={category} />
+        </div>
+        <h1 class="text-5xl mb-6 font-semibold">{title}</h1>
+        <p class="text-xl">{description}</p>
+      </div>
+      <div class="bg-base-300 shadow-lg rounded-t-lg h-[1000px]"></div>
+    </section>
+  </div>
+  <!-- FIXME not resposnive, breaks the negative margin, change things up this isnt working -->
 </MainLayout>

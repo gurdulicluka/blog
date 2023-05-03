@@ -3,6 +3,26 @@ const { title, description } = Astro.props;
 ---
 
 <head>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  <script src="../js/highlight.js"></script>
+  <script is:inline>
+    const HTML = document.documentElement;
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      localStorage.setItem("theme", "dark");
+      HTML.setAttribute("data-theme", "dark");
+    } else {
+      localStorage.setItem("theme", "light");
+      HTML.setAttribute("data-theme", "light");
+    }
+  </script>
+
   <meta charset="utf-8" />
   <link rel="icon" type="image/svg+xml" href="/favicon-logo.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />

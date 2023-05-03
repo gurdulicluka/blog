@@ -1,0 +1,44 @@
+---
+import { CollectionEntry } from "astro:content";
+import { Icon } from "astro-icon";
+import CategoryBadge from "./CategoryBadge.astro";
+import AuthorBadge from "./AuthorBadge.astro";
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+const { data, slug } = post;
+---
+
+<article
+  class="card card-side bg-base-300 overflow-hidden lightBase shadow-md h-full"
+>
+  <figure class="relative flex-1">
+    <a href={`/blog/${slug}`} class="absolute inset-0 z-10" tabindex="-1"></a>
+    <img
+      src={data.image.src}
+      alt={data.image.alt}
+      class="object-cover w-full h-full"
+    />
+  </figure>
+  <!-- INFO -->
+  <div class="card-body p-4 flex-[2] gap-3">
+    <div class="card-actions justify-between items-center">
+      <AuthorBadge author={data.author} date={data.date} horizontal={true} />
+      <a href={`/blog/${slug}`} class="btn btn-ghost btn-circle font-semibold">
+        <Icon pack="mdi" name="arrow-right" height="28" />
+      </a>
+    </div>
+    <div class="flex-1">
+      <h2 class="card-title text-xl font-bold">
+        {data.title}
+      </h2>
+      <p class="my-2 line-clamp-3 text-sm">
+        {data.description}
+      </p>
+    </div>
+    <CategoryBadge category={data.category} />
+  </div>
+</article>
