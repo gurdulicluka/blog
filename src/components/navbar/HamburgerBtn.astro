@@ -1,13 +1,6 @@
----
----
-
-<button
-  @click="open = ! open;"
-  class="swap swap-rotate sm:hidden"
-  id="toggleMenuBtn"
->
+<button @click="toggle" class="swap swap-rotate sm:hidden" id="toggleMenuBtn">
   <!-- this hidden checkbox controls the state -->
-  <input type="checkbox" id="toggleMenu" />
+  <input type="checkbox" id="toggleMenu" x-model="open" />
   <!-- hamburger icon -->
   <svg
     class="swap-off fill-current"
@@ -31,13 +24,3 @@
     ></polygon></svg
   >
 </button>
-
-<script>
-  const toggleMenuBtn = document.getElementById("toggleMenuBtn")!;
-  const menuCheckbox = document.getElementById(
-    "toggleMenu"
-  ) as HTMLInputElement;
-
-  const toggleMenu = () => (menuCheckbox.checked = !menuCheckbox.checked);
-  toggleMenuBtn.addEventListener("click", toggleMenu);
-</script>
