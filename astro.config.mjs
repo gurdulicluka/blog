@@ -1,7 +1,8 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
-
 import alpinejs from "@astrojs/alpinejs";
+
+import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
 export default defineConfig({
@@ -9,5 +10,5 @@ export default defineConfig({
     config: {
       applyBaseStyles: false
     }
-  }), alpinejs()]
+  }), alpinejs(), partytown()]
 });
