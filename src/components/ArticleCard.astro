@@ -13,9 +13,12 @@ const { data, slug } = post;
 
 <article class="card bg-base-200 lightBase shadow-md overflow-hidden">
   <figure class="group relative overflow-hidden">
-    <a href={`/blog/${slug}`} class="absolute z-10 inset-0" tabindex="-1"></a>
+    <a
+      href={`/blog/${slug}`}
+      class="absolute z-10 inset-0"
+      aria-label=`Read article about "${data.title}"`></a>
+    <!-- FIXME lazy loading images -->
     <img
-      loading="lazy"
       src={data.image.src}
       alt={data.image.alt}
       class="lg:group-hover:scale-110 object-cover animate__animated animate__fadeIn h-[285px] transition rounded-t-xl duration-300 lg:group-hover:rotate-1 w-full"
@@ -25,8 +28,10 @@ const { data, slug } = post;
   <div class="card-body p-6">
     <div class="card-actions justify-between mb-4">
       <AuthorBadge author={data.author} date={data.date} />
-      <a href={`/blog/${slug}`} class="btn btn-primary min-h-0 h-10 capitalize"
-        >Read Article</a
+      <a
+        href={`/blog/${slug}`}
+        aria-label=`Read article about "${data.title}"`
+        class="btn btn-primary min-h-0 h-10 capitalize">Read Article</a
       >
     </div>
     <h2 class="card-title text-xl font-bold">

@@ -1,10 +1,13 @@
 <div x-data="themebtn">
   <button
+    name="Switch website theme"
+    aria-label="Switch website theme"
+    type="button"
     class="swap swap-rotate z-[10000] btn btn-ghost btn-square no-animation"
     @click="toggle"
   >
     <!-- this hidden themeCheckbox controls the state -->
-    <input type="checkbox" id="hiddenCheckbox" />
+    <input type="checkbox" id="hiddenCheckbox" aria-hidden="true" />
     <!-- sun icon -->
     <svg
       class="swap-on fill-current w-8 h-8"

@@ -1,6 +1,11 @@
-<button @click="toggle" class="swap swap-rotate sm:hidden" id="toggleMenuBtn">
+<button
+  @click="toggle"
+  class="swap swap-rotate sm:hidden"
+  id="toggleMenuBtn"
+  name="Show dropdown menu"
+>
   <!-- this hidden checkbox controls the state -->
-  <input type="checkbox" id="toggleMenu" x-model="open" />
+  <input type="checkbox" id="toggleMenu" x-model="open" aria-hidden="true" />
   <!-- hamburger icon -->
   <svg
     class="swap-off fill-current"
