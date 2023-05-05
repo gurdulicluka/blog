@@ -3,11 +3,8 @@ const { title, description } = Astro.props;
 ---
 
 <head>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  />
   <!-- <script src="../js/highlight.js"></script> -->
+  <!-- Disabled Highlight.js until network size handled properly -->
   <script is:inline>
     const HTML = document.documentElement;
     if (
@@ -25,13 +22,14 @@ const { title, description } = Astro.props;
 
   <meta charset="utf-8" />
   <link rel="icon" type="image/svg+xml" href="/favicon-logo.svg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=block"
-    rel="stylesheet"
-  />
-  <!-- TODO download and self host the fonts -->
+  <!-- <link
+    rel="preload"
+    href="../fonts/Poppins-Regular.ttf"
+    as="font"
+    type="font/ttf"
+    crossorigin
+  /> -->
+  <!-- TODO Preload? -->
   <meta name="viewport" content="width=device-width" />
   <meta name="generator" content={Astro.generator} />
   <title>{title}</title>
