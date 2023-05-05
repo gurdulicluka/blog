@@ -15,18 +15,19 @@ const { title, description, category, image, author, date } = post.data;
   <figure class="group relative overflow-hidden">
     <a
       href=`/blog/${post.slug}`
+      tabindex="-1"
       class="absolute z-10 inset-0"
       aria-label=`Read article about "${title}"`></a>
     <!-- FIXME lazy loading images -->
     <img
       src={image.src}
       alt={image.alt}
-      class="lg:group-hover:scale-110 object-cover animate__animated animate__fadeIn h-[285px] transition rounded-t-xl duration-300 lg:group-hover:rotate-1 w-full"
+      class="lg:group-hover:scale-110 object-cover aspect-video animate__animated animate__fadeIn h-[285px] transition rounded-t-xl duration-300 lg:group-hover:rotate-1 w-full"
     />
   </figure>
   <!-- INFO -->
-  <div class="card-body p-6">
-    <div class="card-actions justify-between mb-4">
+  <div class="card-body px-6 py-4">
+    <div class="card-actions justify-between items-center mb-2">
       <AuthorBadge author={author} date={date} />
       <a
         href=`/blog/${post.slug}`
@@ -34,7 +35,7 @@ const { title, description, category, image, author, date } = post.data;
         class="btn btn-primary min-h-0 h-10 normal-case">Read article</a
       >
     </div>
-    <h2 class="card-title text-xl font-bold">
+    <h2 class="card-title font-bold">
       {title}
     </h2>
     <p class="mb-2 line-clamp-3">{description}</p>

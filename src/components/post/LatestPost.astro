@@ -19,6 +19,7 @@ const { title, category, image } = post.data;
       class="aspect-square w-[100px] object-cover rounded-lg"
     />
     <a
+      tabindex="-1"
       href={`/blog/${post.slug}`}
       class="absolute z-10 inset-0"
       aria-label=`Read article about "${title}"`></a>
