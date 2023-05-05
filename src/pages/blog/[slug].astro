@@ -5,6 +5,8 @@ import { sortByDate } from "../../js/utils";
 // components
 import MainLayout from "../../layouts/MainLayout.astro";
 import CategoryBadge from "../../components/CategoryBadge.astro";
+import LatestPost from "../../components/post/LatestPost.astro";
+import NewsletterCard from "../../components/post/NewsletterCard.astro";
 
 // generate props and params for each path
 export async function getStaticPaths() {
@@ -27,34 +29,48 @@ const formattedPosts = sortByDate(allPosts);
 const { post } = Astro.props as Props;
 const { title, description, category, image } = post.data;
 const { Content } = await post.render();
+const latestPosts = formattedPosts.slice(0, 3);
 const relatedPosts = formattedPosts
   .filter(
     (post) =>
       post.data.category.toLowerCase() === category.toLowerCase() &&
       post.data.title !== title
   )
-  .slice(0, 3);
+  .slice(0, 4);
 ---
 
 <MainLayout title={title} description={description} image={image}>
-  <div class="container">
+  <div class="lg:container">
     <img
       src={image.src}
       alt={image.alt}
-      class="h-[75vh] w-full object-cover object-top brightness-50 rounded-b-md"
+      class="w-full md:h-[445px] h-[375px] lg:rounded-b-md lg:h-[600px] brightness-[0.6] object-cover object-center"
     />
-
-    <section class="w-[95%] -mt-[30vh] relative mx-auto">
-      <div class="mb-10 border-2 border-pink-200 w-[70%]">
-        <div class="mb-4 flex items-center gap-2">
-          <span>Published in</span>
-          <CategoryBadge category={category} />
-        </div>
-        <h1 class="text-5xl mb-6 font-semibold">{title}</h1>
-        <p class="text-xl">{description}</p>
+    <!-- BELOW IMAGE CONTENT -->
+    <section
+      class="p-6 flex flex-col xl:flex-row sm:-mt-[calc(0.20*435px)] -mt-[calc(0.20*435px)] relative shadow-md rounded-t-2xl rounded-b-lg w-[95%] mx-auto bg-base-300"
+    >
+      <!-- BLOG POST -->
+      <div
+        class="flex-1 prose xl:prose-lg prose-headings:text-base-content max-w-none"
+      >
+        <Content />
       </div>
-      <div class="bg-base-300 shadow-lg rounded-t-lg h-[1000px]"></div>
+      <!-- SIDEBAR -->
+      <aside class="w-[30%] pl-7 hidden xl:block">
+        <div class="sticky top-[70px]">
+          <NewsletterCard />
+          <h3 class="text-lg font-bold mb-3">Latest Posts</h3>
+          <div class="flex flex-col gap-5">
+            {
+              latestPosts.map((post) => {
+                return <LatestPost post={post} />;
+              })
+            }
+          </div>
+        </div>
+      </aside>
+      <!-- SIDEBAR -->
     </section>
   </div>
-  <!-- FIXME not resposnive, breaks the negative margin, change things up this isnt working -->
 </MainLayout>
