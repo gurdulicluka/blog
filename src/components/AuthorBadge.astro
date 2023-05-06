@@ -12,14 +12,14 @@ const { author, date, horizontal } = Astro.props;
 
 <div
   class={`flex ${
-    horizontal ? "flex-row" : "flex-col"
+    horizontal ? "flex-row items-center" : "flex-col"
   } text-xs font-medium xl:text-sm`}
 >
   <address class="not-italic">
     {author}
   </address>
   {horizontal && <span class="mx-2">&#9679;</span>}
-  <time class="text-base-content/80 text-xs" datetime={date.toISOString()}>
+  <time class="text-base-content/80 text-sm" datetime={date.toISOString()}>
     {formatDate(date)}
   </time>
 </div>
