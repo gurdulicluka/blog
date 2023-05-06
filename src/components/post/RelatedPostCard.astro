@@ -1,0 +1,38 @@
+---
+import { CollectionEntry } from "astro:content";
+import CategoryBadge from "../CategoryBadge.astro";
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props as Props;
+const { title, category, image } = post.data;
+---
+
+<article class="rounded-lg overflow-hidden shadow-md">
+  <figure class="group relative overflow-hidden">
+    <a
+      href=`/blog/${post.slug}`
+      tabindex="-1"
+      class="absolute z-10 inset-0"
+      aria-label=`Read article about "${title}"`></a>
+    <img
+      loading="lazy"
+      src={image.src}
+      alt={image.alt}
+      class="lg:group-hover:scale-110 object-cover aspect-video animate__animated animate__fadeIn transition rounded-t-lg duration-200 lg:group-hover:rotate-1 w-full"
+    />
+  </figure>
+  <div class="flex bg-base-100 lightBase p-4 flex-col h-[140px] lg:h-[165px]">
+    <h3 class="text-lg flex-1 font-bold">{title}</h3>
+    <div class="flex items-center justify-between">
+      <CategoryBadge category={category} />
+      <a
+        href=`/blog/${post.slug}`
+        aria-label=`Read article about "${title}"`
+        class="btn btn-primary min-h-0 h-10 normal-case">Read article</a
+      >
+    </div>
+  </div>
+</article>
