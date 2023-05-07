@@ -49,7 +49,7 @@ const relatedPosts = formattedPosts
     />
     <!-- BELOW IMAGE CONTENT -->
     <section
-      class="sm:p-8 p-5 flex flex-col rounded-b-lg xl:flex-row sm:-my-[calc(0.20*435px)] -my-[calc(0.20*435px)] relative shadow-lg z-20 rounded-t-2xl sm:w-[95%] w-[98%] mx-auto bg-base-300"
+      class="sm:p-8 p-5 flex flex-col rounded-b-lg xl:flex-row sm:-my-[100px] -my-[70px] relative shadow-lg z-20 rounded-t-2xl sm:w-[95%] w-[98%] mx-auto bg-base-300"
     >
       <!-- BLOG POST -->
       <div class="xl:pr-8 flex-1">
@@ -68,7 +68,8 @@ const relatedPosts = formattedPosts
       </div>
       <!-- SIDEBAR -->
       <aside class="w-[30%] border-l border-base-200 pl-7 hidden xl:block">
-        <div class="sticky top-[70px]">
+        <!-- FIXME make scrollable sticky, too high on smaller screens -->
+        <div class="sticky top-[74px]">
           <NewsletterCard />
           <h3 class="text-lg font-bold mb-3">Latest Posts</h3>
           <div class="flex flex-col gap-5">
@@ -80,15 +81,15 @@ const relatedPosts = formattedPosts
           </div>
         </div>
       </aside>
-      <!-- --- -->
     </section>
+    <!-- --- -->
   </div>
   <!-- RELATED POSTS -->
   <section
     class="bg-base-300 pt-[140px] pb-[60px] pattern border-t-4 border-secondary/60"
   >
     <div
-      class="2xl:container sm:px-8 px-4 py-8 z-10 relative backdrop-blur-sm bg-base-100/20 rounded-xl"
+      class="2xl:container sm:px-8 px-4 py-8 z-10 backdrop-blur-sm rounded-xl"
     >
       <h2 class="font-bold text-2xl sm:text-4xl mb-4 sm:mb-6">Related posts</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
