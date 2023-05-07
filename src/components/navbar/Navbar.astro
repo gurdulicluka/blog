@@ -4,8 +4,14 @@ import Logo from "../misc/Logo.astro";
 import MobileMenu from "./MobileMenu.astro";
 ---
 
-<header class="shadow-md fixed bg-base-300 top-0 w-full z-50">
-  <nav class="flex items-center 2xl:container px-4 justify-between h-[60px]">
+<header
+  x-data="navbar"
+  x-show="showNavbar"
+  @scroll.window="handleVisibility"
+  x-transition:enter="animate__slideInDown"
+  x-transition:leave="animate__slideOutUp"
+  class="shadow-md animate__animated fixed bg-base-300 top-0 w-full z-50"
+>
   <nav class="flex items-center 2xl:container px-4 justify-between h-[64px]">
     <Logo />
     <div class="items-center hidden sm:flex">
@@ -23,3 +29,25 @@ import MobileMenu from "./MobileMenu.astro";
     <MobileMenu />
   </nav>
 </header>
+
+<script>
+  import Alpine from "alpinejs";
+
+  let prevScrollPos = window.pageYOffset;
+  document.addEventListener("alpine:init", () => {
+    Alpine.data("navbar", () => ({
+      showNavbar: true,
+      handleVisibility() {
+        const currentScrollPos = window.pageYOffset;
+
+        if (prevScrollPos > currentScrollPos || currentScrollPos < 500) {
+          this.showNavbar = true;
+        } else {
+          this.showNavbar = false;
+        }
+
+        prevScrollPos = currentScrollPos;
+      },
+    }));
+  });
+</script>
