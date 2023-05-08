@@ -1,6 +1,8 @@
 ---
 import Head from "./Head.astro";
 import "../styles/global.css";
+import "../styles/fonts.css";
+import "animate.css";
 
 import Footer from "../components/Footer.astro";
 import Navbar from "../components/navbar/Navbar.astro";
@@ -18,7 +20,7 @@ const { title, description } = Astro.props as Props;
   <Head title={title} description={description} />
   <body>
     <Navbar />
-    <main class="min-h-screen pt-[60px]">
+    <main class="min-h-screen pt-[64px]">
       <slot />
     </main>
     <Footer />
