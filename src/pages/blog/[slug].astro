@@ -4,11 +4,10 @@ import { sortByDate } from "../../js/utils";
 
 // components
 import MainLayout from "../../layouts/MainLayout.astro";
-import NewsletterCard from "../../components/post/NewsletterCard.astro";
-import LatestPostCard from "../../components/post/LatestPostCard.astro";
-import ArticleCard from "../../components/ArticleCard.astro";
-import RelatedPostCard from "../../components/post/RelatedPostCard.astro";
 import AuthorBadge from "../../components/AuthorBadge.astro";
+import SocialShare from "../../components/post/SocialShare.astro";
+import RelatedPosts from "../../components/post/RelatedPosts.astro";
+import Sidebar from "../../components/post/Sidebar.astro";
 
 // generate props and params for each path
 export async function getStaticPaths() {
@@ -26,18 +25,12 @@ interface Props {
   post: CollectionEntry<"blog">;
 }
 
+const url = Astro.url;
 const allPosts = await getCollection("blog");
 const formattedPosts = sortByDate(allPosts);
 const { post } = Astro.props as Props;
 const { title, description, category, image, author, date } = post.data;
 const { Content } = await post.render();
-const latestPosts = formattedPosts.slice(0, 3);
-const relatedPosts = formattedPosts
-  .filter(
-    (post) => post.data.category.toLowerCase() === category.toLowerCase()
-    // post.data.title !== title
-  )
-  .slice(0, 4);
 ---
 
 <MainLayout title={title} description={description} image={image}>
@@ -45,60 +38,30 @@ const relatedPosts = formattedPosts
     <img
       src={image.src}
       alt={image.alt}
-      class="w-full md:h-[445px] h-[375px] lg:rounded-b-md lg:h-[600px] brightness-[0.5] object-cover object-center"
+      class="w-full md:h-[445px] h-[375px] lg:rounded-b-md lg:h-[600px] max-h-[55vh] object-cover object-center"
     />
-    <!-- BELOW IMAGE CONTENT -->
-    <section
+    <div
       class="sm:p-8 p-5 flex flex-col rounded-b-lg xl:flex-row sm:-my-[100px] -my-[70px] relative shadow-lg z-20 rounded-t-2xl sm:w-[95%] w-[98%] mx-auto bg-base-300"
     >
-      <!-- BLOG POST -->
-      <div class="xl:pr-8 flex-1">
-        <!-- AUTHOR, SHARE LINKS, TITLE -->
-        <div>
-          <AuthorBadge author={author} date={date} horizontal={true} />
-          <h1 class="text-4xl font-bold my-6">{title}</h1>
-          <p>{description}</p>
-        </div>
-        <!-- --- -->
-        <div
+      <section class="xl:pr-8 flex-1">
+        <header class="mb-10">
+          <div class="flex justify-between items-start">
+            <AuthorBadge author={author} date={date} />
+            <SocialShare title={title} url={url} />
+          </div>
+          <hgroup class="mt-6">
+            <h1 class="text-4xl font-bold mb-4">{title}</h1>
+            <p class="text-lg md:max-w-[85%] font-semibold">{description}</p>
+          </hgroup>
+        </header>
+        <article
           class="prose xl:prose-lg prose-headings:text-base-content max-w-none"
         >
           <Content />
-        </div>
-      </div>
-      <!-- SIDEBAR -->
-      <aside class="w-[30%] border-l border-base-200 pl-7 hidden xl:block">
-        <!-- FIXME make scrollable sticky, too high on smaller screens -->
-        <div class="sticky top-[74px]">
-          <NewsletterCard />
-          <h3 class="text-lg font-bold mb-3">Latest Posts</h3>
-          <div class="flex flex-col gap-5">
-            {
-              latestPosts.map((post) => {
-                return <LatestPostCard post={post} />;
-              })
-            }
-          </div>
-        </div>
-      </aside>
-    </section>
-    <!-- --- -->
-  </div>
-  <!-- RELATED POSTS -->
-  <section
-    class="bg-base-300 pt-[140px] pb-[60px] pattern border-t-4 border-secondary/60"
-  >
-    <div
-      class="2xl:container sm:px-8 px-4 py-8 z-10 backdrop-blur-sm rounded-xl"
-    >
-      <h2 class="font-bold text-2xl sm:text-4xl mb-4 sm:mb-6">Related posts</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {
-          relatedPosts.map((post) => {
-            return <RelatedPostCard post={post} />;
-          })
-        }
-      </div>
+        </article>
+      </section>
+      <Sidebar posts={formattedPosts} />
     </div>
-  </section>
+  </div>
+  <RelatedPosts posts={formattedPosts} category={category} />
 </MainLayout>

@@ -1,0 +1,137 @@
+---
+import { Icon } from "astro-icon";
+interface Props {
+  url: URL;
+  title: String;
+}
+
+const { url, title } = Astro.props as Props;
+---
+
+<ul class="flex items-center gap-1 [&>li]:h-[26px]">
+  <li>
+    <a
+      href=`http://www.facebook.com/sharer.php?u=${url}`
+      class="btn btn-ghost btn-sm btn-square"
+      target="_blank"
+      aria-label="Share blog post on Facebook"
+    >
+      <Icon
+        pack="mdi"
+        name="facebook"
+        height="26"
+        class="[&>path]:fill-base-content/60"
+      />
+    </a>
+  </li>
+  <li>
+    <a
+      href=`http://twitter.com/share?url=${url}&text=${title}`
+      class="btn btn-ghost btn-sm btn-square"
+      target="_blank"
+      aria-label="Share blog post on Twitter"
+    >
+      <Icon
+        pack="mdi"
+        name="twitter"
+        height="26"
+        class="[&>path]:fill-base-content/60"
+      />
+    </a>
+  </li>
+  <li>
+    <a
+      href=`http://www.linkedin.com/shareArticle?mini=true&url=${url}`
+      class="btn btn-ghost btn-sm btn-square"
+      target="_blank"
+      aria-label="Share blog post on LinkedIn "
+    >
+      <Icon
+        pack="mdi"
+        name="linkedin"
+        height="26"
+        class="[&>path]:fill-base-content/60"
+      />
+    </a>
+  </li>
+  <li>
+    <a
+      href=`http://reddit.com/submit?url=${url}&title=${title}`
+      class="btn btn-ghost btn-sm btn-square"
+      target="_blank"
+      aria-label="Share blog post on Reddit"
+    >
+      <Icon
+        pack="mdi"
+        name="reddit"
+        height="26"
+        class="[&>path]:fill-base-content/60"
+      />
+    </a>
+  </li>
+  <li x-data="clipboard">
+    <!-- COPY TO CLIPBOARD BUTTON -->
+    <button
+      id="copyUrlBtn"
+      @click="copyToClipboard"
+      aria-label="Copy URL to clipboard"
+      value={url.toString()}
+      class="btn btn-ghost btn-sm btn-square overflow-hidden relative"
+    >
+      <Icon
+        pack="mdi"
+        name="link-variant"
+        height="26"
+        class="[&>path]:fill-base-content/60"
+      />
+      <Icon
+        x-cloak
+        pack="mdi"
+        name="link-variant-plus"
+        height="26"
+        class="[&>path]:fill-info absolute animate__animated"
+        x-transition:enter="animate__fadeIn"
+        x-transition:leave="animate__fadeOut"
+        x-show="showToast"
+      />
+    </button>
+    <!-- TOAST -->
+    <div
+      x-cloak
+      x-transition:enter="animate__fadeIn"
+      x-transition:leave="animate__bounceOutDown"
+      x-show="showToast"
+      class="toast toast-start animate__animated"
+    >
+      <div class="alert alert-info font-semibold flex">
+        <div>
+          Link copied to clipboard
+          <Icon pack="mdi" name="clipboard-check-outline" height="24" />
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>
+
+<script>
+  import Alpine from "alpinejs";
+  import copy from "copy-to-clipboard";
+
+  const button = document.getElementById("copyUrlBtn") as HTMLButtonElement;
+
+  document.addEventListener("alpine:init", () => {
+    const value = button.getAttribute("value")!;
+    Alpine.data("clipboard", () => ({
+      showToast: false,
+      copyToClipboard() {
+        copy(value);
+        this.showToast = true;
+        button.disabled = true;
+        setTimeout(() => {
+          this.showToast = false;
+          button.disabled = false;
+        }, 1500);
+      },
+    }));
+  });
+</script>
