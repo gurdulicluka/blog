@@ -8,6 +8,7 @@ import AuthorBadge from "../../components/AuthorBadge.astro";
 import SocialShare from "../../components/post/SocialShare.astro";
 import RelatedPosts from "../../components/post/RelatedPosts.astro";
 import Sidebar from "../../components/post/Sidebar.astro";
+import ReadNext from "../../components/post/ReadNext.astro";
 
 // generate props and params for each path
 export async function getStaticPaths() {
@@ -27,7 +28,7 @@ interface Props {
 
 const url = Astro.url;
 const allPosts = await getCollection("blog");
-const formattedPosts = sortByDate(allPosts);
+const formattedPosts: CollectionEntry<"blog">[] = sortByDate(allPosts);
 const { post } = Astro.props as Props;
 const { title, description, category, image, author, date } = post.data;
 const { Content } = await post.render();
@@ -59,6 +60,7 @@ const { Content } = await post.render();
         >
           <Content />
         </article>
+        <ReadNext posts={formattedPosts} currentPost={post} />
       </section>
       <Sidebar posts={formattedPosts} />
     </div>
