@@ -3,8 +3,6 @@ const { title, description } = Astro.props;
 ---
 
 <head>
-  <!-- <script src="../js/highlight.js"></script> -->
-  <!-- Disabled Highlight.js until network size handled properly -->
   <script is:inline>
     const HTML = document.documentElement;
     if (
@@ -22,14 +20,6 @@ const { title, description } = Astro.props;
 
   <meta charset="utf-8" />
   <link rel="icon" type="image/svg+xml" href="/favicon-logo.svg" />
-  <!-- <link
-    rel="preload"
-    href="../fonts/Poppins-Regular.ttf"
-    as="font"
-    type="font/ttf"
-    crossorigin
-  /> -->
-  <!-- TODO Preload? -->
   <meta name="viewport" content="width=device-width" />
   <meta name="generator" content={Astro.generator} />
   <title>{title}</title>
