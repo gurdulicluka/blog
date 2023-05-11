@@ -24,7 +24,7 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: local("Poppins"), url("../fonts/Poppins-SemiBold.woff2") format("woff2");
+  src: local("Poppins"), url("../fonts/Poppins-Semibold.woff2") format("woff2");
 }
 @font-face {
   font-family: "Poppins";
