@@ -1,7 +1,7 @@
 ---
 ---
 
-<form class="mb-8 w-full flex flex-col">
+<form class="mb-8 w-full flex flex-col" name="submit-to-google-sheet">
   <h3 class="font-bold text-lg mb-3">Sign up for our newsletter</h3>
   <p class="text-sm mb-5">
     Stay updated on the latest in coding by subscribing to our newsletter. Get
@@ -10,13 +10,27 @@
   </p>
   <div>
     <input
+      autocomplete="off"
       type="email"
+      name="Email"
       placeholder="Your email address"
       class="input mb-3 input-bordered w-full lightBase bg-base-200"
+      required
     />
-    <button type="button" class="btn btn-secondary btn-block capitalize">
-      <!-- TODO Change type when form functional -->
+    <button type="submit" class="btn btn-secondary btn-block capitalize">
       Subscribe
     </button>
   </div>
 </form>
+
+<script>
+  const scriptURL = import.meta.env.PUBLIC_MAILING_LIST;
+  const form = document.forms["submit-to-google-sheet"];
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    fetch(scriptURL, { method: "POST", body: new FormData(form) })
+      .then((response) => console.log("Success!", response))
+      .catch((error) => console.error("Error!", error.message));
+  });
+</script>
