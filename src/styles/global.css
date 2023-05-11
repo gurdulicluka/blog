@@ -14,6 +14,10 @@
   [data-theme="light"] .lightBase {
     @apply bg-base-100;
   }
+
+  :where(.btn) {
+    @apply no-animation;
+  }
   /* ANIMATE CSS */
   .animate__animated.animate__slideInRight,
   .animate__animated.animate__slideOutRight,
