@@ -10,7 +10,18 @@
   *:not(input):focus-visible {
     @apply outline-fuchsia-600 outline-4 !important;
   }
-  /* THEME DAISYUI RESET*/
+
+  :where(.btn-secondary)[disabled]:hover {
+    @apply bg-secondary/50 text-secondary-content transition !important;
+  }
+
+  .validate:not(:placeholder-shown):invalid {
+    @apply text-error ring-error ring outline-none appearance-none !important;
+  }
+  .validate:not(:placeholder-shown):valid {
+    @apply ring ring-success outline-none appearance-none !important;
+  }
+
   [data-theme="light"] .lightBase {
     @apply bg-base-100;
   }

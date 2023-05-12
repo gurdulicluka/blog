@@ -1,36 +1,88 @@
----
----
-
-<form class="mb-8 w-full flex flex-col" name="submit-to-google-sheet">
+<div x-data="newsletter" class="mb-8 w-full flex flex-col">
   <h3 class="font-bold text-lg mb-3">Sign up for our newsletter</h3>
   <p class="text-sm mb-5">
     Stay updated on the latest in coding by subscribing to our newsletter. Get
     exclusive articles, tutorials, and insights from industry experts delivered
     straight to your inbox.
   </p>
-  <div>
+  <form
+    class="group"
+    name="submit-to-google-sheet"
+    @submit.prevent="sendData()"
+    novalidate
+  >
     <input
-      autocomplete="off"
       type="email"
       name="Email"
+      @input.debounce.300ms="validateInput"
+      autocomplete="off"
+      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
       placeholder="Your email address"
-      class="input mb-3 input-bordered w-full lightBase bg-base-200"
-      required
+      class="input mb-3 input-bordered w-full validate lightBase bg-base-200"
+      spellcheck="false"
     />
-    <button type="submit" class="btn btn-secondary btn-block capitalize">
-      Subscribe
+    <button
+      type="submit"
+      x-text="isLoading ? 'Submitting...' : 'Subscribe'"
+      :class="isLoading && 'loading btn-secondary/30'"
+      :disabled="!inputValid || isLoading"
+      disabled
+      class="btn btn-secondary btn-block capitalize disabled:bg-secondary/50 disabled:text-secondary-content"
+    >
     </button>
+  </form>
+  <!-- TOASTS -->
+  <!-- TODO put them in a "portal" element outside of this elements -->
+  <div
+    x-cloak
+    x-show="status === 'success'"
+    x-transition:enter="animate__fadeIn"
+    x-transition:leave="animate__bounceOutDown"
+    class="toast toast-start animate__animated z-50"
+  >
+    <div class="alert alert-success font-medium">
+      <div>Thank you for subscribing!</div>
+    </div>
   </div>
-</form>
+  <div
+    x-cloak
+    x-show="status === 'error'"
+    x-transition:enter="animate__fadeIn"
+    x-transition:leave="animate__bounceOutDown"
+    class="toast toast-start animate__animated z-50"
+  >
+    <div class="alert alert-error font-medium">
+      <div>Something went wrong!</div>
+    </div>
+  </div>
+</div>
 
 <script>
-  const scriptURL = import.meta.env.PUBLIC_MAILING_LIST;
+  import Alpine from "alpinejs";
+  import { sendEmailData } from "../../js/utils";
   const form = document.forms["submit-to-google-sheet"];
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    fetch(scriptURL, { method: "POST", body: new FormData(form) })
-      .then((response) => console.log("Success!", response))
-      .catch((error) => console.error("Error!", error.message));
+  document.addEventListener("alpine:init", () => {
+    Alpine.data("newsletter", () => ({
+      status: "initial",
+      inputValid: false,
+      isLoading: false,
+      async sendData() {
+        this.isLoading = true;
+        const response: any = await sendEmailData(form);
+        this.isLoading = false;
+        response ? (this.status = "success") : (this.status = "error");
+        setTimeout(() => {
+          this.status = "initial";
+        }, 1800);
+        form.blur();
+        form.reset();
+        this.inputValid = false;
+      },
+      validateInput(event) {
+        this.inputValid = event.target.checkValidity();
+        !event.target.value && (this.inputValid = false);
+      },
+    }));
   });
 </script>
