@@ -1,5 +1,8 @@
 ---
 import { CollectionEntry } from "astro:content";
+import { Picture } from "@astrojs/image/components";
+
+// components
 import CategoryBadge from "./CategoryBadge.astro";
 import AuthorBadge from "./AuthorBadge.astro";
 
@@ -11,20 +14,24 @@ const { post } = Astro.props;
 const { title, description, category, image, author, date } = post.data;
 ---
 
-<article class="card bg-base-200 lightBase shadow-md overflow-hidden">
-  <figure class="group relative overflow-hidden">
+<article class="card bg-base-200 lightBase shadow-md">
+  <div class="group relative overflow-hidden rounded-t-xl">
     <a
       href=`/blog/${post.slug}`
       tabindex="-1"
       class="absolute z-10 inset-0"
       aria-label=`Read article about "${title}"`></a>
-    <!-- FIXME lazy loading images -->
-    <img
+    <Picture
+      loading="lazy"
+      aspectRatio="16:9"
+      widths={[480]}
+      sizes="(min-width: 320px) 100vw"
+      formats={["webp"]}
       src={image.src}
       alt={image.alt}
-      class="lg:group-hover:scale-110 object-cover aspect-video animate__animated animate__fadeIn transition rounded-t-xl duration-200 lg:group-hover:rotate-1 w-full h-[255px]"
+      class="lg:group-hover:scale-110 object-cover w-full animate__animated animate__fadeIn transition duration-200 lg:group-hover:rotate-1 h-[255px]"
     />
-  </figure>
+  </div>
   <!-- INFO -->
   <div class="card-body px-6 py-4">
     <div class="card-actions justify-between items-center mb-2">
