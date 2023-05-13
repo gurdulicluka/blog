@@ -14,21 +14,24 @@
     <input
       type="email"
       name="Email"
-      @input.debounce.300ms="validateInput"
-      autocomplete="off"
-      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-      placeholder="Your email address"
-      class="input mb-3 input-bordered w-full validate lightBase bg-base-200"
       spellcheck="false"
+      autocomplete="off"
+      :disabled="isLoading"
+      placeholder="Your email address"
+      @input.debounce.300ms="validateInput"
+      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+      class="input mb-3 input-bordered w-full lightBase bg-base-200"
+      data-validate
     />
+    <!-- FIXME only spaces are being considered "valid" -->
     <button
       type="submit"
-      x-text="isLoading ? 'Submitting...' : 'Subscribe'"
-      :class="isLoading && 'loading btn-secondary/30'"
-      :disabled="!inputValid || isLoading"
       disabled
+      :disabled="!inputValid || isLoading"
+      :class="isLoading && 'loading btn-secondary/30'"
       class="btn btn-secondary btn-block capitalize disabled:bg-secondary/50 disabled:text-secondary-content"
     >
+      <span x-text="isLoading ? 'Submitting...' : 'Subscribe'"></span>
     </button>
   </form>
   <!-- TOASTS -->
