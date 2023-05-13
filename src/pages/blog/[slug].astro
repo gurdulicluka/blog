@@ -26,7 +26,6 @@ interface Props {
   post: CollectionEntry<"blog">;
 }
 
-const url = Astro.url;
 const allPosts = await getCollection("blog");
 const formattedPosts: CollectionEntry<"blog">[] = sortByDate(allPosts);
 const { post } = Astro.props as Props;
@@ -37,6 +36,7 @@ const { Content } = await post.render();
 <MainLayout title={title} description={description} image={image}>
   <div class="lg:container">
     <img
+      fetchpriority="high"
       src={image.src}
       alt={image.alt}
       class="w-full md:h-[445px] h-[375px] animate__animated animate__fadeIn aspect-video lg:rounded-b-md lg:h-[600px] max-h-[55vh] object-cover object-center"
@@ -48,7 +48,7 @@ const { Content } = await post.render();
         <header class="mb-10">
           <div class="flex justify-between items-start">
             <AuthorBadge author={author} date={date} />
-            <SocialShare title={title} url={url} />
+            <SocialShare title={title} />
           </div>
           <hgroup class="mt-6">
             <h1 class="text-4xl font-bold mb-4">{title}</h1>
