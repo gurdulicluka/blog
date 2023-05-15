@@ -3,17 +3,17 @@ import HamburgerBtn from "./HamburgerBtn.astro";
 ---
 
 <!-- OPEN SIDEBAR BUTTON -->
-<div x-data="navMobile" class="flex items-center sm:hidden">
+<div x-data="{open : false}" class="flex items-center sm:hidden">
   <HamburgerBtn />
   <!-- BACKDROP -->
   <div
+    @click="open = !open"
     x-cloak
     x-trap.noscroll="open"
     x-show="open"
-    @click="toggle"
     x-transition:enter="animate__fadeIn"
     x-transition:leave="animate__fadeOut"
-    class="fixed animate__animated bg-neutral-600/40 backdrop-blur-md z-40 top-[64px] inset-0"
+    class="fixed animate__animated bg-neutral-600/40 backdrop-blur-md z-40 top-[58px] inset-0"
   >
   </div>
   <!-- SIDEBAR -->
@@ -23,7 +23,7 @@ import HamburgerBtn from "./HamburgerBtn.astro";
     x-transition:enter="animate__slideInRight"
     x-transition:leave="animate__slideOutRight"
     aria-label="sidebar menu"
-    class="fixed animate__animated overflow-y-scroll h-[calc(100vh-60px)] z-50 top-[64px] bg-base-300 border-t-2 w-[55vw] border-base-200 right-0"
+    class="fixed animate__animated overflow-y-scroll h-[calc(100vh-60px)] z-50 top-[58px] bg-base-300 border-t-2 w-[55vw] border-base-200 right-0"
   >
     <menu class="menu p-2 pb-[100px] rounded-box text-right">
       <li>
@@ -49,13 +49,4 @@ import HamburgerBtn from "./HamburgerBtn.astro";
   import Alpine from "alpinejs";
   import focus from "@alpinejs/focus";
   Alpine.plugin(focus);
-
-  document.addEventListener("alpine:init", () => {
-    Alpine.data("navMobile", () => ({
-      open: false,
-      toggle() {
-        this.open = !this.open;
-      },
-    }));
-  });
 </script>

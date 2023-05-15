@@ -1,11 +1,10 @@
 ---
 import { Icon } from "astro-icon";
 interface Props {
-  url: URL;
   title: String;
 }
-
-const { url, title } = Astro.props as Props;
+const url = Astro.site!.origin + Astro.url.pathname;
+const { title } = Astro.props as Props;
 ---
 
 <ul class="flex items-center gap-1 [&>li]:h-[26px]">
@@ -44,7 +43,7 @@ const { url, title } = Astro.props as Props;
       href=`http://www.linkedin.com/shareArticle?mini=true&url=${url}`
       class="btn btn-ghost btn-sm btn-square"
       target="_blank"
-      aria-label="Share blog post on LinkedIn "
+      aria-label="Share blog post on LinkedIn"
     >
       <Icon
         pack="mdi"
@@ -75,6 +74,7 @@ const { url, title } = Astro.props as Props;
       id="copyUrlBtn"
       @click="copyToClipboard"
       aria-label="Copy URL to clipboard"
+      :disabled="showToast"
       value={url.toString()}
       class="btn btn-ghost btn-sm btn-square overflow-hidden relative"
     >
@@ -83,6 +83,7 @@ const { url, title } = Astro.props as Props;
         name="link-variant"
         height="26"
         class="[&>path]:fill-base-content/60"
+        x-show="!showToast"
       />
       <Icon
         x-cloak
@@ -101,9 +102,9 @@ const { url, title } = Astro.props as Props;
       x-transition:enter="animate__fadeIn"
       x-transition:leave="animate__bounceOutDown"
       x-show="showToast"
-      class="toast toast-start animate__animated"
+      class="toast toast-start animate__animated z-50"
     >
-      <div class="alert alert-info font-semibold flex">
+      <div class="alert alert-info font-medium">
         <div>
           Link copied to clipboard
           <Icon pack="mdi" name="clipboard-check-outline" height="24" />
@@ -117,20 +118,15 @@ const { url, title } = Astro.props as Props;
   import Alpine from "alpinejs";
   import copy from "copy-to-clipboard";
 
-  const button = document.getElementById("copyUrlBtn") as HTMLButtonElement;
-
   document.addEventListener("alpine:init", () => {
-    const value = button.getAttribute("value")!;
     Alpine.data("clipboard", () => ({
       showToast: false,
-      copyToClipboard() {
-        copy(value);
+      copyToClipboard(event) {
+        copy(event.target.value);
         this.showToast = true;
-        button.disabled = true;
         setTimeout(() => {
           this.showToast = false;
-          button.disabled = false;
-        }, 1500);
+        }, 1800);
       },
     }));
   });
