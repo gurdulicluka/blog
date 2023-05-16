@@ -37,17 +37,21 @@
   :where(.btn) {
     @apply no-animation;
   }
+
   /* ANIMATE CSS */
   .animate__animated.animate__slideInRight,
-  .animate__animated.animate__slideOutRight,
-  .animate__animated.animate__fadeIn,
-  .animate__animated.animate__fadeOut {
+  .animate__animated.animate__slideOutRight {
     --animate-duration: 230ms;
   }
   .animate__animated.animate__slideInDown,
   .animate__animated.animate__slideOutUp {
     --animate-duration: 300ms;
   }
+  .animate__animated.animate__fadeIn,
+  .animate__animated.animate__fadeOut {
+    --animate-duration: 420ms;
+  }
+
   /* ALPINE JS */
   [x-cloak] {
     display: none !important;
