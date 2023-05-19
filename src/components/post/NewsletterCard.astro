@@ -19,11 +19,11 @@
       :disabled="isLoading"
       placeholder="Your email address"
       @input.debounce.300ms="validateInput"
+      @keydown="preventSpace($event)"
       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
       class="input mb-3 input-bordered w-full lightBase bg-base-200"
       data-validate
     />
-    <!-- FIXME only spaces are being considered "valid" -->
     <button
       type="submit"
       disabled
@@ -85,6 +85,9 @@
       validateInput(event) {
         this.inputValid = event.target.checkValidity();
         !event.target.value && (this.inputValid = false);
+      },
+      preventSpace(event) {
+        event.key === " " && event.preventDefault();
       },
     }));
   });
