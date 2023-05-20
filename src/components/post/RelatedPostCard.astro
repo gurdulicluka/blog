@@ -12,8 +12,10 @@ const { post } = Astro.props as Props;
 const { title, category, image } = post.data;
 ---
 
-<article class="rounded-lg overflow-hidden shadow-md">
-  <figure class="group relative overflow-hidden">
+<article
+  class="rounded-lg group bg-base-100 border-4 border-base-200/50 lg:hover:bg-base-200 lg:hover:border-primary/80 transition ease-out overflow-hidden shadow-md"
+>
+  <figure class="relative overflow-hidden">
     <a
       href=`/blog/${post.slug}`
       tabindex="-1"
@@ -33,7 +35,7 @@ const { title, category, image } = post.data;
   </figure>
   <div class="flex bg-base-100 lightBase p-4 flex-col h-[140px] lg:h-[165px]">
     <h3 class="text-lg flex-1 font-bold">{title}</h3>
-    <div class="flex items-center justify-between">
+    <div class="flex items-end justify-between">
       <CategoryBadge category={category} />
       <a
         href=`/blog/${post.slug}`

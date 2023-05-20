@@ -13,8 +13,8 @@ const { post } = Astro.props as Props;
 const { title, category, image } = post.data;
 ---
 
-<article class="flex gap-4 items-center">
-  <figure class="relative overflow-hidden">
+<article class="flex gap-4 items-center group">
+  <figure class="relative overflow-hidden rounded-lg">
     <Picture
       aspectRatio="1:1"
       widths={[120]}
@@ -22,7 +22,7 @@ const { title, category, image } = post.data;
       formats={["webp"]}
       src={image.src}
       alt={image.alt}
-      class="aspect-square w-[100px] h-[100px] object-cover rounded-lg"
+      class="aspect-square w-[100px] h-[100px] object-cover lg:group-hover:scale-110 animate__animated ease-out animate__fadeIn transition duration-200 lg:group-hover:rotate-1"
     />
     <a
       tabindex="-1"
@@ -31,16 +31,13 @@ const { title, category, image } = post.data;
       aria-label=`Read article about "${title}"`></a>
   </figure>
   <div class="flex-1 flex flex-col gap-2">
-    <h3 class="font-bold text-md mb-2">{title}</h3>
-    <div class="flex items-center justify-between">
-      <CategoryBadge category={category} />
+    <h3 class="font-bold text-md mb-2">
       <a
-        href=`/blog/${post.slug}`
-        class="btn btn-ghost btn-square btn-sm font-semibold"
-        aria-label=`Read article about "${title}"`
+        href={`/blog/${post.slug}`}
+        class="hover:underline underline-offset-2"
+        aria-label=`Read article about "${title}"`>{title}</a
       >
-        <Icon pack="mdi" name="arrow-top-right" height="24" />
-      </a>
-    </div>
+    </h3>
+    <CategoryBadge category={category} />
   </div>
 </article>
