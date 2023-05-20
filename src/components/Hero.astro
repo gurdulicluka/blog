@@ -1,8 +1,37 @@
----
----
-
 <div
-  class="pattern h-[calc(100vh-58px)] bg-base-300 sm:h-[45vh] flex items-center justify-center border-b-2 border-secondary/60"
+  class="pattern h-[calc(100vh-58px)] bg-base-300 sm:h-[45vh] flex items-center justify-center border-b-2 border-primary/60"
 >
-  <div class="bg-base-200 rounded-lg w-[30%] h-[200px]"></div>
+  <div class="text-base-content container">
+    <span class="block w-fit text-7xl font-bold gradient-text"
+      >Cracking the Code :</span
+    >
+    <span class="block w-fit text-5xl font-semibold"
+      >Essential Tips & Industry Updates</span
+    >
+  </div>
 </div>
+
+<style>
+  .gradient-text {
+    --bg-size: 400%;
+    --color-one: #6b21a8;
+    --color-two: #ec4899;
+    background: linear-gradient(
+        70deg,
+        var(--color-one),
+        var(--color-two),
+        var(--color-one)
+      )
+      0 0 / var(--bg-size) 100%;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: move-bg 8s infinite linear;
+  }
+
+  @keyframes move-bg {
+    to {
+      background-position: var(--bg-size) 0;
+    }
+  }
+</style>
