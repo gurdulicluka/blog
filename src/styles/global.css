@@ -19,8 +19,8 @@
     @apply outline-fuchsia-600 outline-4 !important;
   }
 
-  :where(.btn-secondary)[disabled]:hover {
-    @apply bg-secondary/50 text-secondary-content transition !important;
+  :where(.btn-primary)[disabled]:hover {
+    @apply bg-primary/50 text-primary-content transition !important;
   }
 
   [data-validate]:not(:placeholder-shown):invalid {
