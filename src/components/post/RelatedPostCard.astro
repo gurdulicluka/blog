@@ -13,7 +13,7 @@ const { title, category, image } = post.data;
 ---
 
 <article
-  class="rounded-lg group bg-base-100 border-4 border-base-200/50 lg:hover:bg-base-200 lg:hover:border-primary/60 transition ease-out overflow-hidden shadow-md"
+  class="rounded-2xl overflow-hidden outline outline-base-200 outline-3 hover:outline-indigo-400 duration-[300ms] group bg-base-100 ease lightBase hover:shadow-lg"
 >
   <figure class="relative overflow-hidden">
     <a
@@ -30,7 +30,7 @@ const { title, category, image } = post.data;
       loading="lazy"
       src={image.src}
       alt={image.alt}
-      class="lg:group-hover:scale-110 animate__animated object-cover ease-out animate__fadeIn transition duration-200 lg:group-hover:rotate-1 w-full"
+      class="lg:group-hover:brightness-[80%] animate__animated object-cover ease animate__fadeIn transition duration-[300ms] w-full"
     />
   </figure>
   <div class="flex bg-base-100 lightBase p-4 flex-col h-[140px] lg:h-[165px]">

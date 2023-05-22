@@ -21,7 +21,7 @@
       @input.debounce.300ms="validateInput"
       @keydown="preventSpace($event)"
       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-      class="input mb-3 input-bordered w-full bg-base-200"
+      class="input mb-3 input-bordered disabled:opacity-40 lightBase w-full bg-base-200"
       data-validate
     />
     <button
@@ -29,7 +29,7 @@
       disabled
       :disabled="!inputValid || isLoading"
       :class="isLoading && 'loading btn-primary/30'"
-      class="btn btn-primary btn-block capitalize disabled:bg-primary/50 disabled:text-primary-content"
+      class="btn btn-primary btn-block capitalize disabled:opacity-50 disabled:bg-primary/50 disabled:text-primary-content"
     >
       <span x-text="isLoading ? 'Submitting...' : 'Subscribe'"></span>
     </button>
