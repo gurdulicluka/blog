@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+import { slugify } from "../../js/utils";
+
+const allPosts = await getCollection("blog");
+const uniqueCategories = [
+  ...new Set(
+    allPosts.map((post) => {
+      return post.data.category;
+    })
+  ),
+];
+---
+
+<ul
+  tabindex="0"
+  class="dropdown-content menu menu-compact p-2 shadow-lg bg-base-300 rounded-box w-52"
+>
+  {
+    uniqueCategories.map((category) => (
+      <li>
+        <a class="font-semibold" href={`/category/${slugify(category)}`}>
+          {category}
+        </a>
+      </li>
+    ))
+  }
+</ul>

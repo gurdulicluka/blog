@@ -5,8 +5,9 @@ module.exports = {
     themes: [
       {
         light: {
-          primary: "#0D9488",
-          secondary: "#4f46e5",
+          primary: "#6366f1",
+          "primary-content": "#F8FAFC",
+          "primary-focus": "#3730a3",
           "base-100": "#F8FAFC",
           "base-200": "#E2E8F0",
           "base-300": "#F8FAFC",
@@ -15,8 +16,8 @@ module.exports = {
       },
       {
         dark: {
-          primary: "#134E4A",
-          secondary: "#3730a3",
+          primary: "#312e81",
+          "primary-content": "#F8FAFC",
           "base-100": "#262626",
           "base-200": "#404040",
           "base-300": "#171717",

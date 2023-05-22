@@ -14,8 +14,10 @@ const { post } = Astro.props;
 const { title, description, category, image, author, date } = post.data;
 ---
 
-<article class="card bg-base-200 lightBase shadow-md">
-  <div class="group relative overflow-hidden rounded-t-xl">
+<article
+  class="card overflow-hidden outline outline-base-200 outline-3 hover:outline-indigo-400 duration-[300ms] group bg-base-100 ease lightBase hover:shadow-lg"
+>
+  <div class="relative overflow-hidden">
     <a
       href=`/blog/${post.slug}`
       tabindex="-1"
@@ -29,7 +31,7 @@ const { title, description, category, image, author, date } = post.data;
       formats={["webp"]}
       src={image.src}
       alt={image.alt}
-      class="lg:group-hover:scale-110 object-cover w-full animate__animated animate__fadeIn transition duration-200 lg:group-hover:rotate-1 h-[255px]"
+      class="lg:group-hover:brightness-[80%] object-cover w-full animate__animated animate__fadeIn transition ease duration-[300ms] h-[255px]"
     />
   </div>
   <!-- INFO -->

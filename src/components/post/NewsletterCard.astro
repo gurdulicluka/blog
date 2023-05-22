@@ -19,17 +19,17 @@
       :disabled="isLoading"
       placeholder="Your email address"
       @input.debounce.300ms="validateInput"
+      @keydown="preventSpace($event)"
       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-      class="input mb-3 input-bordered w-full lightBase bg-base-200"
+      class="input mb-3 input-bordered disabled:opacity-40 lightBase w-full bg-base-200"
       data-validate
     />
-    <!-- FIXME only spaces are being considered "valid" -->
     <button
       type="submit"
       disabled
       :disabled="!inputValid || isLoading"
-      :class="isLoading && 'loading btn-secondary/30'"
-      class="btn btn-secondary btn-block capitalize disabled:bg-secondary/50 disabled:text-secondary-content"
+      :class="isLoading && 'loading btn-primary/30'"
+      class="btn btn-primary btn-block capitalize disabled:opacity-50 disabled:bg-primary/50 disabled:text-primary-content"
     >
       <span x-text="isLoading ? 'Submitting...' : 'Subscribe'"></span>
     </button>
@@ -85,6 +85,9 @@
       validateInput(event) {
         this.inputValid = event.target.checkValidity();
         !event.target.value && (this.inputValid = false);
+      },
+      preventSpace(event) {
+        event.key === " " && event.preventDefault();
       },
     }));
   });

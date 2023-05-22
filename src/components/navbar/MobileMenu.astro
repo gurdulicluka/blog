@@ -1,5 +1,6 @@
 ---
 import HamburgerBtn from "./HamburgerBtn.astro";
+import MobileMenuItems from "./MobileMenuItems.astro";
 ---
 
 <!-- OPEN SIDEBAR BUTTON -->
@@ -23,25 +24,9 @@ import HamburgerBtn from "./HamburgerBtn.astro";
     x-transition:enter="animate__slideInRight"
     x-transition:leave="animate__slideOutRight"
     aria-label="sidebar menu"
-    class="fixed animate__animated overflow-y-scroll h-[calc(100vh-60px)] z-50 top-[58px] bg-base-300 border-t-2 w-[55vw] border-base-200 right-0"
+    class="fixed animate__animated overflow-y-scroll h-[calc(100vh-58px)] z-50 top-[58px] bg-base-300 border-t-2 w-[60vw] border-base-200 right-0"
   >
-    <menu class="menu p-2 pb-[100px] rounded-box text-right">
-      <li>
-        <a href="/">Item 1</a>
-      </li>
-      <li>
-        <a href="/">Item 2</a>
-      </li>
-      <li>
-        <a href="/">Item 3</a>
-      </li>
-      <li>
-        <a href="/">Item 4</a>
-      </li>
-      <li>
-        <a href="/">Item 5</a>
-      </li>
-    </menu>
+    <MobileMenuItems />
   </div>
 </div>
 
