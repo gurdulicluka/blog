@@ -2,6 +2,7 @@
 import ThemeSwitchBtn from "./ThemeSwitchBtn.astro";
 import Logo from "./Logo.astro";
 import MobileMenu from "./MobileMenu.astro";
+import Dropdown from "./Dropdown.astro";
 ---
 
 <header
@@ -14,28 +15,18 @@ import MobileMenu from "./MobileMenu.astro";
 >
   <nav class="flex items-center 2xl:container px-4 justify-between h-[58px]">
     <Logo />
-    <div class="items-center hidden sm:flex">
+    <div class="hidden sm:flex">
       <ul class="flex items-center">
         <li>
           <a href="/" class="btn btn-ghost">Home</a>
         </li>
-        <li>
-          <div class="dropdown dropdown-bottom dropdown-hover dropdown-end">
-            <label tabindex="0" class="btn btn-ghost">Category</label>
-            <ul
-              tabindex="0"
-              class="dropdown-content menu menu-compact p-2 shadow-lg bg-base-200 rounded-box w-52"
-            >
-              <li><a>A.I.</a></li>
-              <li><a>React</a></li>
-              <li><a>Tailwind CSS</a></li>
-              <li><a>Astro</a></li>
-              <li><a>Javascript</a></li>
-              <li><a>Optimization</a></li>
-            </ul>
-          </div>
+        <li class="dropdown dropdown-bottom dropdown-hover dropdown-end">
+          <label tabindex="0" class="btn btn-ghost">Category</label>
+          <Dropdown />
         </li>
-        <ThemeSwitchBtn />
+        <li>
+          <ThemeSwitchBtn />
+        </li>
       </ul>
     </div>
     <MobileMenu />
