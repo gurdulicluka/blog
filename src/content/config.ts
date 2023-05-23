@@ -9,11 +9,11 @@ const blog = defineCollection({
     description: z
       .string()
       .max(
-        160,
-        "For best SEO results, please keep the description under 160 characters."
+        200,
+        "For best SEO results, please keep the description under 200 characters."
       ),
     draft: z.boolean().default(false),
-    category: z.enum(["A.I."]),
+    category: z.enum(["AI", "React"]),
   }),
 });
 
