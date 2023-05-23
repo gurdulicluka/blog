@@ -1,12 +1,11 @@
 ---
-id: 2
 title: "Will AI replace frontend developers in the future?"
 date: 2023-04-22
 author: Luka Gurdulić
 image: { src: "/images/2/hero.webp", alt: "Open Laptop on Desk" }
 description: Lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor sit
 draft: false
-category: A.I.
+category: AI
 ---
 
 As we continue to witness the rapid advancements in artificial intelligence (AI), there has been a lot of discussion around its potential to replace various jobs in different industries. Frontend developers, who are responsible for designing and building the user interface of websites and applications, have also been a part of these discussions. The question is, will AI eventually replace frontend developers in the future?

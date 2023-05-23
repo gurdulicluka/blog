@@ -12,28 +12,22 @@ const uniqueCategories = [
 ];
 ---
 
-<!-- FIXME -->
-<ul class="[&>*]:capitalize p-1 menu rounded-box gap-2">
-  <li class="menu-title py-1">
-    <span class="text-sm font-semibold">View by Category</span>
-  </li>
-  {
-    uniqueCategories.map((category) => (
-      <li class="bordered">
-        <a href={`/category/${slugify(category)}`}>{category}</a>
-      </li>
-    ))
-  }
-  <li class="bordered">
-    <a href="">Tailwind CSS</a>
-  </li>
-  <li class="bordered">
-    <a href="">React</a>
-  </li>
-  <li class="bordered">
-    <a href="">Javascript</a>
-  </li>
-  <li class="bordered">
-    <a href="">Alpine</a>
-  </li>
-</ul>
+<div>
+  <h3 class="py-1 bg-primary text-primary-content opacity-100">
+    <span class="text-sm py-2 px-4 font-medium">Category</span>
+  </h3>
+  <ul class="[&>*]:capitalize">
+    {
+      uniqueCategories.map((category) => (
+        <li class="border-b text-lg border-base-200/60 font-semibold text-base-content">
+          <a
+            class="w-full hover:bg-base-200 block p-4"
+            href={`/category/${slugify(category)}`}
+          >
+            {category}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
