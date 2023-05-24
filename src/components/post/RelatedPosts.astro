@@ -1,6 +1,6 @@
 ---
 import { CollectionEntry } from "astro:content";
-import RelatedPostCard from "./RelatedPostCard.astro";
+import ArticleCard from "../ArticleCard.astro";
 
 interface Props {
   posts: CollectionEntry<"blog">[];
@@ -22,10 +22,10 @@ const relatedPosts = posts
 >
   <div class="2xl:container sm:px-8 px-4 py-8 z-10 rounded-xl">
     <h2 class="font-bold text-2xl sm:text-4xl mb-4 sm:mb-6">Related posts</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
       {
         relatedPosts.map((post) => {
-          return <RelatedPostCard post={post} />;
+          return <ArticleCard post={post} />;
         })
       }
     </div>
