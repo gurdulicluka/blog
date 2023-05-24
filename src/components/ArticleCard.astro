@@ -41,7 +41,11 @@ const { title, description, category, image, author, date } = post.data;
       <AuthorBadge author={author} date={date} />
     </div>
     <h2 class="card-title font-bold">
-      {title}
+      <a
+        href=`/blog/${post.slug}`
+        class="hover:underline"
+        aria-label=`Read article about "${title}"`>{title}</a
+      >
     </h2>
     <p class="mb-2 line-clamp-3 h-[70px]">{description}</p>
   </div>
