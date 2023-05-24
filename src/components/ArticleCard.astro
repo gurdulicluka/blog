@@ -37,17 +37,12 @@ const { title, description, category, image, author, date } = post.data;
   <!-- INFO -->
   <div class="card-body px-6 py-4">
     <div class="card-actions justify-between items-center mb-2">
+      <CategoryBadge category={category} />
       <AuthorBadge author={author} date={date} />
-      <a
-        href=`/blog/${post.slug}`
-        aria-label=`Read article about "${title}"`
-        class="btn btn-primary min-h-0 h-10 normal-case">Read article</a
-      >
     </div>
     <h2 class="card-title font-bold">
       {title}
     </h2>
-    <p class="mb-2 line-clamp-3">{description}</p>
-    <CategoryBadge category={category} />
+    <p class="mb-2 line-clamp-3 h-[70px]">{description}</p>
   </div>
 </article>
