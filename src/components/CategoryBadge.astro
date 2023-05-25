@@ -7,7 +7,7 @@ const { category } = Astro.props as Props;
 ---
 
 <a
-  href={`/blog/category/${slugify(category)}`}
+  href={`/category/${slugify(category)}`}
   class="btn btn-ghost btn-active hover:bg-gray-500 btn-sm md:btn-xs w-fit text-xs normal-case rounded-2xl font-semibold"
 >
   {category}
