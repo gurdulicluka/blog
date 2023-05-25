@@ -1,11 +1,28 @@
 ---
+import { getCollection } from "astro:content";
+import { sortByDate } from "../js/utils";
+
 // components
 import MainLayout from "../layouts/MainLayout.astro";
-import AllBlogPosts from "../components/AllBlogPosts.astro";
 import Hero from "../components/Hero.astro";
+import ArticleCard from "../components/ArticleCard.astro";
+
+const allPosts = await getCollection("blog");
+const recentPosts = sortByDate(allPosts);
 ---
 
 <MainLayout title="Kodahead" description="Default Description">
   <Hero />
-  <AllBlogPosts />
+  <section class="container my-16 sm:my-20">
+    <h2 class="text-4xl font-medium mb-6">Recent articles</h2>
+    <div
+      class="grid grid-cols-1 gap-x-[2%] gap-y-[30px] sm:grid-cols-2 lg:grid-cols-3"
+    >
+      {
+        recentPosts.slice(0, 6).map((post) => {
+          return <ArticleCard post={post} />;
+        })
+      }
+    </div>
+  </section>
 </MainLayout>
