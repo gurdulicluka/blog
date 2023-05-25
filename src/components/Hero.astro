@@ -1,37 +1,55 @@
 <div
-  class="pattern h-[calc(100vh-58px)] bg-base-300 sm:h-[45vh] flex items-center justify-center border-b-4 border-base-200"
+  class="pattern h-[calc(100vh-70px)] bg-base-300 lg:h-[35vh] flex items-center justify-center border-b-4 border-base-200"
 >
-  <div class="text-base-content container">
-    <span class="block w-fit text-7xl font-bold gradient-text"
-      >Cracking the Code :</span
-    >
-    <span class="block w-fit text-5xl font-semibold"
-      >Essential Tips & Industry Updates</span
-    >
+  <div
+    class="text-base-content text-center lg:container flex flex-col lg:flex-row items-center justify-center"
+  >
+    <div class="flex-1 px-3">
+      <p class="text-5xl xl:text-6xl font-bold gradient-text">
+        Cracking the Code
+      </p>
+      <p class="text-3xl font-semibold xl:text-4xl mt-4">
+        Essential Tips & <br /> Industry Updates
+      </p>
+    </div>
+    <div class="flex-1 animate__animated animate__fadeIn">
+      <lottie-player
+        class="mx-auto w-[90%] 2xl:w-[80%] h-auto"
+        autoplay
+        loop
+        mode="normal"
+        src="/lotties/animation.json"
+      >
+      </lottie-player>
+    </div>
   </div>
-</div>
 
-<style>
-  .gradient-text {
-    --bg-size: 400%;
-    --color-one: #6b21a8;
-    --color-two: #ec4899;
-    background: linear-gradient(
-        70deg,
-        var(--color-one),
-        var(--color-two),
-        var(--color-one)
-      )
-      0 0 / var(--bg-size) 100%;
-    color: transparent;
-    background-clip: text;
-    -webkit-background-clip: text;
-    animation: move-bg 8s infinite linear;
-  }
+  <script
+    src="https://unpkg.com/@lottiefiles/lottie-player@0.4.0/dist/lottie-player.js"
+  ></script>
 
-  @keyframes move-bg {
-    to {
-      background-position: var(--bg-size) 0;
+  <style>
+    .gradient-text {
+      --bg-size: 400%;
+      --color-one: #6b21a8;
+      --color-two: #ec4899;
+      background: linear-gradient(
+          70deg,
+          var(--color-one),
+          var(--color-two),
+          var(--color-one)
+        )
+        0 0 / var(--bg-size) 100%;
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+      animation: move-bg 8s infinite linear;
     }
-  }
-</style>
+
+    @keyframes move-bg {
+      to {
+        background-position: var(--bg-size) 0;
+      }
+    }
+  </style>
+</div>

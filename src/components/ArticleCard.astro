@@ -21,7 +21,7 @@ const { title, description, category, image, author, date } = post.data;
     <a
       href=`/blog/${post.slug}`
       tabindex="-1"
-      class="absolute z-10 inset-0"
+      class="absolute z-10 inset-0 group-hover:bg-zinc-900/40 transition ease duration-[200ms]"
       aria-label=`Read article about "${title}"`></a>
     <Picture
       loading="lazy"
@@ -31,23 +31,22 @@ const { title, description, category, image, author, date } = post.data;
       formats={["webp"]}
       src={image.src}
       alt={image.alt}
-      class="lg:group-hover:brightness-[80%] object-cover w-full animate__animated animate__fadeIn transition ease duration-[300ms] h-[255px]"
+      class="object-cover w-full animate__animated animate__fadeIn h-[255px]"
     />
   </div>
   <!-- INFO -->
   <div class="card-body px-6 py-4">
     <div class="card-actions justify-between items-center mb-2">
+      <CategoryBadge category={category} />
       <AuthorBadge author={author} date={date} />
-      <a
-        href=`/blog/${post.slug}`
-        aria-label=`Read article about "${title}"`
-        class="btn btn-primary min-h-0 h-10 normal-case">Read article</a
-      >
     </div>
     <h2 class="card-title font-bold">
-      {title}
+      <a
+        href=`/blog/${post.slug}`
+        class="hover:underline"
+        aria-label=`Read article about "${title}"`>{title}</a
+      >
     </h2>
-    <p class="mb-2 line-clamp-3">{description}</p>
-    <CategoryBadge category={category} />
+    <p class="mb-2 line-clamp-3 h-[70px]">{description}</p>
   </div>
 </article>

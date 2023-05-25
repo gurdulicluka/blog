@@ -14,7 +14,7 @@ const { title, category, image } = post.data;
 ---
 
 <article class="flex gap-4 items-center group">
-  <figure class="relative overflow-hidden rounded-lg">
+  <figure class="relative overflow-hidden rounded-xl">
     <Picture
       aspectRatio="1:1"
       widths={[120]}
@@ -22,12 +22,12 @@ const { title, category, image } = post.data;
       formats={["webp"]}
       src={image.src}
       alt={image.alt}
-      class="aspect-square w-[100px] h-[100px] object-cover lg:group-hover:brightness-[80%] animate__animated ease animate__fadeIn transition duration-150"
+      class="aspect-square w-[100px] h-[100px] object-cover animate__animated animate__fadeIn"
     />
     <a
       tabindex="-1"
       href={`/blog/${post.slug}`}
-      class="absolute z-10 inset-0"
+      class="absolute z-10 inset-0 group-hover:bg-zinc-900/40 transition duration-[300ms]"
       aria-label=`Read article about "${title}"`></a>
   </figure>
   <div class="flex-1 flex flex-col gap-2">
