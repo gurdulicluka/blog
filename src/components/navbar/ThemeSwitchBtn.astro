@@ -27,18 +27,33 @@ import { Icon } from "astro-icon";
   />
 </button>
 
+<!-- TODO make mobile version for sidebar -->
+
 <script>
   import Alpine from "alpinejs";
 
   document.addEventListener("alpine:init", () => {
     Alpine.data("themebtn", () => ({
       darkMode: localStorage.theme === "dark",
+      disableTransitions() {
+        const elements = document.querySelectorAll("[data-transition]");
+        elements.forEach((element) => {
+          element.classList.toggle("!transition-none");
+        });
+        setTimeout(() => {
+          elements.forEach((element) => {
+            element.classList.toggle("!transition-none");
+          });
+        }, 0);
+      },
       toggle() {
         if (localStorage.theme === "dark") {
+          this.disableTransitions();
           this.darkMode = false;
           document.documentElement.setAttribute("data-theme", "light");
           localStorage.setItem("theme", "light");
         } else {
+          this.disableTransitions();
           this.darkMode = true;
           document.documentElement.setAttribute("data-theme", "dark");
           localStorage.setItem("theme", "dark");

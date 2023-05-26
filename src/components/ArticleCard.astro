@@ -15,13 +15,15 @@ const { title, description, category, image, author, date } = post.data;
 ---
 
 <article
-  class="card overflow-hidden outline outline-base-200 outline-3 transition lg:hover:outline-accent duration-[300ms] group bg-base-100 ease lightBase lg:hover:shadow-xl"
+  data-transition
+  class="card overflow-hidden outline outline-base-200 outline-3 lg:hover:outline-accent duration-[300ms] group bg-base-100 ease lg:hover:shadow-lg"
 >
   <div class="relative overflow-hidden">
     <a
       href=`/blog/${post.slug}`
       tabindex="-1"
-      class="absolute z-10 inset-0 group-hover:bg-zinc-900/30 transition ease duration-[200ms]"
+      data-transition
+      class="absolute z-10 inset-0 group-hover:bg-zinc-900/30 transition ease duration-[300ms]"
       aria-label=`Read article about "${title}"`></a>
     <Picture
       loading="lazy"
@@ -36,7 +38,8 @@ const { title, description, category, image, author, date } = post.data;
   </div>
   <!-- INFO -->
   <div
-    class="card-body px-6 py-4 transition lg:group-hover:bg-base-200/60 ease duration-[300ms]"
+    data-transition
+    class="card-body px-6 py-4 transition lg:group-hover:bg-base-200/60 lightHover ease duration-[300ms] will-change-auto"
   >
     <div class="card-actions justify-between items-center mb-2">
       <CategoryBadge category={category} />
