@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  important: true,
   darkMode: "class",
   daisyui: {
     themes: [
@@ -10,19 +9,22 @@ module.exports = {
           "primary-content": "#F8FAFC",
           "primary-focus": "#3730a3",
           "base-100": "#F8FAFC",
-          "base-200": "#E2E8F0",
+          "base-200": "#e5e7eb",
           "base-300": "#F8FAFC",
           "base-content": "#1F2937",
+          accent: "#6366f1",
         },
       },
       {
         dark: {
-          primary: "#312e81",
+          primary: "#3730a3",
           "primary-content": "#F8FAFC",
+          "primary-focus": "#312e81",
           "base-100": "#262626",
           "base-200": "#404040",
           "base-300": "#171717",
           "base-content": "#F9FAFB",
+          accent: "#818cf8",
         },
       },
     ],
