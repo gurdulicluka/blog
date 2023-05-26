@@ -33,17 +33,16 @@ const categoryPosts = formattedPosts.filter(
 );
 ---
 
-<!-- TODO styling -->
 <MainLayout
   title={`${name} - Kodahead`}
   description={`View all posts in '${name}' category - Kodahead`}
 >
-  <div class="container">
-    <div class="my-10 text-center">
+  <div class="container my-12 sm:my-14">
+    <header class="mb-12 text-center">
       <h1 class="font-bold text-7xl">{name}</h1>
-      <p class="text-lg font-medium badge badge-ghost py-3">All posts</p>
-    </div>
-    <div
+      <div class="text-lg font-medium badge badge-ghost py-3">Category</div>
+    </header>
+    <section
       class="grid grid-cols-1 gap-x-[2%] gap-y-[30px] sm:grid-cols-2 lg:grid-cols-3"
     >
       {
@@ -51,6 +50,6 @@ const categoryPosts = formattedPosts.filter(
           return <ArticleCard post={post} />;
         })
       }
-    </div>
+    </section>
   </div>
 </MainLayout>
