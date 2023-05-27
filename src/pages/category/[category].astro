@@ -35,12 +35,15 @@ const categoryPosts = formattedPosts.filter(
 
 <MainLayout
   title={`${name} - Kodahead`}
-  description={`View all posts in '${name}' category - Kodahead`}
+  description={`All posts in '${name}' category - Kodahead`}
 >
-  <div class="container my-12 sm:my-14">
-    <header class="mb-12 text-center">
-      <h1 class="font-bold text-7xl">{name}</h1>
-      <div data-transition class="text-lg font-medium badge badge-ghost py-3">
+  <div class="container mb-14">
+    <header class="text-center my-10 md:my-12">
+      <h1 class="font-bold text-4xl sm:text-5xl">{name}</h1>
+      <div
+        data-transition
+        class="sm:text-md font-medium badge badge-ghost py-3"
+      >
         Category
       </div>
     </header>
