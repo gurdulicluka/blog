@@ -11,7 +11,10 @@ const allPosts = await getCollection("blog");
 const recentPosts = sortByDate(allPosts);
 ---
 
-<MainLayout title="Kodahead" description="Default Description">
+<MainLayout
+  title="Kodahead"
+  description="Cracking the Code - Essential Tips & Industry Updates"
+>
   <Hero />
   <section class="container my-16 sm:my-20">
     <h2 class="text-4xl font-medium mb-6">Recent articles</h2>
