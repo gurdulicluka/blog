@@ -4,19 +4,21 @@ import ArticleCard from "../ArticleCard.astro";
 
 interface Props {
   posts: CollectionEntry<"blog">[];
+  title: String;
   category: String;
 }
-const { posts, category } = Astro.props;
+const { posts, category, title } = Astro.props;
 
 const relatedPosts = posts
   .filter(
-    (post) => post.data.category.toLowerCase() === category.toLowerCase()
-    // TODO uncomment this below
-    // post.data.title !== title
+    (post) =>
+      post.data.category.toLowerCase() === category.toLowerCase() &&
+      post.data.title !== title
   )
   .slice(0, 4);
 ---
 
+<!-- FIXME nothing shows when some post doesn't have anything related, put something to be a placeholder instead in those scenarios -->
 <section
   class="bg-base-300 pt-[140px] pb-[60px] pattern border-t-4 border-base-200"
 >
