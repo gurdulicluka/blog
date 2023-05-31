@@ -1,16 +1,17 @@
 ---
 import { CollectionEntry } from "astro:content";
-import { Icon } from "astro-icon";
+import { formatDate } from "../../js/utils";
 import { Picture } from "@astrojs/image/components";
 // components
 import CategoryBadge from "../CategoryBadge.astro";
+import AuthorBadge from "../AuthorBadge.astro";
 
 interface Props {
   post: CollectionEntry<"blog">;
 }
 
 const { post } = Astro.props as Props;
-const { title, category, image } = post.data;
+const { title, category, image, date } = post.data;
 ---
 
 <article class="flex gap-4 items-center group">
@@ -38,6 +39,9 @@ const { title, category, image } = post.data;
         aria-label=`Read article about "${title}"`>{title}</a
       >
     </h3>
-    <CategoryBadge category={category} />
+    <div class="flex justify-between items-end">
+      <CategoryBadge category={category} />
+      <span class="text-sm block">{formatDate(date)}</span>
+    </div>
   </div>
 </article>
