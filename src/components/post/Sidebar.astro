@@ -5,11 +5,14 @@ import LatestPostCard from "./LatestPostCard.astro";
 
 interface Props {
   posts: CollectionEntry<"blog">[];
+  currentPost: CollectionEntry<"blog">;
 }
 
-const { posts } = Astro.props;
+const { posts, currentPost } = Astro.props as Props;
 
-const latestPosts = posts.slice(0, 3);
+const latestPosts = posts
+  .filter((post) => post.id !== currentPost.id)
+  .slice(0, 3);
 ---
 
 <aside

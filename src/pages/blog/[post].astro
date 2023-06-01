@@ -83,7 +83,7 @@ const { Content } = await post.render();
         </article>
         <ReadNext posts={formattedPosts} currentPost={post} />
       </section>
-      <Sidebar posts={formattedPosts} />
+      <Sidebar posts={formattedPosts} currentPost={post} />
     </div>
   </div>
   <RelatedPosts posts={formattedPosts} category={category} title={title} />
