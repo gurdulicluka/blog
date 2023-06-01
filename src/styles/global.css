@@ -11,6 +11,10 @@
     @apply font-poppins antialiased;
   }
 
+  code {
+    @apply font-sans font-medium md:whitespace-pre-wrap;
+  }
+
   svg {
     @apply pointer-events-none;
   }
