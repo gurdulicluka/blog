@@ -2,7 +2,7 @@
 title: "Unleashing the Power of React: Exploring Different Hooks"
 date: 2023-05-21
 author: Luka Gurdulić
-image: { src: "/images/3/hero.webp", alt: "React.js logo wallpaper" }
+image: { src: "/images/react-hooks/hero.webp", alt: "React.js logo wallpaper" }
 description: Learn how these hooks can simplify state management, handle side effects and encapsulate reusable logic.
 draft: false
 category: React
