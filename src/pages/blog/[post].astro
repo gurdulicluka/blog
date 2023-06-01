@@ -86,7 +86,7 @@ const { Content } = await post.render();
       <Sidebar posts={formattedPosts} currentPost={post} />
     </div>
   </div>
-  <RelatedPosts posts={formattedPosts} category={category} title={title} />
+  <RelatedPosts posts={formattedPosts} category={category} id={post.id} />
 </MainLayout>
 
 <script>

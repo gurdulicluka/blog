@@ -1,24 +1,40 @@
 ---
 import { CollectionEntry } from "astro:content";
+import { shuffleArray } from "../../js/utils";
+// components
 import ArticleCard from "../ArticleCard.astro";
 
 interface Props {
   posts: CollectionEntry<"blog">[];
-  title: String;
+  id: String;
   category: String;
 }
-const { posts, category, title } = Astro.props;
+const { posts, category, id } = Astro.props;
 
-const relatedPosts = posts
-  .filter(
+function getRelatedPosts(
+  blogPostId: String,
+  blogPostsArr: CollectionEntry<"blog">[]
+) {
+  const relatedPosts = blogPostsArr.filter(
     (post) =>
       post.data.category.toLowerCase() === category.toLowerCase() &&
-      post.data.title !== title
-  )
-  .slice(0, 4);
+      post.id !== blogPostId
+  );
+  const randomPosts = blogPostsArr.filter(
+    (post) =>
+      post.id !== blogPostId &&
+      !relatedPosts.some((relatedPost) => relatedPost.id === post.id)
+  );
+  shuffleArray(randomPosts);
+  const remainingSpots = 4 - relatedPosts.length;
+  const additionalPosts = randomPosts.slice(0, remainingSpots);
+
+  return relatedPosts.concat(additionalPosts);
+}
+
+const relatedPosts = getRelatedPosts(id, posts);
 ---
 
-<!-- FIXME nothing shows when some post doesn't have anything related, put something to be a placeholder instead in those scenarios -->
 <section
   class="bg-base-300 pt-[140px] pb-[60px] pattern border-t-4 border-base-200"
 >
