@@ -33,7 +33,11 @@ module.exports = {
   },
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+      },
+    },
     container: {
       center: true,
       padding: {
@@ -41,9 +45,6 @@ module.exports = {
         sm: "1rem",
         xl: "2rem",
       },
-    },
-    fontFamily: {
-      poppins: ["Poppins", "sans-serif"],
     },
   },
   plugins: [require("@tailwindcss/typography"), require("daisyui")],
