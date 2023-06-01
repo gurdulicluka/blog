@@ -29,7 +29,7 @@ function getRelatedPosts(
   const remainingSpots = 4 - relatedPosts.length;
   const additionalPosts = randomPosts.slice(0, remainingSpots);
 
-  return relatedPosts.concat(additionalPosts);
+  return relatedPosts.concat(additionalPosts).slice(0, 4);
 }
 
 const relatedPosts = getRelatedPosts(id, posts);
