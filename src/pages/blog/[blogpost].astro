@@ -1,8 +1,6 @@
 ---
 import { getCollection, CollectionEntry } from "astro:content";
 import { sortByDate } from "../../js/utils";
-import { Picture, Image } from "@astrojs/image/components";
-import { pictureBreakpoints } from "../../js/constants";
 
 // components
 import MainLayout from "../../layouts/MainLayout.astro";
@@ -11,57 +9,34 @@ import SocialShare from "../../components/post/SocialShare.astro";
 import RelatedPosts from "../../components/post/RelatedPosts.astro";
 import Sidebar from "../../components/post/Sidebar.astro";
 import ReadNext from "../../components/post/ReadNext.astro";
+import MarkdownContent from "../../components/post/MarkdownContent.astro";
+import HeaderImage from "../../components/post/HeaderImage.astro";
 
 // generate props and params for each path
 export async function getStaticPaths() {
   const allPosts = await getCollection("blog");
   const formattedPosts = sortByDate(allPosts);
   return formattedPosts.map((post) => ({
-    params: { post: post.slug },
+    params: { blogpost: post.slug },
     props: {
       post,
+      formattedPosts,
     },
   }));
 }
 
 interface Props {
   post: CollectionEntry<"blog">;
+  formattedPosts: CollectionEntry<"blog">[];
 }
 
-const allPosts = await getCollection("blog");
-const formattedPosts: CollectionEntry<"blog">[] = sortByDate(allPosts);
-const { post } = Astro.props as Props;
+const { post, formattedPosts } = Astro.props as Props;
 const { title, description, category, image, author, date } = post.data;
-const { Content } = await post.render();
 ---
 
 <MainLayout title={title} description={description} image={image}>
   <div class="lg:container">
-    <figure
-      x-data
-      class="relative md:h-[445px] h-[375px] lg:rounded-b-md lg:h-[600px] max-h-[55vh] overflow-hidden"
-    >
-      <Image
-        data-placeholder
-        src={image.src}
-        alt={image.alt}
-        aspectRatio={16 / 9}
-        height={NaN}
-        width={20}
-        class="animate__animated object-cover w-full blur-xl absolute h-full z-20 top-0 left-0"
-      />
-      <Picture
-        data-image
-        fetchpriority="high"
-        src={image.src}
-        alt={image.alt}
-        aspectRatio="16:9"
-        widths={[320, 480, 768, 992, 1200, 1600]}
-        sizes={pictureBreakpoints}
-        formats={["webp"]}
-        class="w-full animate__animated blur-xl animate__fadeIn relative z-10 object-cover h-full object-center"
-      />
-    </figure>
+    <HeaderImage image={image} />
     <div
       class="sm:p-8 p-5 flex flex-col rounded-b-lg xl:flex-row sm:-my-[100px] -my-[70px] relative shadow-lg z-20 rounded-t-2xl sm:w-[95%] w-[98%] mx-auto bg-base-300"
     >
@@ -76,11 +51,7 @@ const { Content } = await post.render();
             <p class="text-lg md:max-w-[85%] font-semibold">{description}</p>
           </hgroup>
         </header>
-        <article
-          class="prose xl:prose-md 2xl:prose-lg prose-headings:text-base-content max-w-none"
-        >
-          <Content />
-        </article>
+        <MarkdownContent post={post} />
         <ReadNext posts={formattedPosts} currentPost={post} />
       </section>
       <Sidebar posts={formattedPosts} currentPost={post} />
@@ -88,16 +59,3 @@ const { Content } = await post.render();
   </div>
   <RelatedPosts posts={formattedPosts} category={category} id={post.id} />
 </MainLayout>
-
-<script>
-  const imagePlaceholder = document.querySelector("[data-placeholder]")!;
-  const image = document.querySelector("[data-image]")!;
-
-  window.onload = () => {
-    imagePlaceholder.classList.add("animate__fadeOut");
-    image.classList.remove("blur-xl");
-    setTimeout(() => {
-      imagePlaceholder.classList.add("hidden");
-    }, 700);
-  };
-</script>

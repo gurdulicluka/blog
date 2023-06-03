@@ -1,0 +1,22 @@
+---
+import { CollectionEntry } from "astro:content";
+import CopyCodeButton from "../CopyCodeButton.astro";
+// CopyCodeButton rendered to execute script inside component (append to code blocks in markdown files)
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props as Props;
+const { Content } = await post.render();
+---
+
+<article
+  class="prose xl:prose-md 2xl:prose-lg prose-headings:text-base-content max-w-none"
+>
+  <Content />
+</article>
+
+<!-- <div class="hidden">
+  <CopyCodeButton />
+</div> -->
