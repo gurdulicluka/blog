@@ -1,0 +1,56 @@
+---
+import { Icon } from "astro-icon";
+---
+
+<button
+  data-copyCodeBtn
+  class="p-2 lg:hover:bg-neutral-700 absolute top-2 right-2 rounded-lg disabled:pointer-events-none transition"
+>
+  <div data-copyIcon>
+    <Icon
+      class="[&>path]:fill-neutral-300"
+      pack="mdi"
+      name="clipboard-multiple-outline"
+      height="26"
+    />
+  </div>
+  <div data-copySuccess class="animate__animated animate__bounceIn hidden">
+    <Icon
+      class="[&>path]:fill-success"
+      pack="mdi"
+      name="clipboard-check-multiple-outline"
+      height="26"
+    />
+  </div>
+</button>
+
+<script>
+  //  TODO retry again Alpine.js, reference error? Alpine.js loads before the button?
+  import copy from "copy-to-clipboard";
+
+  const buttons = document.querySelectorAll(
+    "[data-copyCodeBtn]"
+  ) as NodeListOf<HTMLButtonElement>;
+
+  buttons.forEach((button) => {
+    const codeBlock = button.closest("[data-codeBlock]") as HTMLElement;
+    const copyIcon = button.querySelector("[data-copyIcon]") as HTMLElement;
+    const copySuccess = button.querySelector(
+      "[data-copySuccess]"
+    ) as HTMLElement;
+    let text = codeBlock.querySelector("code")!.innerText;
+
+    button.addEventListener("click", () => {
+      copy(text);
+      copySuccess.classList.toggle("hidden");
+      copyIcon.classList.toggle("hidden");
+      button.disabled = true;
+
+      setTimeout(() => {
+        copySuccess.classList.toggle("hidden");
+        copyIcon.classList.toggle("hidden");
+        button.disabled = false;
+      }, 2000);
+    });
+  });
+</script>

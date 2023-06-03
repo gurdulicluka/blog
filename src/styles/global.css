@@ -11,6 +11,10 @@
     @apply font-poppins antialiased;
   }
 
+  pre {
+    @apply pt-8 relative m-0 rounded-tl-none !important;
+  }
+
   code {
     @apply font-sans font-medium md:whitespace-pre-wrap;
   }
