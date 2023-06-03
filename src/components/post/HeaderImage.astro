@@ -1,0 +1,55 @@
+---
+import { Picture, Image } from "@astrojs/image/components";
+
+interface Props {
+  image: {
+    src: string;
+    alt: string;
+  };
+}
+
+const { image } = Astro.props;
+const pictureBreakpoints =
+  "(max-width:480px) 320w,(max-width:767px) 480w,(max-width:991px) 768w, (max-width:1199px) 992w, (max-width:1599px) 1200w, 1600w";
+---
+
+<figure
+  x-data
+  class="relative md:h-[445px] h-[375px] lg:rounded-b-md lg:h-[600px] max-h-[55vh] overflow-hidden"
+>
+  <Image
+    loading="eager"
+    data-placeholder
+    src={image.src}
+    alt={image.alt}
+    aspectRatio={16 / 9}
+    height={NaN}
+    width={20}
+    class="animate__animated object-cover w-full blur-xl absolute h-full z-20 top-0 left-0"
+  />
+  <Picture
+    loading="eager"
+    data-image
+    fetchpriority="high"
+    src={image.src}
+    alt={image.alt}
+    aspectRatio="16:9"
+    widths={[320, 480, 768, 992, 1200, 1600]}
+    sizes={pictureBreakpoints}
+    formats={["webp"]}
+    class="w-full animate__animated blur-xl animate__fadeIn relative z-10 object-cover h-full object-center"
+  />
+</figure>
+
+<script>
+  const imagePlaceholder = document.querySelector("[data-placeholder]")!;
+  const image = document.querySelector("[data-image]")!;
+
+  window.onload = () => {
+    imagePlaceholder.classList.add("animate__fadeOut");
+    image.classList.remove("blur-xl");
+    setTimeout(() => {
+      imagePlaceholder.classList.add("hidden");
+    }, 500);
+  };
+</script>

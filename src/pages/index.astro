@@ -22,7 +22,7 @@ const recentPosts = sortByDate(allPosts);
       class="grid grid-cols-1 gap-x-[2%] gap-y-[30px] sm:grid-cols-2 lg:grid-cols-3"
     >
       {
-        recentPosts.slice(0, 6).map((post) => {
+        recentPosts.slice(0, 9).map((post) => {
           return <ArticleCard post={post} />;
         })
       }
