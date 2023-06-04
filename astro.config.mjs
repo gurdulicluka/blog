@@ -3,8 +3,9 @@ import tailwind from "@astrojs/tailwind";
 import alpinejs from "@astrojs/alpinejs";
 import partytown from "@astrojs/partytown";
 import image from "@astrojs/image";
-
 import mdx from "@astrojs/mdx";
+
+import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,5 +21,5 @@ export default defineConfig({
     }
   }), alpinejs(), partytown(), image({
     serviceEntryPoint: "@astrojs/image/sharp"
-  }), mdx()]
+  }), mdx(), sitemap()]
 });
