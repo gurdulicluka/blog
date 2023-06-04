@@ -7,8 +7,6 @@ dist/
 # dependencies
 node_modules/
 
-# markdown files
-
 # logs
 npm-debug.log*
 yarn-debug.log*
