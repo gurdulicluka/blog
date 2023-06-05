@@ -39,17 +39,25 @@
     @apply no-animation;
   }
 
-  /* CODE BLOCKS */
+  /* CODE BLOCKS & REHYPE*/
   pre {
-    @apply pt-8 relative m-0 rounded-tl-none !important;
+    @apply py-8 relative m-0 bg-[#24292e] px-0 rounded-tl-none !important;
   }
 
   code {
-    @apply [&>*]:font-serif font-medium md:whitespace-pre-wrap;
+    @apply [&>*]:font-serif grid text-sm lg:whitespace-pre-wrap;
+  }
+
+  .line {
+    @apply pl-6;
+  }
+
+  .line.highlighted {
+    @apply bg-green-900/30 pl-5 border-l-4 border-green-300/80;
   }
 
   .line span {
-    @apply font-mono !important;
+    @apply font-mono;
   }
 
   /* ANIMATE CSS */
