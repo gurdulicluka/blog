@@ -12,7 +12,7 @@ import CodeBlock from "../../components/mdx/CodeBlock.astro";
 
 {/* TODO Configure colors for highligthing individual words */}
 <CodeBlock filename="SomeComponent.jsx">
-```jsx {12-13, 29} /price/#p /flex/
+```jsx {5,12-13, 29} /price/#p /flex/
 import React, { memo } from "react";
 import CardButton from "./CardButton";
 
@@ -42,6 +42,13 @@ const Card = memo((product) => {
 });
 
 export default Card;
+```
+</CodeBlock>
+
+<CodeBlock filename="SomeComponent.jsx">
+```jsx {2}
+import React, { memo } from "react";
+import CardButton from "./CardButton";
 ```
 </CodeBlock>
 

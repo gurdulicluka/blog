@@ -43,12 +43,16 @@ import { Icon } from "astro-icon";
 
     button.addEventListener("click", () => {
       copy(text);
+      button.classList.remove("outline-transparent");
+      button.classList.add("outline-success");
       copySuccess.classList.toggle("hidden");
       copyIcon.classList.toggle("hidden");
       button.classList.toggle("outline-success");
       button.disabled = true;
 
       setTimeout(() => {
+        button.classList.add("outline-transparent");
+        button.classList.remove("outline-success");
         copySuccess.classList.toggle("hidden");
         copyIcon.classList.toggle("hidden");
         button.classList.toggle("outline-success");
