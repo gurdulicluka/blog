@@ -12,14 +12,21 @@ export default defineConfig({
   site: "https://kodahead.netlify.app",
   markdown: {
     shikiConfig: {
-      theme: "material-theme-darker"
-    }
+      theme: "github-dark",
+    },
   },
-  integrations: [tailwind({
-    config: {
-      applyBaseStyles: false
-    }
-  }), alpinejs(), partytown(), image({
-    serviceEntryPoint: "@astrojs/image/sharp"
-  }), mdx(), sitemap()]
+  integrations: [
+    tailwind({
+      config: {
+        applyBaseStyles: false,
+      },
+    }),
+    alpinejs(),
+    partytown(),
+    image({
+      serviceEntryPoint: "@astrojs/image/sharp",
+    }),
+    mdx(),
+    sitemap(),
+  ],
 });
