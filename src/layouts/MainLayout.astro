@@ -1,5 +1,4 @@
 ---
-import { CollectionEntry } from "astro:content";
 // components
 import Head from "./Head.astro";
 
@@ -24,6 +23,7 @@ const { title, description, image, data, robots } = Astro.props as Props;
 <html lang="en">
   <Head {title} {description} {image} {data} {robots} />
   <body class="min-w-[315px]">
+    <div id="overlays"></div>
     <Navbar />
     <main class="min-h-screen pt-[58px]">
       <slot />
