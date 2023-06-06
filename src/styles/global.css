@@ -67,11 +67,11 @@
   }
   .animate__animated.animate__slideInDown,
   .animate__animated.animate__slideOutUp {
-    --animate-duration: 300ms;
+    --animate-duration: 200ms;
   }
   .animate__animated.animate__fadeIn,
   .animate__animated.animate__fadeOut {
-    --animate-duration: 420ms;
+    --animate-duration: 350ms;
   }
 
   /* ALPINE JS */
