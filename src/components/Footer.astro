@@ -2,31 +2,26 @@
   <div
     class="container flex flex-col gap-5 justify-between items-start pt-10 pb-12 lg:flex-row lg:py-5"
   >
-    <div class="text-neutral-100">
-      &copy; <span id="copyright"></span> Kodahead | All rights reserved
+    <div x-data class="text-neutral-100">
+      &copy; <span id="copyright" x-text="new Date().getFullYear().toString()"
+      ></span> Kodahead | All rights reserved
     </div>
     <ul class="flex flex-col text-sm gap-2 lg:flex-row lg:gap-5">
       <li>
-        <a class="hover:text-neutral-100 text-neutral-400" href="/contact"
-          >Contact</a
-        >
+        <button class="hover:text-neutral-100 text-neutral-400">
+          Contact
+        </button>
       </li>
       <li>
-        <a class="hover:text-neutral-100 text-neutral-400" href="/disclaimer"
-          >Disclaimer</a
-        >
+        <button class="hover:text-neutral-100 text-neutral-400">
+          Disclaimer
+        </button>
       </li>
       <li>
-        <a class="hover:text-neutral-100 text-neutral-400" href="/contact"
-          >Cookie Settings</a
-        >
+        <button class="hover:text-neutral-100 text-neutral-400">
+          Cookie Settings
+        </button>
       </li>
     </ul>
   </div>
 </footer>
-
-<script>
-  document.getElementById("copyright")!.textContent = new Date()
-    .getFullYear()
-    .toString();
-</script>
