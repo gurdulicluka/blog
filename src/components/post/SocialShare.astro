@@ -97,20 +97,23 @@ const { title } = Astro.props as Props;
       />
     </button>
     <!-- TOAST -->
-    <div
-      x-cloak
-      x-transition:enter="animate__fadeIn"
-      x-transition:leave="animate__bounceOutDown"
-      x-show="showToast"
-      class="toast toast-start animate__animated z-50"
-    >
-      <div class="alert alert-info font-medium">
-        <div>
-          Link copied to clipboard
-          <Icon pack="mdi" name="clipboard-check-outline" height="24" />
+    <template x-teleport="#overlays">
+      <div
+        role="alert"
+        x-cloak
+        x-transition:enter="animate__fadeIn"
+        x-transition:leave="animate__bounceOutDown"
+        x-show="showToast"
+        class="toast toast-start animate__animated z-50"
+      >
+        <div class="alert alert-info font-medium">
+          <div>
+            Link copied to clipboard
+            <Icon pack="mdi" name="clipboard-check-outline" height="24" />
+          </div>
         </div>
       </div>
-    </div>
+    </template>
   </li>
 </ul>
 

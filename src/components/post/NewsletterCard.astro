@@ -36,28 +36,34 @@
   </form>
 
   <!-- TOASTS -->
-  <div
-    x-cloak
-    x-show="status === 'success'"
-    x-transition:enter="animate__fadeIn"
-    x-transition:leave="animate__bounceOutDown"
-    class="toast toast-start animate__animated z-50"
-  >
-    <div class="alert alert-success font-medium">
-      <div>Thank you for subscribing!</div>
+  <template x-teleport="#overlays">
+    <div
+      role="alert"
+      x-cloak
+      x-show="status === 'success'"
+      x-transition:enter="animate__fadeIn"
+      x-transition:leave="animate__bounceOutDown"
+      class="toast toast-start animate__animated z-50"
+    >
+      <div class="alert alert-success font-medium">
+        <div>Thank you for subscribing!</div>
+      </div>
     </div>
-  </div>
-  <div
-    x-cloak
-    x-show="status === 'error'"
-    x-transition:enter="animate__fadeIn"
-    x-transition:leave="animate__bounceOutDown"
-    class="toast toast-start animate__animated z-50"
-  >
-    <div class="alert alert-error font-medium">
-      <div>Something went wrong!</div>
+  </template>
+  <template x-teleport="#overlays">
+    <div
+      role="alert"
+      x-cloak
+      x-show="status === 'error'"
+      x-transition:enter="animate__fadeIn"
+      x-transition:leave="animate__bounceOutDown"
+      class="toast toast-start animate__animated z-50"
+    >
+      <div class="alert alert-error font-medium">
+        <div>Something went wrong!</div>
+      </div>
     </div>
-  </div>
+  </template>
 </div>
 
 <script>
