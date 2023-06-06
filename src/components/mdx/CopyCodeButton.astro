@@ -6,14 +6,14 @@ import { Icon } from "astro-icon";
   data-copyCodeBtn
   name="Copy code block to clipboard"
   aria-label="Copy code block to clipboard"
-  class="p-2 lg:hover:bg-neutral-700 absolute top-2 right-2 rounded-lg disabled:pointer-events-none transition"
+  class="p-2 lg:hover:outline-neutral-600 outline outline-2 outline-transparent animate__animated bg-neutral-700 absolute top-2 right-2 rounded-lg w-fit h-fit disabled:pointer-events-none transition"
 >
   <div data-copyIcon>
     <Icon
       class="[&>path]:fill-neutral-300"
       pack="mdi"
       name="clipboard-multiple-outline"
-      height="26"
+      height="20"
     />
   </div>
   <div data-copySuccess class="animate__animated animate__bounceIn hidden">
@@ -21,13 +21,12 @@ import { Icon } from "astro-icon";
       class="[&>path]:fill-success"
       pack="mdi"
       name="clipboard-check-multiple-outline"
-      height="26"
+      height="20"
     />
   </div>
 </button>
 
 <script>
-  //  TODO retry again Alpine.js, reference error? Alpine.js loads before the button?
   import copy from "copy-to-clipboard";
 
   const buttons = document.querySelectorAll(
@@ -44,11 +43,16 @@ import { Icon } from "astro-icon";
 
     button.addEventListener("click", () => {
       copy(text);
+      button.classList.remove("outline-transparent");
+      button.classList.add("outline-success");
       copySuccess.classList.toggle("hidden");
       copyIcon.classList.toggle("hidden");
       button.disabled = true;
 
       setTimeout(() => {
+        //TODO outline not working green
+        button.classList.add("outline-transparent");
+        button.classList.remove("outline-success");
         copySuccess.classList.toggle("hidden");
         copyIcon.classList.toggle("hidden");
         button.disabled = false;

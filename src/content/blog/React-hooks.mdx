@@ -10,8 +10,9 @@ category: React
 import CodeBlock from "../../components/mdx/CodeBlock.astro";
 
 
+{/* TODO Configure colors for highligthing individual words */}
 <CodeBlock filename="SomeComponent.jsx">
-```jsx
+```jsx {5,12-13, 29} /price/#p /flex/
 import React, { memo } from "react";
 import CardButton from "./CardButton";
 
@@ -24,15 +25,12 @@ const Card = memo((product) => {
   // some comment
   return (
     <article
-      className="flex h-[600px] w-full max-w-[345px] animate-fadeIn flex-col
-    overflow-hidden rounded-2xl bg-white text-start shadow-2xl"
-    >
+      className="flex h-[600px] w-full max-w-[345px] animate-fadeIn flex-col overflow-hidden rounded-2xl bg-white text-start shadow-2xl">
       <div className="flex flex-1 flex-col justify-between p-6">
         <div className="flex flex-1 flex-col gap-1" style={{ color: color }}>
           {discount && <div className="text-xl">kn{calculateDiscount()}</div>}
           <div
-            className={`${discount && "line-through"} text-3xl font-semibold`}
-          >
+            className={`${discount && "line-through"} text-3xl font-semibold`}>
             kn{price}
           </div>
           {discount && <div>Limited {discount}% discount</div>}
@@ -47,24 +45,13 @@ export default Card;
 ```
 </CodeBlock>
 
-<CodeBlock filename="index.css">
-```css
-:where(.btn-primary)[disabled]:hover {
-  @apply bg-primary/50 text-primary-content transition !important;
-}
-
-[data-validate]:not(:placeholder-shown):invalid {
-  @apply text-error ring-error ring outline-none appearance-none !important;
-}
-[data-validate]:not(:placeholder-shown):valid {
-  @apply ring ring-success outline-none appearance-none !important;
-}
-
-[data-theme="light"] .lightBase {
-  @apply bg-base-100;
-}
+<CodeBlock filename="SomeComponent.jsx">
+```jsx {2}
+import React, { memo } from "react";
+import CardButton from "./CardButton";
 ```
 </CodeBlock>
+
 
 React.js has revolutionized the world of web development with its efficient component-based architecture and declarative programming model. One of the key features that sets React.js apart is its powerful Hooks API. Hooks allow developers to write reusable logic and manage stateful behavior within functional components, making React code more concise, readable, and easier to maintain. In this blog post, we will take a deep dive into various hooks offered by React.js, unraveling their unique capabilities and use cases.
 

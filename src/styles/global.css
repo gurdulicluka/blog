@@ -11,24 +11,12 @@
     @apply font-poppins antialiased;
   }
 
-  pre {
-    @apply pt-8 relative m-0 rounded-tl-none !important;
-  }
-
-  code {
-    @apply font-sans font-medium md:whitespace-pre-wrap;
-  }
-
   svg {
     @apply pointer-events-none;
   }
 
   *:not(input):focus-visible {
     @apply outline-fuchsia-600 outline-4 !important;
-  }
-
-  :where(.btn-primary)[disabled]:hover {
-    @apply bg-primary/50 text-primary-content transition !important;
   }
 
   [data-validate]:not(:placeholder-shown):invalid {
@@ -38,12 +26,38 @@
     @apply ring ring-success outline-none appearance-none !important;
   }
 
+  /* DAISY UI */
+  :where(.btn-primary)[disabled]:hover {
+    @apply bg-primary/50 text-primary-content transition !important;
+  }
+
   [data-theme="light"] .lightBase {
     @apply bg-base-100;
   }
 
   :where(.btn) {
     @apply no-animation;
+  }
+
+  /* CODE BLOCKS & REHYPE*/
+  pre {
+    @apply py-8 relative m-0 bg-[#24292e] px-0 rounded-tl-none !important;
+  }
+
+  code {
+    @apply [&>*]:font-serif grid text-sm lg:whitespace-pre-wrap;
+  }
+
+  .line {
+    @apply pl-6;
+  }
+
+  .line.highlighted {
+    @apply bg-green-900/30 pl-5 border-l-4 border-green-300/80;
+  }
+
+  .line span {
+    @apply font-mono;
   }
 
   /* ANIMATE CSS */
