@@ -6,7 +6,7 @@ import { Icon } from "astro-icon";
   data-copyCodeBtn
   name="Copy code block to clipboard"
   aria-label="Copy code block to clipboard"
-  class="p-2 lg:hover:outline-neutral-600 outline outline-2 outline-transparent animate__animated bg-neutral-700 absolute top-2 right-2 rounded-lg w-fit h-fit disabled:pointer-events-none transition"
+  class="p-2 enabled:lg:hover:outline-neutral-600 outline outline-2 outline-none outline-offset-0 bg-neutral-700 absolute top-2 right-2 rounded-lg disabled:pointer-events-none"
 >
   <div data-copyIcon>
     <Icon
@@ -16,7 +16,7 @@ import { Icon } from "astro-icon";
       height="20"
     />
   </div>
-  <div data-copySuccess class="animate__animated animate__bounceIn hidden">
+  <div data-copySuccess class="hidden">
     <Icon
       class="[&>path]:fill-success"
       pack="mdi"
@@ -43,20 +43,16 @@ import { Icon } from "astro-icon";
 
     button.addEventListener("click", () => {
       copy(text);
-      button.classList.remove("outline-transparent");
-      button.classList.add("outline-success");
+      button.disabled = true;
+      button.classList.toggle("outline-success");
       copySuccess.classList.toggle("hidden");
       copyIcon.classList.toggle("hidden");
-      button.classList.toggle("outline-success");
-      button.disabled = true;
 
       setTimeout(() => {
-        button.classList.add("outline-transparent");
-        button.classList.remove("outline-success");
+        button.disabled = false;
+        button.classList.toggle("outline-success");
         copySuccess.classList.toggle("hidden");
         copyIcon.classList.toggle("hidden");
-        button.classList.toggle("outline-success");
-        button.disabled = false;
       }, 2000);
     });
   });
