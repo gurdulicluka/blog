@@ -2,21 +2,17 @@
   x-cloak
   x-data
   x-show="$store.overlays.cookieSettings"
+  x-transition:enter="animate__fadeIn"
+  x-transition:leave="animate__fadeOut"
   role="alertdialog"
   aria-modal="true"
-  class="fixed z-[100] inset-0 flex items-center justify-center"
+  class="fixed z-[100] animate__animated animate__faster inset-0 flex items-center justify-center"
 >
-  <span
-    class="fixed inset-0 backdrop-blur-sm bg-neutral-800/50 flex items-center"
-  >
-  </span>
+  <span class="fixed inset-0 bg-neutral-800/70 flex items-center"> </span>
   <div
     x-trap.inert.noscroll="$store.overlays.cookieSettings"
-    x-show="$store.overlays.cookieSettings"
-    x-transition:enter="animate__fadeIn"
-    x-transition:leave="animate__fadeOut"
     @click.away="$store.overlays.toggleModal('cookieSettings')"
-    class="p-4 rounded-lg animate__animated animate__faster z-50 border border-neutral-300 w-[95vw] max-w-[500px] bg-neutral-50 shadow-lg"
+    class="p-4 rounded-lg z-50 border border-neutral-300 w-[95vw] max-w-[500px] bg-neutral-50 shadow-lg"
   >
     <header class="text-neutral-900">
       <h2 class="font-semibold text-lg mb-2 border-b border-neutral-300">
