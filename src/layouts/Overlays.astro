@@ -1,0 +1,27 @@
+---
+import CookiePopup from "../components/overlays/CookiePopup.astro";
+---
+
+<div id="overlays">
+  <CookiePopup />
+</div>
+
+<script>
+  import Alpine from "alpinejs";
+
+  Alpine.store("overlays", {
+    init() {
+      this.cookiePopup = !localStorage.getItem("cookieConsent");
+    },
+    cookiePopup: true,
+    cookieSettings: false,
+    disclaimer: false,
+    toggleModal(key: string) {
+      this[key] = !this[key];
+    },
+    setCookieConsent(consent: "Accepted" | "Rejected") {
+      localStorage.setItem("cookieConsent", consent);
+      this.toggleModal("cookiePopup");
+    },
+  });
+</script>

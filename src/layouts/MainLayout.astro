@@ -8,6 +8,7 @@ import "animate.css";
 
 import Footer from "../components/Footer.astro";
 import Navbar from "../components/navbar/Navbar.astro";
+import Overlays from "./Overlays.astro";
 
 interface Props {
   title: string;
@@ -23,7 +24,7 @@ const { title, description, image, data, robots } = Astro.props as Props;
 <html lang="en">
   <Head {title} {description} {image} {data} {robots} />
   <body class="min-w-[315px]">
-    <div id="overlays"></div>
+    <Overlays />
     <Navbar />
     <main class="min-h-screen pt-[58px]">
       <slot />

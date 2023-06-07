@@ -1,0 +1,38 @@
+<div
+  x-cloak
+  x-data
+  x-show="$store.overlays.cookiePopup"
+  x-transition:enter="animate__fadeIn"
+  x-transition:leave="animate__fadeOut"
+  class="rounded-lg animate__animated animate__faster border border-neutral-300 w-[500px] max-w-[95vw] bg-neutral-50 shadow-lg z-30 fixed bottom-5 md:right-5 right-[50%] translate-x-[50%] md:translate-x-0"
+>
+  <div class="p-4">
+    <header class="text-neutral-900 mb-4 sm:p-2">
+      <h2 class="font-semibold text-lg mb-2">We care about your privacy.</h2>
+      <p class="text-sm">
+        This website uses cookies to analyze traffic and enhance your browsing
+        experience. By clicking "Accept", you agree to our use of cookies as
+        described in our <a class="link font-medium" href="/privacy"
+          >Privacy Policy</a
+        >.
+      </p>
+      <p class="text-neutral-900/50 text-xs mt-2">
+        Change your cookie settings later by clicking Cookie Settings at the end
+        of the page.
+      </p>
+    </header>
+    <div x-data class="flex justify-end gap-2 items-center text-neutral-900">
+      <button
+        @click="$store.overlays.setCookieConsent('Rejected')"
+        class="px-4 py-2 text-sm border border-neutral-300 transition hover:bg-neutral-300 rounded-xl"
+        >Reject</button
+      >
+      <button
+        x-data
+        @click="$store.overlays.setCookieConsent('Accepted')"
+        class="px-4 py-2 text-sm bg-blue-500 text-blue-50 hover:bg-blue-600 transition rounded-xl"
+        >Accept</button
+      >
+    </div>
+  </div>
+</div>
