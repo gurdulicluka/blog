@@ -3,8 +3,10 @@
   x-data
   x-show="$store.overlays.cookiePopup"
   x-transition:enter="animate__fadeIn"
-  x-transition:leave="animate__fadeOut"
-  class="rounded-lg animate__animated animate__faster border border-neutral-300 w-[500px] max-w-[95vw] bg-neutral-50 shadow-lg z-30 fixed bottom-5 md:right-5 right-[50%] translate-x-[50%] md:translate-x-0"
+  x-transition:leave="animate__fadeOutDown"
+  role="alertdialog"
+  aria-modal="true"
+  class="rounded-lg animate__animated animate__faster border border-neutral-300 w-[95vw] max-w-[500px] bg-neutral-50 shadow-lg z-30 fixed bottom-5 left-0 right-0 mx-auto md:left-auto md:right-5 md:mx-0"
 >
   <div class="p-4">
     <header class="text-neutral-900 mb-4 sm:p-2">
@@ -21,16 +23,16 @@
         of the page.
       </p>
     </header>
-    <div x-data class="flex justify-end gap-2 items-center text-neutral-900">
+    <div x-data class="flex gap-2 items-center text-neutral-900">
       <button
-        @click="$store.overlays.setCookieConsent('Rejected')"
-        class="px-4 py-2 text-sm border border-neutral-300 transition hover:bg-neutral-300 rounded-xl"
+        @click="$store.overlays.setCookieConsent('Rejected');$store.overlays.toggleModal('cookiePopup')"
+        class="flex-1 px-4 py-3 text-sm border border-neutral-300 transition hover:bg-neutral-300 rounded-lg"
         >Reject</button
       >
       <button
         x-data
-        @click="$store.overlays.setCookieConsent('Accepted')"
-        class="px-4 py-2 text-sm bg-blue-500 text-blue-50 hover:bg-blue-600 transition rounded-xl"
+        @click="$store.overlays.setCookieConsent('Accepted');$store.overlays.toggleModal('cookiePopup')"
+        class="flex-1 px-4 py-3 text-sm bg-blue-500 text-blue-50 hover:bg-blue-600 transition rounded-lg"
         >Accept</button
       >
     </div>
