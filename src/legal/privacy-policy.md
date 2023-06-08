@@ -1,0 +1,60 @@
+# Privacy Policy
+
+Thank you for visiting [Kodahead](https://kodahead.com). This Privacy Policy outlines how we collect, use, and protect your personal information when you use our Website. We respect your privacy and are committed to safeguarding your personal data. By accessing and using our Website, you consent to the practices described in this Privacy Policy.
+
+1. Information We Collect
+
+   1.1 Personal Information
+
+   When you visit our Website, we may collect certain personally identifiable information, including but not limited to your name, email address, postal address, phone number, and any other information you voluntarily provide to us.
+
+   1.2 Non-Personal Information
+
+   We also collect non-personal information automatically as you browse our Website. This may include your IP address, browser type, operating system, device information, and website usage data. We collect this information through cookies, web beacons, and similar technologies. You can manage your cookie preferences through your browser settings.
+
+2. Use of Information
+
+   2.1 Personal Information
+
+   We may use the personal information you provide to:
+
+   - Provide you with the requested services and information
+   - Respond to your inquiries and communicate with you
+   - Send you newsletters, updates, and promotional materials, with your consent
+   - Improve our Website and tailor your user experience
+   - Enforce our terms of service and protect the rights, property, or safety of our users or others
+   - Comply with legal obligations or as otherwise required by law
+
+     2.2 Non-Personal Information
+
+   We may use non-personal information for statistical analysis, to monitor and improve our Website's performance, and for other internal purposes. This information does not personally identify you.
+
+3. Sharing of Information
+
+   3.1 Third-Party Service Providers
+
+   We may share your personal information with trusted third-party service providers who assist us in operating our Website and providing services to you. These service providers are obligated to protect your information and only use it for the purposes specified by us.
+
+   3.2 Legal Requirements
+
+   We may disclose your personal information if required to do so by law or in response to a valid legal request. We may also disclose your information to protect our rights, property, or safety, or the rights, property, or safety of others.
+
+   3.3 Business Transfers
+
+   In the event of a merger, acquisition, or any form of sale or transfer of some or all of our assets, we may transfer your personal information to the relevant third party as part of the transaction.
+
+4. Google Analytics
+
+   Our Website uses Google Analytics, a web analytics service provided by Google, Inc. ("Google"). Google Analytics uses cookies and similar technologies to collect and analyze information about your use of our Website. This information is used to evaluate website activity, compile reports, and provide other services relating to website activity and internet usage. Google may also transfer this information to third parties where required to do so by law, or where such third parties process the information on Google's behalf.
+
+   To learn more about how Google Analytics collects and processes data, please visit: [Google Analytics Privacy Policy.](https://policies.google.com/privacy)
+
+   You can opt-out of Google Analytics by installing the Google Analytics Opt-out Browser Add-on, available [here](https://tools.google.com/dlpage/gaoptout) _OR_ by selecting **Reject** on the Cookie Settings at the end of our website.
+
+5. Data Security
+
+   We implement appropriate technical and organizational measures to protect your personal information from unauthorized access, disclosure, alteration, and destruction. However, please note that no method of transmission over the internet or electronic storage is 100% secure, and we cannot guarantee absolute security.
+   <br/>
+   <br/>
+   <br/>
+   **_Last updated: 8 June 2023_**
