@@ -1,13 +1,12 @@
 ---
 import CookiePopup from "../components/overlays/CookiePopup.astro";
-import CookiesSettings from "../components/overlays/CookiesSettings.astro";
 ---
 
 <div id="overlays">
   <CookiePopup />
-  <CookiesSettings />
 </div>
 
+<!-- TODO put toasts here from other components -->
 <script>
   import Alpine from "alpinejs";
   import focus from "@alpinejs/focus";
@@ -15,16 +14,13 @@ import CookiesSettings from "../components/overlays/CookiesSettings.astro";
 
   Alpine.store("overlays", {
     init() {
+      // Don't show cookiePopup if cookieConsent exists in localStorage
       this.cookiePopup = !localStorage.getItem("cookieConsent");
     },
     cookiePopup: true,
-    cookieSettings: false,
     disclaimer: false,
     toggleModal(key: string) {
       this[key] = !this[key];
-    },
-    setCookieConsent(consent: "Accepted" | "Rejected") {
-      localStorage.setItem("cookieConsent", consent);
     },
   });
 </script>

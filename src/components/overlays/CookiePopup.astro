@@ -14,27 +14,43 @@
       <p class="text-sm">
         This website uses cookies to analyze traffic and enhance your browsing
         experience. By clicking "Accept", you agree to our use of cookies as
-        described in our <a class="link font-medium" href="/privacy"
-          >Privacy Policy</a
+        described in our <a
+          class="link font-medium inline-block rounded-md"
+          href="/privacy">Privacy Policy</a
         >.
       </p>
       <p class="text-neutral-900/50 text-xs mt-2">
-        Change your cookie settings later by clicking Cookie Settings at the end
-        of the page.
+        *You can change your consent later by clicking Cookie Settings at the
+        bottom of the page.
       </p>
     </header>
-    <div x-data class="flex gap-2 items-center text-neutral-900">
+    <div
+      x-data="cookieConsent"
+      class="flex gap-2 items-center text-neutral-900"
+    >
       <button
-        @click="$store.overlays.setCookieConsent('Rejected');$store.overlays.toggleModal('cookiePopup')"
+        @click="setCookieConsent('Rejected');$store.overlays.toggleModal('cookiePopup')"
         class="flex-1 px-4 py-3 text-sm border border-neutral-300 transition hover:bg-neutral-300 rounded-lg"
         >Reject</button
       >
       <button
         x-data
-        @click="$store.overlays.setCookieConsent('Accepted');$store.overlays.toggleModal('cookiePopup')"
+        @click="setCookieConsent('Accepted');$store.overlays.toggleModal('cookiePopup')"
         class="flex-1 px-4 py-3 text-sm bg-blue-500 text-blue-50 hover:bg-blue-600 transition rounded-lg"
         >Accept</button
       >
     </div>
   </div>
 </div>
+
+<script>
+  import Alpine from "alpinejs";
+
+  document.addEventListener("alpine:init", () => {
+    Alpine.data("cookieConsent", () => ({
+      setCookieConsent(keyword: "Accepted" | "Rejected") {
+        localStorage.setItem("cookieConsent", keyword);
+      },
+    }));
+  });
+</script>
