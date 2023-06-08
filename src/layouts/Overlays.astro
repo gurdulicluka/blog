@@ -13,11 +13,7 @@ import CookiePopup from "../components/overlays/CookiePopup.astro";
   Alpine.plugin(focus);
 
   Alpine.store("overlays", {
-    init() {
-      // Don't show cookiePopup if cookieConsent exists in localStorage
-      this.cookiePopup = !localStorage.getItem("cookieConsent");
-    },
-    cookiePopup: true,
+    cookiePopup: false,
     disclaimer: false,
     toggleModal(key: string) {
       this[key] = !this[key];

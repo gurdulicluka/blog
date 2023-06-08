@@ -29,13 +29,14 @@
       class="flex gap-2 items-center text-neutral-900"
     >
       <button
-        @click="setCookieConsent('Rejected');$store.overlays.toggleModal('cookiePopup')"
+        @click="handleCookieConsent('Reject');$store.overlays.toggleModal('cookiePopup')"
         class="flex-1 px-4 py-3 text-sm border border-neutral-300 transition hover:bg-neutral-300 rounded-lg"
         >Reject</button
       >
       <button
+        id="cookiepopup"
         x-data
-        @click="setCookieConsent('Accepted');$store.overlays.toggleModal('cookiePopup')"
+        @click="handleCookieConsent('Accept');$store.overlays.toggleModal('cookiePopup')"
         class="flex-1 px-4 py-3 text-sm bg-blue-500 text-blue-50 hover:bg-blue-600 transition rounded-lg"
         >Accept</button
       >
@@ -45,11 +46,21 @@
 
 <script>
   import Alpine from "alpinejs";
+  import { setCookieConsent } from "../../js/analytics";
 
   document.addEventListener("alpine:init", () => {
     Alpine.data("cookieConsent", () => ({
-      setCookieConsent(keyword: "Accepted" | "Rejected") {
-        localStorage.setItem("cookieConsent", keyword);
+      init() {
+        // Show cookiePopup modal if consent doesn't exist in localStorage
+        if (localStorage.getItem("consentMode") === null) {
+          const overlaysStore = Alpine.store("overlays") as {
+            toggleModal: (arg: "cookiePopup") => void;
+          };
+          overlaysStore.toggleModal("cookiePopup");
+        }
+      },
+      handleCookieConsent: (keyword) => {
+        setCookieConsent(keyword);
       },
     }));
   });

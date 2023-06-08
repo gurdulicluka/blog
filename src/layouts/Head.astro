@@ -4,6 +4,30 @@ const { title, description, image, data, robots } = Astro.props;
 ---
 
 <head>
+  <script>
+    // Define dataLayer and the gtag function.
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    // Default all to 'denied'.
+    if (localStorage.getItem("consentMode") === null) {
+      console.log("Head declares default consent mode, ALL DENIED");
+      gtag("consent", "default", {
+        analytics_storage: "denied",
+        ad_storage: "denied",
+        functionality_storage: "denied",
+        personalization_storage: "denied",
+        security_storage: "denied",
+      });
+    } else {
+      gtag(
+        "consent",
+        "default",
+        JSON.parse(localStorage.getItem("consentMode"))
+      );
+    }
+  </script>
   <!-- Google Tag Manager -->
   <script>
     (function (w, d, s, l, i) {
