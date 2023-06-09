@@ -4,6 +4,7 @@
   class="my-8"
   method="POST"
 >
+  <!-- TODO action promijeni u praavi email putem .env filea ili netlify env (bolje) -->
   <input type="hidden" name="_template" value="box" />
   <input type="hidden" name="_subject" value="Kodahead Contact" />
   <input type="hidden" name="_next" value={Astro.site?.toString()} />
@@ -14,7 +15,7 @@
         id="name"
         name="name"
         type="text"
-        class="input input-bordered focus:outline-info"
+        class="input bg-base-200 input-bordered focus:outline-info"
         placeholder="Full Name"
         spellcheck="false"
         required
@@ -28,7 +29,7 @@
         id="email"
         name="email"
         type="email"
-        class="input input-bordered focus:outline-info"
+        class="input bg-base-200 input-bordered focus:outline-info"
         placeholder="Email Address"
         spellcheck="false"
         required
@@ -42,7 +43,7 @@
     <textarea
       id="message"
       name="message"
-      class="resize-y textarea text-base min-h-[15em] textarea-bordered w-full focus:outline-info placeholder:text-base"
+      class="resize-y bg-base-200 textarea text-base min-h-[15em] max-h-[800px] textarea-bordered w-full focus:outline-info placeholder:text-base"
       placeholder="Your Message"
       autocomplete="off"
       spellcheck="false"
