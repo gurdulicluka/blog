@@ -1,0 +1,21 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import * as DisclaimerProps from "../legal/disclaimer.mdx";
+import { Content as DisclaimerText } from "../legal/disclaimer.mdx";
+---
+
+<MainLayout
+  title="Disclaimer - Kodahead"
+  description="Disclaimer about using our website and the content provided"
+>
+  <div class="header-gradient h-[170px] flex items-center justify-center">
+    <h2 class="text-5xl xl:text-6xl font-mono font-medium text-center">
+      {DisclaimerProps.frontmatter.title}
+    </h2>
+  </div>
+  <div class="lg:container bg-base-300">
+    <section class="prose min-h-screen lg:max-w-[80%] py-14 px-[3%] mx-auto">
+      <DisclaimerText />
+    </section>
+  </div>
+</MainLayout>
