@@ -1,0 +1,58 @@
+<form
+  x-data
+  action="https://formsubmit.co/pevukixe@mailgolem.com"
+  class="my-8"
+  method="POST"
+>
+  <input type="hidden" name="_template" value="box" />
+  <input type="hidden" name="_subject" value="Kodahead Contact" />
+  <input type="hidden" name="_next" value={Astro.site?.toString()} />
+  <div class="flex flex-col sm:flex-row w-full gap-4">
+    <div class="flex flex-col flex-1">
+      <label for="name" class="mb-1 text-lg font-medium">Name:</label>
+      <input
+        id="name"
+        name="name"
+        type="text"
+        class="input input-bordered focus:outline-info"
+        placeholder="Full Name"
+        spellcheck="false"
+        required
+        aria-required="true"
+      />
+    </div>
+
+    <div class="flex flex-col flex-1">
+      <label for="email" class="mb-1 text-lg font-medium">Email:</label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        class="input input-bordered focus:outline-info"
+        placeholder="Email Address"
+        spellcheck="false"
+        required
+        aria-required="true"
+      />
+    </div>
+  </div>
+
+  <div class="flex flex-col my-6">
+    <label for="message" class="mb-1 text-lg font-medium">Message:</label>
+    <textarea
+      id="message"
+      name="message"
+      class="resize-y textarea text-base min-h-[15em] textarea-bordered w-full focus:outline-info placeholder:text-base"
+      placeholder="Your Message"
+      autocomplete="off"
+      spellcheck="false"
+      maxlength="500"
+      required
+      aria-required="true"></textarea>
+  </div>
+  <div class="flex sm:justify-end">
+    <button class="btn w-full md:w-fit btn-primary capitalize" type="submit"
+      >Send message</button
+    >
+  </div>
+</form>

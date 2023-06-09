@@ -1,0 +1,31 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import ContactForm from "../components/forms/ContactForm.astro";
+---
+
+<MainLayout
+  title="Contact | Kodahead"
+  description="Whatever you are interested in about Kodahead, drop me an email"
+>
+  <div class="header-gradient h-[150px] flex items-center justify-center">
+    <h1 class="text-6xl font-mono font-medium text-center">Contact</h1>
+  </div>
+  <div class="container">
+    <section class="max-w-[650px] mx-auto w-full my-12">
+      <p class="sm:text-lg text-center mb-8">
+        We are thrilled to hear from you. Whether you have a question,
+        suggestion, or just want to say hello, we are here and ready to connect.
+        Fill out the form below, and we'll get back to you as soon as possible.
+      </p>
+      <div class="divider"></div>
+      <ContactForm />
+      <div class="divider"></div>
+      <p class="text-center text-xs opacity-50">
+        By submitting this form, you acknowledge that you have read and
+        understood our <a href="/legal/#privacy-policy" class="link"
+          >Privacy Policy</a
+        >.
+      </p>
+    </section>
+  </div>
+</MainLayout>
