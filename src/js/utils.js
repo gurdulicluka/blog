@@ -30,3 +30,35 @@ export function shuffleArray(array) {
     array[j] = temp;
   }
 }
+
+export function toast(message, alertType, timing) {
+  const createToaster = () => {
+    const node = document.createElement("aside");
+    node.id = "toaster";
+    node.className =
+      "toast toast-start z-[100] animate__animated aniamte__fast animate__fadeIn";
+    node.setAttribute("role", "alert");
+    node.setAttribute("aria-live", "polite");
+    node.setAttribute("aria-atomic", "true");
+    document.firstElementChild.insertBefore(node, document.body);
+    return node;
+  };
+
+  const createToast = () => {
+    const node = document.createElement("output");
+    node.innerText = message;
+    node.className = `alert ${alertType}`;
+    return node;
+  };
+
+  const ejectAndEatToast = () => {
+    const toaster = createToaster();
+    const toast = createToast();
+    toaster.appendChild(toast);
+    setTimeout(() => {
+      document.getElementById("toaster").remove();
+    }, timing);
+  };
+
+  ejectAndEatToast();
+}
