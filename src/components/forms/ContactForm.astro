@@ -1,10 +1,13 @@
+---
+const email = import.meta.env.FORM_SUBMIT_EMAIL; // Netlify .env
+---
+
 <form
   x-data
-  action="https://formsubmit.co/pevukixe@mailgolem.com"
+  action={`https://formsubmit.co/${email}`}
   class="my-8"
   method="POST"
 >
-  <!-- TODO action promijeni u praavi email putem .env filea ili netlify env (bolje) -->
   <input type="hidden" name="_template" value="box" />
   <input type="hidden" name="_subject" value="Kodahead Contact" />
   <input type="hidden" name="_next" value={Astro.site?.toString()} />

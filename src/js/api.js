@@ -1,5 +1,5 @@
 export async function sendEmailData(formNode) {
-  const url = import.meta.env.PUBLIC_MAILING_LIST;
+  const url = import.meta.env.PUBLIC_MAILING_LIST; // Netlify .env
   let response;
   try {
     response = await fetch(url, {
