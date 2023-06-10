@@ -23,7 +23,7 @@ const { title, description, category, image, author, date } = post.data;
       href=`/blog/${post.slug}`
       tabindex="-1"
       data-transition
-      class="absolute z-10 inset-0 lg:group-hover:bg-zinc-800/40 transition ease duration-[300ms]"
+      class="absolute z-10 inset-0 lg:group-hover:bg-gray-900/20 transition ease duration-[300ms]"
       aria-label=`Read article about "${title}"`></a>
     <Picture
       loading="lazy"
@@ -33,7 +33,7 @@ const { title, description, category, image, author, date } = post.data;
       formats={["webp"]}
       src={image.src}
       alt={image.alt}
-      class="object-cover w-full animate__animated animate__fadeIn h-[255px]"
+      class="object-cover object-top w-full animate__animated animate__fadeIn h-[255px]"
     />
   </div>
   <!-- INFO -->
