@@ -71,7 +71,6 @@ const { title } = Astro.props as Props;
   <li x-data="clipboard">
     <!-- COPY TO CLIPBOARD BUTTON -->
     <button
-      id="copyUrlBtn"
       @click="copyToClipboard"
       aria-label="Copy URL to clipboard"
       :disabled="showToast"
@@ -96,40 +95,22 @@ const { title } = Astro.props as Props;
         x-show="showToast"
       />
     </button>
-    <!-- TOAST -->
-    <template x-teleport="#overlays">
-      <div
-        role="alert"
-        x-cloak
-        x-transition:enter="animate__fadeIn"
-        x-transition:leave="animate__bounceOutDown"
-        x-show="showToast"
-        class="toast toast-start animate__animated z-50"
-      >
-        <div class="alert alert-info font-medium">
-          <div>
-            Link copied to clipboard
-            <Icon pack="mdi" name="clipboard-check-outline" height="24" />
-          </div>
-        </div>
-      </div>
-    </template>
   </li>
 </ul>
 
 <script>
   import Alpine from "alpinejs";
   import copy from "copy-to-clipboard";
+  import { toast } from "../../js/utils";
 
   document.addEventListener("alpine:init", () => {
     Alpine.data("clipboard", () => ({
       showToast: false,
       copyToClipboard(event) {
         copy(event.target.value);
+        toast("Link copied to clipboard", "alert-info", 2000);
         this.showToast = true;
-        setTimeout(() => {
-          this.showToast = false;
-        }, 1800);
+        setTimeout(() => (this.showToast = false), 2000);
       },
     }));
   });
