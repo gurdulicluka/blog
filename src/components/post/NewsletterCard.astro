@@ -1,100 +1,13 @@
-<div x-data="newsletter" class="mb-8 w-full flex flex-col">
+---
+import NewsletterForm from "../forms/NewsletterForm.astro";
+---
+
+<div class="mb-8 w-full flex flex-col">
   <h3 class="font-bold text-lg mb-3">Sign up for our newsletter</h3>
   <p class="text-sm mb-5">
     Stay updated on the latest in coding by subscribing to our newsletter. Get
     exclusive articles, tutorials, and insights from industry experts delivered
     straight to your inbox.
   </p>
-  <form
-    class="group"
-    name="submit-to-google-sheet"
-    @submit.prevent="sendData()"
-    novalidate
-  >
-    <input
-      type="email"
-      name="Email"
-      spellcheck="false"
-      autocomplete="off"
-      :disabled="isLoading"
-      placeholder="Your email address"
-      @input.debounce.300ms="validateInput"
-      @keydown="preventSpace($event)"
-      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-      class="input mb-3 input-bordered disabled:opacity-40 lightBase w-full bg-base-200"
-      data-validate
-    />
-    <button
-      type="submit"
-      disabled
-      :disabled="!inputValid || isLoading"
-      :class="isLoading && 'loading btn-primary/30'"
-      class="btn btn-primary btn-block capitalize disabled:opacity-50 disabled:bg-primary/50 disabled:text-primary-content"
-    >
-      <span x-text="isLoading ? 'Submitting...' : 'Subscribe'"></span>
-    </button>
-  </form>
-
-  <!-- TOASTS -->
-  <template x-teleport="#overlays">
-    <div
-      role="alert"
-      x-cloak
-      x-show="status === 'success'"
-      x-transition:enter="animate__fadeIn"
-      x-transition:leave="animate__bounceOutDown"
-      class="toast toast-start animate__animated z-50"
-    >
-      <div class="alert alert-success font-medium">
-        <div>Thank you for subscribing!</div>
-      </div>
-    </div>
-  </template>
-  <template x-teleport="#overlays">
-    <div
-      role="alert"
-      x-cloak
-      x-show="status === 'error'"
-      x-transition:enter="animate__fadeIn"
-      x-transition:leave="animate__bounceOutDown"
-      class="toast toast-start animate__animated z-50"
-    >
-      <div class="alert alert-error font-medium">
-        <div>Something went wrong!</div>
-      </div>
-    </div>
-  </template>
+  <NewsletterForm />
 </div>
-
-<script>
-  import Alpine from "alpinejs";
-  import { sendEmailData } from "../../js/api";
-  const form = document.forms["submit-to-google-sheet"];
-
-  document.addEventListener("alpine:init", () => {
-    Alpine.data("newsletter", () => ({
-      status: "initial",
-      inputValid: false,
-      isLoading: false,
-      async sendData() {
-        this.isLoading = true;
-        const response: any = await sendEmailData(form);
-        this.isLoading = false;
-        response ? (this.status = "success") : (this.status = "error");
-        setTimeout(() => {
-          this.status = "initial";
-        }, 1800);
-        form.blur();
-        form.reset();
-        this.inputValid = false;
-      },
-      validateInput(event) {
-        this.inputValid = event.target.checkValidity();
-        !event.target.value && (this.inputValid = false);
-      },
-      preventSpace(event) {
-        event.key === " " && event.preventDefault();
-      },
-    }));
-  });
-</script>
