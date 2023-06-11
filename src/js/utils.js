@@ -31,7 +31,7 @@ export function shuffleArray(array) {
   }
 }
 
-export function toast(message, alertType, timing) {
+export function toast(message, alertType, timing = 2000) {
   const createToaster = () => {
     const node = document.createElement("aside");
     node.id = "toaster";
