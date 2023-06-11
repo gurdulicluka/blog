@@ -14,9 +14,12 @@
   }
 
   /* END OF PATTERNS AND GRADIENTS */
+  html {
+    @apply touch-manipulation;
+  }
 
   * {
-    @apply font-poppins antialiased scroll-smooth touch-manipulation;
+    @apply font-poppins antialiased scroll-smooth;
   }
 
   svg {
