@@ -56,12 +56,18 @@ const email = import.meta.env.FORM_SUBMIT_EMAIL; // Netlify .env
       required
       aria-required="true"></textarea>
     <!-- Characters remaining -->
-    <div class="flex justify-start mt-3 items-center text-sm font-semibold">
+    <div
+      class="flex justify-start animate__animated animate__fadeIn h-[22px] mt-3 items-center text-sm font-semibold"
+    >
       <span
+        x-cloak
         x-text="remaining"
-        :class="{'text-error animate__flash': remaining <= 0, 'text-warning animate__headShake': remaining > 0 && remaining <= 50, 'text-success': remaining > 50}"
-        class="animate__animated"></span>
-      <span x-show="remaining <= 0" class="font-normal text-xs ml-2 text-error"
+        :class="{'text-error': remaining <= 0, 'text-warning animate__headShake': remaining > 0 && remaining <= 50, 'text-success': remaining > 50}"
+        class="animate__animated animate__slow"></span>
+      <span
+        x-cloak
+        x-show="remaining <= 0"
+        class="font-normal text-xs ml-2 text-error"
         >You've reached the maximum character limit.</span
       >
     </div>
