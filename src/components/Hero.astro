@@ -1,39 +1,22 @@
-<div
-  class="pattern bg-base-300 h-[40vh] lg:h-[35vh] 2xl:h-[30vh] flex items-center justify-center border-b-4 border-base-200"
->
-  <div class="text-center py-[80px] flex items-center justify-center">
-    <div class="px-3">
-      <h1 class="text-5xl xl:text-7xl font-bold gradient-text">
-        Cracking the Code
-      </h1>
-      <h2 class="text-3xl font-semibold xl:text-4xl mt-4">
-        Essential Tips & <br /> Industry Updates
-      </h2>
+---
+import { Icon } from "astro-icon";
+---
+
+<div class="bg-base-300">
+  <section class="2xl:container">
+    <div
+      class="w-full bg-[url('/images/homepage-hero.webp')] bg-cover bg-center h-[calc(100svh-58px)] sm:h-[500px]"
+    >
+      <div class="relative bg-neutral-900/30 w-full h-full">
+        <div
+          class="absolute flex flex-col items-center gap-5 bottom-0 left-0 right-0 top-[40%] h-fit w-fit mx-auto"
+        >
+          <Icon name="kodahead" height="40" class="[&>path]:fill-neutral-100" />
+          <a href="/blog" class="btn glass text-neutral-100 capitalize w-fit"
+            >See all posts</a
+          >
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 </div>
-
-<style>
-  .gradient-text {
-    --bg-size: 400%;
-    --color-one: #6b21a8;
-    --color-two: #ec4899;
-    background: linear-gradient(
-        70deg,
-        var(--color-one),
-        var(--color-two),
-        var(--color-one)
-      )
-      0 0 / var(--bg-size) 100%;
-    color: transparent;
-    background-clip: text;
-    -webkit-background-clip: text;
-    animation: move-bg 8s infinite linear;
-  }
-
-  @keyframes move-bg {
-    to {
-      background-position: var(--bg-size) 0;
-    }
-  }
-</style>
