@@ -1,0 +1,25 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import { getCollection } from "astro:content";
+import { sortByDate } from "../../js/utils";
+import ArticleCard from "../../components/ArticleCard.astro";
+import HeadingGradient from "../../components/HeadingGradient.astro";
+
+const allPosts = await getCollection("blog");
+const formattedPosts = sortByDate(allPosts);
+---
+
+<MainLayout title="Blog | Kodahead" description="See all our blog posts">
+  <HeadingGradient>Blog Posts</HeadingGradient>
+  <section class="container min-h-screen py-12">
+    <div
+      class="grid grid-cols-1 gap-x-[2%] gap-y-[30px] sm:grid-cols-2 lg:grid-cols-3"
+    >
+      {
+        formattedPosts.map((post) => {
+          return <ArticleCard post={post} />;
+        })
+      }
+    </div>
+  </section>
+</MainLayout>
