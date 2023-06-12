@@ -5,6 +5,7 @@ import { slugify, sortByDate } from "../../js/utils";
 // components
 import MainLayout from "../../layouts/MainLayout.astro";
 import ArticleCard from "../../components/ArticleCard.astro";
+import HeadingGradient from "../../components/HeadingGradient.astro";
 
 // generate props and params for each path
 export async function getStaticPaths() {
@@ -37,19 +38,12 @@ const categoryPosts = formattedPosts.filter(
   title={`${name} - Kodahead`}
   description={`All posts in '${name}' category - Kodahead`}
 >
-  <div class="container mb-14">
-    <header class="text-center mt-6 mb-6 md:mb-8">
-      <div
-        data-transition
-        class="sm:text-md font-medium mb-4 badge badge-ghost py-3"
-      >
-        Category
-      </div>
-      <h1 class="font-bold text-4xl sm:text-5xl">{name}</h1>
-      <div class="h-[2px] bg-base-200 rounded-full mt-2"></div>
-    </header>
+  <HeadingGradient>
+    {name}
+  </HeadingGradient>
+  <section class="container min-h-screen py-12">
     <section
-      class="grid grid-cols-1 gap-x-[2%] gap-y-[30px] sm:grid-cols-2 lg:grid-cols-3"
+      class="grid grid-cols-1 mt- gap-x-[2%] gap-y-[30px] sm:grid-cols-2 lg:grid-cols-3"
     >
       {
         categoryPosts.map((post) => {
@@ -57,5 +51,5 @@ const categoryPosts = formattedPosts.filter(
         })
       }
     </section>
-  </div>
+  </section>
 </MainLayout>
