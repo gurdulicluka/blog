@@ -41,18 +41,30 @@ const email = import.meta.env.FORM_SUBMIT_EMAIL; // Netlify .env
     </div>
   </div>
 
-  <div class="flex flex-col my-6">
+  <div x-data="{message:'', remaining: 300 }" class="flex flex-col my-6">
     <label for="message" class="mb-1 text-lg font-medium">Message:</label>
     <textarea
+      x-model="message"
+      @input="remaining= 300 - message.length"
       id="message"
       name="message"
       class="resize-y bg-base-200 textarea text-base min-h-[15em] max-h-[800px] textarea-bordered w-full focus:outline-info placeholder:text-base"
       placeholder="Your Message"
       autocomplete="off"
       spellcheck="false"
-      maxlength="500"
+      maxlength="300"
       required
       aria-required="true"></textarea>
+    <!-- Characters remaining -->
+    <div class="flex justify-start mt-3 items-center text-sm font-semibold">
+      <span
+        x-text="remaining"
+        :class="{'text-error animate__flash': remaining <= 0, 'text-warning animate__headShake': remaining > 0 && remaining <= 50, 'text-success': remaining > 50}"
+        class="animate__animated"></span>
+      <span x-show="remaining <= 0" class="font-normal text-xs ml-2 text-error"
+        >You've reached the maximum character limit.</span
+      >
+    </div>
   </div>
   <div class="flex sm:justify-end">
     <button class="btn w-full md:w-fit btn-primary capitalize" type="submit"
