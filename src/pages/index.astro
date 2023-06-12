@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import { sortByDate } from "../js/utils";
+import { Icon } from "astro-icon";
 
 // components
 import MainLayout from "../layouts/MainLayout.astro";
@@ -16,13 +17,13 @@ const recentPosts = sortByDate(allPosts);
   description="Cracking the Code - Essential Tips & Industry Updates"
 >
   <Hero />
-  <section class="container my-16">
-    <h2 class="text-4xl font-medium mb-6">Recent articles</h2>
+  <section class="container my-12">
+    <h2 class="text-4xl xl:text-5xl font-medium mb-6">Recent Posts</h2>
     <div
       class="grid grid-cols-1 gap-x-[2%] gap-y-[30px] sm:grid-cols-2 lg:grid-cols-3"
     >
       {
-        recentPosts.slice(0, 9).map((post) => {
+        recentPosts.slice(0, 6).map((post) => {
           return <ArticleCard post={post} />;
         })
       }
