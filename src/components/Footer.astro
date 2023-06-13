@@ -1,36 +1,63 @@
+---
+import { Icon } from "astro-icon";
+---
+
 <footer class="bg-neutral-900">
-  <div
-    class="container flex flex-col gap-5 justify-between items-start pt-10 pb-12 lg:flex-row lg:py-5"
-  >
-    <div x-data class="text-neutral-100">
-      &copy; <span id="copyright" x-text="new Date().getFullYear().toString()"
-      ></span> Kodahead | All rights reserved
+  <div class="container">
+    <div
+      class="flex md:text-sm pt-6 pb-4 flex-col gap-5 justify-between items-start lg:flex-row">
+      <div x-data class="text-neutral-100">
+        &copy; <span id="copyright" x-text="new Date().getFullYear().toString()"
+        ></span> Kodahead | All rights reserved
+      </div>
+      <ul class="flex flex-col gap-5 lg:flex-row">
+        <li>
+          <a href="/contact" class="hover:text-neutral-100 text-neutral-400">
+            Contact
+          </a>
+        </li>
+        <li>
+          <a href="/disclaimer" class="hover:text-neutral-100 text-neutral-400">
+            Disclaimer
+          </a>
+        </li>
+        <li>
+          <button
+            x-data
+            @click="$store.overlays.toggleModal('cookiePopup')"
+            class="hover:text-neutral-100 text-neutral-400">
+            Cookie Settings
+          </button>
+        </li>
+        <li>
+          <a href="/privacy" class="hover:text-neutral-100 text-neutral-400">
+            Privacy policy
+          </a>
+        </li>
+      </ul>
     </div>
-    <ul class="flex flex-col md:text-sm gap-5 lg:flex-row">
-      <li>
-        <a href="/contact" class="hover:text-neutral-100 text-neutral-400">
-          Contact
-        </a>
-      </li>
-      <li>
-        <a href="/disclaimer" class="hover:text-neutral-100 text-neutral-400">
-          Disclaimer
-        </a>
-      </li>
-      <li>
-        <button
-          x-data
-          @click="$store.overlays.toggleModal('cookiePopup')"
-          class="hover:text-neutral-100 text-neutral-400"
+    <div class="h-[1px] bg-neutral-700"></div>
+    <div
+      class="flex justify-between flex-col sm:flex-row gap-6 py-12 lg:py-6 items-center text-xs text-neutral-400">
+      <div class="flex">
+        <script
+          type="text/javascript"
+          src="https://storage.ko-fi.com/cdn/widget/Widget_2.js"
+        ></script><script type="text/javascript">
+          kofiwidget2.init("Support Me on Ko-fi", "#134e4a", "T6T3M8DFZ");
+          kofiwidget2.draw();
+        </script>
+      </div>
+      <div class="flex items-end gap-1">
+        Made with
+        <Icon name="oi:heart" height="18" class="[&>path]:fill-rose-700" />
+        in
+        <a
+          href="https://astro.build"
+          class="font-semibold underline-offset-2 hover:text-neutral-100 inline-block -mb-[2px] underline text-sm"
+          target="_blank">Astro</a
         >
-          Cookie Settings
-        </button>
-      </li>
-      <li>
-        <a href="/privacy" class="hover:text-neutral-100 text-neutral-400"
-          >Privacy policy</a
-        >
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
 </footer>
