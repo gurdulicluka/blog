@@ -6,27 +6,28 @@ import { Icon } from "astro-icon";
   x-data="themebtn"
   name="Switch website theme"
   aria-label="Toggle website light and dark mode"
-  class="z-[10000] btn btn-ghost btn-square relative align-middle"
+  class="z-[10000] btn btn-ghost overflow-hidden btn-circle relative align-middle"
   @click="toggle"
 >
   <Icon
     name="sun"
-    height="32"
+    height="24"
     x-cloak
     x-show="!darkMode"
-    x-transition:enter="animate__jackInTheBox"
-    class="fill-current animate__animated absolute"
+    x-transition:enter="animate__slideInRight"
+    class="fill-current animate__animated absolute animate__faster"
   />
   <Icon
     name="moon"
-    height="32"
+    height="24"
     x-cloak
     x-show="darkMode"
-    x-transition:enter="animate__jackInTheBox"
-    class="fill-current animate__animated absolute"
+    x-transition:enter="animate__slideInRight"
+    class="fill-current animate__animated absolute animate__faster"
   />
 </button>
 
+<!-- x-transition:leave="animate__slideOutUp" -->
 <script>
   import Alpine from "alpinejs";
 

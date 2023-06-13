@@ -76,10 +76,6 @@
   }
 
   /* ANIMATE CSS */
-  .animate__animated.animate__slideInRight,
-  .animate__animated.animate__slideOutRight {
-    --animate-duration: 230ms;
-  }
   .animate__animated.animate__slideInDown,
   .animate__animated.animate__slideOutUp {
     --animate-duration: 200ms;

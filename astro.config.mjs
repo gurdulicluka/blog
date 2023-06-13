@@ -6,17 +6,15 @@ import image from "@astrojs/image";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import rehypePrettyCode from "rehype-pretty-code";
-
+import react from "@astrojs/react";
 const prettyCodeOptions = {
   theme: "github-dark",
   onVisitLine(node) {
     if (node.children.length === 0) {
-      node.children = [
-        {
-          type: "text",
-          value: " ",
-        },
-      ];
+      node.children = [{
+        type: "text",
+        value: " "
+      }];
     }
   },
   onVisitHighlightedLine(node) {
@@ -28,17 +26,17 @@ const prettyCodeOptions = {
       // If the word spans across syntax boundaries (e.g. punctuation), remove
       // colors from the child nodes.
       if (node.properties["data-rehype-pretty-code-wrapper"]) {
-        node.children.forEach((childNode) => {
+        node.children.forEach(childNode => {
           childNode.properties.style = "";
         });
       }
-
       node.properties.style = "";
       node.properties["data-word-id"] = id;
     }
   },
-  tokensMap: {},
+  tokensMap: {}
 };
+
 
 // https://astro.build/config
 export default defineConfig({
@@ -46,20 +44,13 @@ export default defineConfig({
   markdown: {
     extendDefaultPlugins: true,
     syntaxHighlight: false,
-    rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
+    rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]]
   },
-  integrations: [
-    tailwind({
-      config: {
-        applyBaseStyles: false,
-      },
-    }),
-    alpinejs(),
-    partytown(),
-    image({
-      serviceEntryPoint: "@astrojs/image/sharp",
-    }),
-    mdx(),
-    sitemap(),
-  ],
+  integrations: [tailwind({
+    config: {
+      applyBaseStyles: false
+    }
+  }), alpinejs(), partytown(), image({
+    serviceEntryPoint: "@astrojs/image/sharp"
+  }), mdx(), sitemap(), react()]
 });

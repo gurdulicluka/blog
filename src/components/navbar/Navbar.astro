@@ -1,8 +1,8 @@
 ---
 import ThemeSwitchBtn from "./ThemeSwitchBtn.astro";
 import Logo from "./Logo.astro";
-import MobileMenu from "./MobileMenu.astro";
-import Dropdown from "./Dropdown.astro";
+import SlidingMenu from "./SlidingMenu.astro";
+import SearchBar from "../search/SearchBar.astro";
 ---
 
 <header
@@ -11,37 +11,34 @@ import Dropdown from "./Dropdown.astro";
   @scroll.window="handleVisibility"
   x-transition:enter="animate__slideInDown"
   x-transition:leave="animate__slideOutUp"
-  class="shadow-md animate__animated fixed bg-base-300 top-0 w-full z-50"
+  class="shadow-xl animate__animated bg-base-300 fixed min-h-16 top-0 w-full z-50"
 >
-  <nav class="flex items-center 2xl:container px-4 justify-between h-[58px]">
-    <Logo />
-    <div class="hidden sm:flex">
-      <ul class="flex items-center">
-        <li>
-          <a href="/" class="btn btn-ghost">Home</a>
-        </li>
-        <li class="dropdown dropdown-bottom dropdown-hover dropdown-end">
-          <label tabindex="0" class="btn btn-ghost">Category</label>
-          <Dropdown />
-        </li>
-        <li>
-          <ThemeSwitchBtn />
-        </li>
-      </ul>
+  <div class="2xl:container navbar justify-between">
+    <div class="navbar-start hidden md:flex gap-2 [&>a]:capitalize">
+      <a href="/" class="btn btn-ghost">Home</a>
+      <a href="/blog" class="btn btn-ghost">Blog</a>
+      <a href="/contact" class="btn btn-ghost">Contact</a>
     </div>
-    <MobileMenu />
-  </nav>
+    <div class="navbar-center">
+      <Logo />
+    </div>
+    <div class="navbar-end hidden md:flex items-center gap-3">
+      <SearchBar />
+      <ThemeSwitchBtn />
+    </div>
+    <SlidingMenu />
+  </div>
 </header>
 
 <script>
   import Alpine from "alpinejs";
   // Hide on scroll down, show on scroll up
-  let prevScrollPos = window.pageYOffset;
+  let prevScrollPos = window.scrollY;
   document.addEventListener("alpine:init", () => {
     Alpine.data("navbar", () => ({
       showNavbar: true,
       handleVisibility() {
-        const currentScrollPos = window.pageYOffset;
+        const currentScrollPos = window.scrollY;
 
         if (prevScrollPos > currentScrollPos || currentScrollPos < 500) {
           this.showNavbar = true;

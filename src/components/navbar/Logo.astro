@@ -2,23 +2,12 @@
 import { Icon } from "astro-icon";
 ---
 
-<a
-  href="/"
-  aria-label="Go to homepage"
-  class="flex items-center outline-none rounded-xl group"
->
-  <Icon
-    data-transition
-    fetchpriority="high"
-    name="logo"
-    height="40"
-    class="outline-none transition duration-500 ease-in-out"
-  />
+<a href="/" aria-label="Go to homepage" class="btn btn-ghost group">
   <Icon
     data-transition
     fetchpriority="high"
     name="kodahead"
     height="20"
-    class="group-hover:[&>path]:fill-indigo-600 outline-none [&>path]:transition [&>path]:duration-200"
+    class="group-hover:[&>path]:fill-accent outline-none [&>path]:transition-none"
   />
 </a>

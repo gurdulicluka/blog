@@ -1,0 +1,20 @@
+---
+import { getCollection } from "astro:content";
+import { formatDate } from "../../js/utils";
+import Search from "./Search.jsx";
+const allPosts = await getCollection("blog");
+const posts = allPosts.filter((post) => !post.data.draft && post.slug);
+const formattedPosts = posts.map(({ data, slug }) => {
+  const newData = {
+    author: data.author,
+    date: formatDate(data.date),
+    title: data.title,
+    description: data.description,
+    category: data.category,
+    slug: slug,
+  };
+  return newData;
+});
+---
+
+<Search client:load searchList={formattedPosts} />
