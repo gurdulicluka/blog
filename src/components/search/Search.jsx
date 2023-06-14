@@ -26,7 +26,7 @@ const Search = ({ searchList }) => {
   return (
     <div className="dropdown dropdown-bottom w-full md:w-fit dropdown-end">
       <input
-        className="input md:input-sm focus:outline-accent w-full md:w-[220px] bg-base-200"
+        className="input md:input-sm focus:outline-accent w-full md:w-[220px] bg-base-50"
         type="text"
         value={query}
         onChange={handleOnSearch}

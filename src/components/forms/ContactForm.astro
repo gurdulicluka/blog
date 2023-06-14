@@ -6,8 +6,7 @@ const email = import.meta.env.FORM_SUBMIT_EMAIL; // Netlify .env
   x-data
   action={`https://formsubmit.co/${email}`}
   class="my-8"
-  method="POST"
->
+  method="POST">
   <input type="hidden" name="_template" value="box" />
   <input type="hidden" name="_subject" value="Kodahead Contact" />
   <input type="hidden" name="_next" value={Astro.site?.toString()} />
@@ -18,7 +17,7 @@ const email = import.meta.env.FORM_SUBMIT_EMAIL; // Netlify .env
         id="name"
         name="name"
         type="text"
-        class="input bg-base-200 input-bordered focus:outline-info"
+        class="input bg-base-50 input-bordered focus:outline-info"
         placeholder="Full Name"
         spellcheck="false"
         required
@@ -32,7 +31,7 @@ const email = import.meta.env.FORM_SUBMIT_EMAIL; // Netlify .env
         id="email"
         name="email"
         type="email"
-        class="input bg-base-200 input-bordered focus:outline-info"
+        class="input bg-base-50 input-bordered focus:outline-info"
         placeholder="Email Address"
         spellcheck="false"
         required
@@ -48,7 +47,7 @@ const email = import.meta.env.FORM_SUBMIT_EMAIL; // Netlify .env
       @input="remaining= 300 - message.length"
       id="message"
       name="message"
-      class="resize-y bg-base-200 textarea text-base min-h-[15em] max-h-[800px] textarea-bordered w-full focus:outline-info placeholder:text-base"
+      class="resize-y bg-base-50 textarea text-base min-h-[15em] max-h-[800px] textarea-bordered w-full focus:outline-info placeholder:text-base"
       placeholder="Your Message"
       autocomplete="off"
       spellcheck="false"
@@ -57,11 +56,12 @@ const email = import.meta.env.FORM_SUBMIT_EMAIL; // Netlify .env
       aria-required="true"></textarea>
     <!-- Characters remaining -->
     <div
-      class="flex justify-start animate__animated animate__fadeIn h-[22px] mt-3 items-center text-sm font-semibold"
-    >
+      class="flex justify-start animate__animated animate__fadeIn h-[22px] mt-3 items-center text-sm font-semibold">
       <span
         x-cloak
         x-text="remaining"
+        x-show="message.length > 1"
+        x-transition:enter="animate__fadeIn"
         :class="{'text-error': remaining <= 0, 'text-warning animate__headShake': remaining > 0 && remaining <= 50, 'text-success': remaining > 50}"
         class="animate__animated animate__slow"></span>
       <span
