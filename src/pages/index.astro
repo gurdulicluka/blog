@@ -14,25 +14,21 @@ const recentPosts = sortByDate(allPosts);
 
 <MainLayout
   title="Kodahead"
-  description="Cracking the Code - Essential Tips & Industry Updates"
->
+  description="Cracking the Code - Essential Tips & Industry Updates">
   <Hero />
-  <section class="2xl:container my-12 px-4">
+  <section class="2xl:container py-12 px-4 lg:px-10 bg-base-300">
     <h2 class="text-4xl font-medium mb-6">Recent Posts</h2>
-    <div
-      class="grid grid-cols-1 gap-x-[2%] gap-y-[30px] sm:grid-cols-2 lg:grid-cols-3"
-    >
+    <div class="cards-grid">
       {
         recentPosts.slice(0, 6).map((post) => {
           return <ArticleCard post={post} />;
         })
       }
     </div>
-    <div class="flex justify-center mt-8">
+    <div class="flex justify-center mt-12">
       <a
         href="/blog"
-        class="inline-flex items-center gap-2 group btn btn-primary capitalize"
-      >
+        class="inline-flex items-center gap-2 group btn btn-primary capitalize">
         <span>See all posts</span>
         <span>
           <Icon name="gg:arrow-right" height="28" />

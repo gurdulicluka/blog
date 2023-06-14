@@ -5,6 +5,7 @@ import { Icon } from "astro-icon";
 
 // components
 import ThemeSwitchBtn from "./ThemeSwitchBtn.astro";
+import SearchBar from "../search/SearchBar.astro";
 
 const allPosts = await getCollection("blog");
 const uniqueCategories = [
@@ -16,8 +17,9 @@ const uniqueCategories = [
 ];
 ---
 
-<div>
-  <div class="flex h-[70px] [&>*]:flex-1 [&>*]:h-full p-1 gap-1">
+<div class="p-4">
+  <SearchBar />
+  <!-- <div class="flex h-[70px] [&>*]:flex-1 [&>*]:h-full p-1 gap-1">
     <a href="/" class="btn btn-ghost btn-square">
       <Icon pack="mdi" name="home" height="32" />
     </a>
@@ -39,5 +41,5 @@ const uniqueCategories = [
         </li>
       ))
     }
-  </ul>
+  </ul> -->
 </div>

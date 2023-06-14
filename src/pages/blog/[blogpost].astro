@@ -11,6 +11,7 @@ import Sidebar from "../../components/post/Sidebar.astro";
 import ReadNext from "../../components/post/ReadNext.astro";
 import MarkdownContent from "../../components/post/MarkdownContent.astro";
 import HeaderImage from "../../components/post/HeaderImage.astro";
+import { Icon } from "astro-icon";
 
 // generate props and params for each path
 export async function getStaticPaths() {
@@ -38,20 +39,18 @@ const { title, description, category, image, author, date } = post.data;
   title={title}
   description={description}
   image={image}
-  data={post.data}
->
-  <div class="lg:container">
-    <HeaderImage image={image} />
+  data={post.data}>
+  <div class="2xl:container">
     <div
-      class="sm:p-8 p-6 flex flex-col sm:rounded-b-lg xl:flex-row sm:-my-[60px] -mt-[30px] relative sm:shadow-lg z-20 rounded-t-2xl sm:w-[95%] w-full mx-auto bg-base-300"
-    >
-      <section class="xl:pr-8 flex-1">
-        <header class="mb-10">
+      class="px-6 pb-12 md:px-16 md:pt-6 flex flex-col xl:flex-row relative z-20 w-full mx-auto bg-base-300">
+      <section class="xl:pr-16 flex-1">
+        <HeaderImage image={image} />
+        <header class="my-8">
           <div class="flex justify-between items-start">
             <AuthorBadge author={author} date={date} />
             <SocialShare title={title} />
           </div>
-          <hgroup class="mt-6">
+          <hgroup class="my-6">
             <h1 class="text-4xl font-bold mb-4">{title}</h1>
             <p class="text-lg md:max-w-[85%] font-semibold">{description}</p>
           </hgroup>
@@ -61,6 +60,16 @@ const { title, description, category, image, author, date } = post.data;
       </section>
       <Sidebar posts={formattedPosts} currentPost={post} />
     </div>
+    <RelatedPosts posts={formattedPosts} category={category} id={post.id} />
+    <div class="flex justify-center py-12">
+      <a
+        href="/blog"
+        class="inline-flex items-center gap-2 group btn btn-primary capitalize">
+        <span>See all posts</span>
+        <span>
+          <Icon name="gg:arrow-right" height="28" />
+        </span>
+      </a>
+    </div>
   </div>
-  <RelatedPosts posts={formattedPosts} category={category} id={post.id} />
 </MainLayout>

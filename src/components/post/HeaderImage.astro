@@ -15,8 +15,7 @@ const pictureBreakpoints =
 
 <figure
   x-data
-  class="relative md:h-[445px] h-[375px] lg:rounded-b-lg lg:h-[600px] max-h-[55vh] overflow-hidden"
->
+  class="relative shadow-lg md:h-[445px] -mx-6 lg:-mx-0 h-[375px] md:rounded-lg lg:h-[600px] max-h-[55vh] overflow-hidden">
   <Image
     loading="eager"
     data-placeholder
@@ -37,7 +36,7 @@ const pictureBreakpoints =
     widths={[320, 480, 768, 992, 1200, 1600]}
     sizes={pictureBreakpoints}
     formats={["webp"]}
-    class="w-full animate__animated blur-xl animate__fadeIn relative z-10 object-cover h-full object-center"
+    class="w-full animate__animated blur-xl lg:rounded-lg animate__fadeIn relative z-10 object-cover h-full object-center"
   />
 </figure>
 

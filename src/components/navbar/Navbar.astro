@@ -11,8 +11,7 @@ import SearchBar from "../search/SearchBar.astro";
   @scroll.window="handleVisibility"
   x-transition:enter="animate__slideInDown"
   x-transition:leave="animate__slideOutUp"
-  class="shadow-xl animate__animated bg-base-300 fixed min-h-16 top-0 w-full z-50"
->
+  class="border-b border-base-200/30 shadow-md animate__animated bg-base-300 fixed min-h-16 top-0 w-full z-50">
   <div class="2xl:container navbar justify-between">
     <div class="navbar-start hidden md:flex gap-2 [&>a]:capitalize">
       <a href="/" class="btn btn-ghost">Home</a>

@@ -6,13 +6,13 @@ module.exports = {
       {
         light: {
           primary: "#6366f1",
-          "primary-content": "#F8FAFC",
+          "primary-content": "#ffffff",
           "primary-focus": "#3730a3",
-          "base-100": "#F8FAFC",
+          "base-100": "#ffffff",
           "base-200": "#e5e7eb",
-          "base-300": "#F8FAFC",
+          "base-300": "#ffffff",
           "base-content": "#1F2937",
-          neutral: "#F8FAFC",
+          neutral: "#ffffff",
           accent: "#6366f1",
         },
       },

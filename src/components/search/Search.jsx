@@ -24,9 +24,9 @@ const Search = ({ searchList }) => {
   }
 
   return (
-    <div className="hidden dropdown dropdown-bottom dropdown-end sm:block">
+    <div className="dropdown dropdown-bottom w-full md:w-fit dropdown-end">
       <input
-        className="input input-sm focus:outline-accent w-[200px] rounded-full bg-base-200"
+        className="input md:input-sm focus:outline-accent w-full md:w-[220px] bg-base-200"
         type="text"
         value={query}
         onChange={handleOnSearch}
@@ -34,12 +34,11 @@ const Search = ({ searchList }) => {
       />
 
       {posts.length > 0 && (
-        <ul className="bg-base-300/60 backdrop-blur-sm dropdown-content rounded-b-lg menu translate-y-4 gap-2 p-3 z-50 shadow-xl w-[500px]">
+        <ul className="bg-base-300/60 backdrop-blur-sm dropdown-content rounded-b-lg menu translate-y-4 gap-2 p-3 z-50 shadow-xl md:max-w-[500px] max-w-full w-screen">
           {posts.map((post) => (
             <a
-              className="inline-flex flex-col p-4 bg-base-200 rounded-lg hover:bg-accent transition ease"
-              href={`/blog/${post.slug}`}
-            >
+              className="inline-flex w-full flex-col p-4 bg-base-200 rounded-lg hover:bg-accent transition ease"
+              href={`/blog/${post.slug}`}>
               <h3 className="font-semibold">{post.title}</h3>
               <p className="text-sm my-2 line-clamp-2">{post.description}</p>
               <time class="text-base-content/60 text-xs self-end">
