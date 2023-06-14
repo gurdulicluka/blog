@@ -1,5 +1,5 @@
 ---
-import { Picture, Image } from "@astrojs/image/components";
+import { Picture } from "@astrojs/image/components";
 
 interface Props {
   image: {
@@ -15,17 +15,7 @@ const pictureBreakpoints =
 
 <figure
   x-data
-  class="relative shadow-lg md:h-[445px] -mx-6 lg:-mx-0 h-[375px] md:rounded-lg lg:h-[600px] max-h-[55vh] overflow-hidden">
-  <Image
-    loading="eager"
-    data-placeholder
-    src={image.src}
-    alt={image.alt}
-    aspectRatio={16 / 9}
-    height={NaN}
-    width={20}
-    class="animate__animated object-cover w-full blur-xl absolute h-full z-20 inset-0"
-  />
+  class="shadow-lg md:h-[445px] -mx-6 lg:-mx-0 h-[375px] md:rounded-lg lg:h-[600px] max-h-[55vh] overflow-hidden">
   <Picture
     loading="eager"
     data-image
@@ -36,19 +26,6 @@ const pictureBreakpoints =
     widths={[320, 480, 768, 992, 1200, 1600]}
     sizes={pictureBreakpoints}
     formats={["webp"]}
-    class="w-full animate__animated blur-xl lg:rounded-lg animate__fadeIn relative z-10 object-cover h-full object-center"
+    class="w-full lg:rounded-lg object-cover h-full object-center"
   />
 </figure>
-
-<script>
-  const imagePlaceholder = document.querySelector("[data-placeholder]")!;
-  const image = document.querySelector("[data-image]")!;
-
-  window.onload = () => {
-    imagePlaceholder.classList.add("animate__fadeOut");
-    image.classList.remove("blur-xl");
-    setTimeout(() => {
-      imagePlaceholder.classList.add("hidden");
-    }, 500);
-  };
-</script>
