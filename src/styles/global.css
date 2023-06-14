@@ -4,7 +4,7 @@
 
 @layer base {
   html {
-    @apply touch-manipulation;
+    @apply touch-manipulation  selection:bg-accent/60;
   }
 
   * {
