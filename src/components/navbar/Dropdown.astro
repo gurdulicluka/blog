@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import { slugify } from "../../js/utils";
+import { Icon } from "astro-icon";
 
 const allPosts = await getCollection("blog");
 const uniqueCategories = [
@@ -12,17 +13,32 @@ const uniqueCategories = [
 ];
 ---
 
-<ul
-  tabindex="0"
-  class="dropdown-content rounded-box menu menu-compact p-2 shadow-lg bg-base-200 w-52"
->
-  {
-    uniqueCategories.map((category) => (
-      <li>
-        <a class="font-semibold" href={`/category/${slugify(category)}`}>
-          {category}
-        </a>
-      </li>
-    ))
-  }
-</ul>
+<div class="dropdown">
+  <label tabindex="0" class="btn btn-ghost capitalize">
+    <span>Blog</span>
+    <span class="inline-block -mr-3">
+      <Icon name="mdi:chevron-down" height="22" />
+    </span>
+  </label>
+  <ul
+    tabindex="0"
+    class="menu menu-sm dropdown-content mt-2 p-2 shadow rounded-b-lg bg-base-50 w-52">
+    <li>
+      <a href="/blog" class="btn btn-primary capitalize hover:text-white"
+        >Blog Index</a
+      >
+    </li>
+    <ul class="menu">
+      <li class="menu-title p-2 my-2 w-full">View by Category</li>
+      {
+        uniqueCategories.map((category) => (
+          <li>
+            <a class="font-medium" href={`/category/${slugify(category)}`}>
+              {category}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </ul>
+</div>
