@@ -2,8 +2,7 @@
   x-data="newsletter"
   name="submit-to-google-sheet"
   @submit.prevent="sendData()"
-  novalidate
->
+  novalidate>
   <input
     type="email"
     name="Email"
@@ -21,9 +20,8 @@
     type="submit"
     disabled
     :disabled="!inputValid || isLoading"
-    :class="isLoading && 'loading btn-primary/30'"
-    class="btn btn-primary btn-block capitalize disabled:opacity-50 disabled:bg-primary/50 disabled:text-primary-content"
-  >
+    :class="isLoading && 'loading'"
+    class="btn btn-primary btn-block capitalize disabled:opacity-50 disabled:bg-primary/50 disabled:text-primary-content">
     <span x-text="isLoading ? 'Submitting...' : 'Subscribe'"></span>
   </button>
 </form>
