@@ -1,9 +1,11 @@
 ---
 import CookiePopup from "../components/overlays/CookiePopup.astro";
+import MessageSuccess from "../components/overlays/MessageSuccess.astro";
 ---
 
 <div id="overlays">
   <CookiePopup />
+  <MessageSuccess />
 </div>
 
 <script>
@@ -13,7 +15,7 @@ import CookiePopup from "../components/overlays/CookiePopup.astro";
 
   Alpine.store("overlays", {
     cookiePopup: false,
-    disclaimer: false,
+    messageSuccess: false,
     toggleModal(key: string) {
       this[key] = !this[key];
     },

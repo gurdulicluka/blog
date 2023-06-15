@@ -1,10 +1,11 @@
 ---
-const email = import.meta.env.FORM_SUBMIT_EMAIL; // Netlify .env
+const EMAIL = import.meta.env.FORM_SUBMIT_EMAIL; // Netlify .env
 ---
 
 <form
-  x-data
-  action={`https://formsubmit.co/${email}`}
+  x-data="{loading : false}"
+  @submit="localStorage.setItem('messageSent', 'true');"
+  action={`https://formsubmit.co/${EMAIL}`}
   class="my-8"
   method="POST">
   <input type="hidden" name="_template" value="box" />
@@ -73,8 +74,8 @@ const email = import.meta.env.FORM_SUBMIT_EMAIL; // Netlify .env
     </div>
   </div>
   <div class="flex sm:justify-end">
-    <button class="btn w-full md:w-fit btn-primary capitalize" type="submit"
-      >Send message</button
-    >
+    <button class="btn w-full md:w-fit btn-primary capitalize" type="submit">
+      Send Message
+    </button>
   </div>
 </form>

@@ -37,3 +37,18 @@ const recentPosts = sortByDate(allPosts);
     </div>
   </section>
 </MainLayout>
+
+<script>
+  import Alpine from "alpinejs";
+
+  window.addEventListener("DOMContentLoaded", function () {
+    const isMessageSent = localStorage.getItem("messageSent");
+    if (isMessageSent) {
+      const overlaysStore = Alpine.store("overlays") as {
+        toggleModal: (arg: "messageSuccess") => void;
+      };
+      overlaysStore.toggleModal("messageSuccess");
+      localStorage.removeItem("messageSent");
+    }
+  });
+</script>
