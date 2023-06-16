@@ -4,6 +4,7 @@ const { title, description, image, data, robots } = Astro.props;
 ---
 
 <head>
+  <link rel="preload" as="image" href="/images/homepage-hero.webp" />
   <link
     rel="preload"
     href="/fonts/Poppins-Regular.woff2"
@@ -88,7 +89,7 @@ const { title, description, image, data, robots } = Astro.props;
   <script src="../js/copyCodeButton.ts"></script>
   <!-- Lottie Player -->
   <script
-    is:inline
+    defer
     src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"
   ></script>
   <meta charset="utf-8" />
