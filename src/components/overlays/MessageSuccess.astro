@@ -1,40 +1,35 @@
-<div
-  x-cloak
-  x-data
-  x-trap.noscroll="$store.overlays.messageSuccess"
-  x-show="$store.overlays.messageSuccess"
-  x-transition:enter="animate__fadeIn"
-  x-transition:leave="animate__fadeOut"
-  class="animate__animated animate__faster fixed inset-0 backdrop-blur-sm z-[100] bg-neutral-900/70">
-</div>
-<div
-  x-cloak
-  x-data
-  x-show="$store.overlays.messageSuccess"
-  x-transition:enter="animate__fadeIn"
-  x-transition:leave="animate__fadeOut"
-  role="alertdialog"
-  aria-modal="true"
-  class="rounded-lg animate__animated animate__faster h-[300px] w-[96vw] max-w-[400px] fixed z-[100] bg-base-300 border-2 border-success/80 right-0 left-0 mx-auto bottom-4 md:top-[40%]">
-  <div class="p-6 flex flex-col justify-between items-center h-full gap-3">
-    <h2 class="font-medium text-lg text-center">
-      Your message has been sent successfully
-    </h2>
-    <div>
-      <lottie-player
-        class="w-[100px]"
-        autoplay
-        mode="normal"
-        src="https://assets10.lottiefiles.com/packages/lf20_rc5d0f61.json">
-      </lottie-player>
+<div x-data>
+  <div
+    x-cloak
+    x-show="$store.overlays.messageSuccess"
+    x-transition:enter="animate__fadeIn"
+    x-transition:leave="animate__fadeOut"
+    class="animate__animated animate__faster fixed inset-0 backdrop-blur-sm z-[100] bg-neutral-900/70">
+  </div>
+  <div
+    x-cloak
+    x-show="$store.overlays.messageSuccess"
+    x-transition:enter="animate__fadeIn"
+    x-transition:leave="animate__fadeOut"
+    role="alertdialog"
+    aria-modal="true"
+    class="rounded-lg animate__animated animate__faster h-[300px] w-[96vw] max-w-[400px] fixed z-[100] bg-base-300 border-2 border-success/80 right-0 left-0 mx-auto bottom-4 md:top-[40%]">
+    <div class="p-6 flex flex-col justify-between items-center h-full gap-3">
+      <h2 class="font-medium text-lg text-center">
+        Your message has been sent successfully
+      </h2>
+      <div>
+        <lottie-player
+          class="w-[100px]"
+          autoplay
+          mode="normal"
+          src="https://assets10.lottiefiles.com/packages/lf20_rc5d0f61.json">
+        </lottie-player>
+      </div>
+      <button
+        @click="$store.overlays.toggleModal('messageSuccess');"
+        class="btn btn-ghost btn-active btn-block">Dismiss</button
+      >
     </div>
-    <button
-      @click="$store.overlays.toggleModal('messageSuccess');"
-      class="btn btn-ghost btn-active btn-block">Dismiss</button
-    >
   </div>
 </div>
-
-<script
-  src="https://unpkg.com/@lottiefiles/lottie-player@0.4.0/dist/lottie-player.js"
-></script>

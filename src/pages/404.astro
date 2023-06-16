@@ -5,15 +5,13 @@ import MainLayout from "../layouts/MainLayout.astro";
 <MainLayout title="404 Page not found" description="Error 404, page not found">
   <div
     x-data
-    class="flex h-[80vh] container flex-col items-center justify-start"
-  >
+    class="flex h-[80vh] container flex-col items-center justify-start">
     <lottie-player
       class="w-full md:w-[600px] h-auto mt-[10vh] animate__animated animate__bounceIn"
       autoplay
       loop
       mode="normal"
-      src="/lotties/404.json"
-    >
+      src="/lotties/404.json">
     </lottie-player>
     <div class="animate__animated animate__jackInTheBox animate__fast">
       <a
@@ -24,7 +22,3 @@ import MainLayout from "../layouts/MainLayout.astro";
     </div>
   </div>
 </MainLayout>
-
-<script
-  src="https://unpkg.com/@lottiefiles/lottie-player@0.4.0/dist/lottie-player.js"
-></script>
