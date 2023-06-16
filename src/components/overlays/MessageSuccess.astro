@@ -1,6 +1,7 @@
 <div x-data>
   <div
     x-cloak
+    x-trap.noscroll="$store.overlays.messageSuccess"
     x-show="$store.overlays.messageSuccess"
     x-transition:enter="animate__fadeIn"
     x-transition:leave="animate__fadeOut"

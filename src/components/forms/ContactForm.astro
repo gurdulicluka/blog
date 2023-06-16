@@ -1,11 +1,11 @@
 ---
-const EMAIL = import.meta.env.FORM_SUBMIT_EMAIL; // Netlify .env
+const email = import.meta.env.FORM_SUBMIT_EMAIL; // Netlify .env
 ---
 
 <form
   x-data="{loading : false}"
   @submit="localStorage.setItem('messageSent', 'true'); loading = true"
-  action={`https://formsubmit.co/${EMAIL}`}
+  action={`https://formsubmit.co/${email}`}
   class="my-8"
   method="POST">
   <input type="hidden" name="_template" value="box" />
@@ -16,11 +16,10 @@ const EMAIL = import.meta.env.FORM_SUBMIT_EMAIL; // Netlify .env
     <div class="flex flex-col flex-1">
       <label for="name" class="mb-1 text-lg font-medium">Name:</label>
       <input
-        :disabled="loading === true"
         id="name"
         name="name"
         type="text"
-        class="input disabled:opacity-40 bg-base-50 input-bordered focus:outline-info"
+        class="input bg-base-50 input-bordered focus:outline-info"
         placeholder="Full Name"
         spellcheck="false"
         required
@@ -31,11 +30,10 @@ const EMAIL = import.meta.env.FORM_SUBMIT_EMAIL; // Netlify .env
     <div class="flex flex-col flex-1">
       <label for="email" class="mb-1 text-lg font-medium">Email:</label>
       <input
-        :disabled="loading === true"
         id="email"
         name="email"
         type="email"
-        class="input disabled:opacity-40 bg-base-50 input-bordered focus:outline-info"
+        class="input bg-base-50 input-bordered focus:outline-info"
         placeholder="Email Address"
         spellcheck="false"
         required
@@ -47,12 +45,11 @@ const EMAIL = import.meta.env.FORM_SUBMIT_EMAIL; // Netlify .env
   <div x-data="{message:'', remaining: 300 }" class="flex flex-col my-6">
     <label for="message" class="mb-1 text-lg font-medium">Message:</label>
     <textarea
-      :disabled="loading === true"
       x-model="message"
       @input="remaining= 300 - message.length"
       id="message"
       name="message"
-      class="resize-y disabled:opacity-40 bg-base-50 textarea text-base min-h-[15em] max-h-[800px] textarea-bordered w-full focus:outline-info placeholder:text-base"
+      class="resize-y bg-base-50 textarea text-base min-h-[15em] max-h-[800px] textarea-bordered w-full focus:outline-info placeholder:text-base"
       placeholder="Your Message"
       autocomplete="off"
       spellcheck="false"
@@ -82,9 +79,10 @@ const EMAIL = import.meta.env.FORM_SUBMIT_EMAIL; // Netlify .env
     <button
       type="submit"
       :disabled="loading === true"
-      :class="loading && 'loading'"
       class="btn btn-primary btn-block capitalize md:w-1/4 disabled:opacity-50 disabled:bg-primary/50 disabled:text-primary-content">
-      <span x-show="!loading">Send Message</span>
+      <span x-cloak x-show="loading" class="loading loading-spinner loading-sm"
+      ></span>
+      <span x-cloak x-show="!loading">Send Message</span>
     </button>
   </div>
 </form>
