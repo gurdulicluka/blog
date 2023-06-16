@@ -6,8 +6,7 @@ import { Icon } from "astro-icon";
   data-copyCodeBtn
   name="Copy code block to clipboard"
   aria-label="Copy code block to clipboard"
-  class="p-2 enabled:lg:hover:outline-neutral-600 outline outline-2 outline-none outline-offset-0 bg-neutral-700 absolute top-2 right-2 rounded-lg disabled:pointer-events-none transition-all"
->
+  class="p-2 enabled:lg:hover:outline-neutral-600 outline outline-2 outline-none outline-offset-0 bg-neutral-700 absolute top-2 right-2 rounded-lg disabled:pointer-events-none transition-all">
   <div data-copyIcon>
     <Icon
       class="[&>path]:fill-neutral-300"
@@ -25,35 +24,3 @@ import { Icon } from "astro-icon";
     />
   </div>
 </button>
-
-<script>
-  import copy from "copy-to-clipboard";
-
-  const buttons = document.querySelectorAll(
-    "[data-copyCodeBtn]"
-  ) as NodeListOf<HTMLButtonElement>;
-
-  buttons.forEach((button) => {
-    const codeBlock = button.closest("[data-codeBlock]") as HTMLElement;
-    const copyIcon = button.querySelector("[data-copyIcon]") as HTMLElement;
-    const copySuccess = button.querySelector(
-      "[data-copySuccess]"
-    ) as HTMLElement;
-    let text = codeBlock.querySelector("code")!.innerText;
-
-    button.addEventListener("click", () => {
-      copy(text);
-      button.disabled = true;
-      button.classList.toggle("outline-success");
-      copySuccess.classList.toggle("hidden");
-      copyIcon.classList.toggle("hidden");
-
-      setTimeout(() => {
-        button.disabled = false;
-        button.classList.toggle("outline-success");
-        copySuccess.classList.toggle("hidden");
-        copyIcon.classList.toggle("hidden");
-      }, 2000);
-    });
-  });
-</script>
