@@ -25,14 +25,13 @@ const { title, description, category, image, author, date } = post.data;
       class="absolute z-10 inset-0 lg:group-hover:bg-gray-900/20 transition ease duration-[300ms]"
       aria-label=`Read article about "${title}"`></a>
     <Picture
-      loading="lazy"
       aspectRatio="16:9"
       widths={[480]}
       sizes="(min-width: 320px) 100vw"
       formats={["webp"]}
       src={image.src}
       alt={image.alt}
-      class="object-cover object-top w-full h-[255px]"
+      class="object-cover object-center w-full h-[255px]"
     />
   </div>
   <!-- INFO -->

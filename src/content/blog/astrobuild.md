@@ -2,7 +2,7 @@
 title: "Build the web that you want, with Astro!"
 date: 2023-04-23
 author: Luka Gurdulić
-image: { src: "/images/astro/astrobuild.png", alt: "Astro" }
+image: { src: "/images/astro/astrobuild-hero.webp", alt: "Astro" }
 description: Make the web more exciting and beautiful while preserving speed and load times with this modern SSG
 draft: false
 category: Astro

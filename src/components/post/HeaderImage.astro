@@ -10,12 +10,12 @@ interface Props {
 
 const { image } = Astro.props;
 const pictureBreakpoints =
-  "(max-width:480px) 320w,(max-width:767px) 480w,(max-width:991px) 768w, (max-width:1199px) 992w, (max-width:1599px) 1200w, 1600w";
+  "(max-width:480px) 320w,(max-width:767px) 480w,(max-width:991px) 768w, (max-width:1199px) 992w, 1100w";
 ---
 
 <figure
   x-data
-  class="shadow-lg md:h-[445px] -mx-6 lg:-mx-0 h-[375px] md:rounded-lg lg:h-[600px] max-h-[55vh] overflow-hidden">
+  class="md:h-[445px] md:border-2 border-base-200 -mx-6 lg:-mx-0 h-[375px] md:rounded-lg lg:h-[600px] max-h-[55vh] overflow-hidden">
   <Picture
     loading="eager"
     data-image
@@ -23,9 +23,9 @@ const pictureBreakpoints =
     src={image.src}
     alt={image.alt}
     aspectRatio="16:9"
-    widths={[320, 480, 768, 992, 1200, 1600]}
+    widths={[320, 480, 768, 992]}
     sizes={pictureBreakpoints}
     formats={["webp"]}
-    class="w-full lg:rounded-lg object-cover h-full object-center"
+    class="w-full object-cover h-full object-center"
   />
 </figure>
