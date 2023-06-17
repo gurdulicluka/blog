@@ -4,7 +4,12 @@ const { title, description, image, data, robots } = Astro.props;
 ---
 
 <head>
-  <link rel="preload" as="image" href="/images/homepage-hero.webp" />
+  {
+    Astro.url.pathname === "/" && (
+      <link rel="preload" as="image" href="/images/homepage-hero.webp" />
+    )
+  }
+  {image && <link rel="preload" as="image" href={image.src} />}
   <link
     rel="preload"
     href="/fonts/Poppins-Regular.woff2"
