@@ -7,7 +7,7 @@ import { Icon } from "astro-icon";
   name="Switch website theme"
   aria-label="Toggle website light and dark mode"
   class="z-[10000] btn btn-ghost overflow-hidden btn-circle relative align-middle"
-  @click="toggle">
+  @click="switchTheme">
   <Icon
     name="sun"
     height="24"
@@ -31,30 +31,32 @@ import { Icon } from "astro-icon";
 
   document.addEventListener("alpine:init", () => {
     Alpine.data("themebtn", () => ({
+      transitionEls: document.querySelectorAll("[data-transition]"),
       darkMode: localStorage.theme === "dark",
-      disableTransitions() {
-        const elements = document.querySelectorAll("[data-transition]");
-        elements.forEach((element) => {
-          element.classList.toggle("!transition-none");
+      removeTransitions() {
+        this.transitionEls.forEach((element) => {
+          element.style.transition = "none";
         });
-        setTimeout(() => {
-          elements.forEach((element) => {
-            element.classList.toggle("!transition-none");
-          });
-        }, 0);
       },
-      toggle() {
+      switchTheme() {
         if (localStorage.theme === "dark") {
-          this.disableTransitions();
+          this.removeTransitions();
           this.darkMode = false;
           document.documentElement.setAttribute("data-theme", "light");
           localStorage.setItem("theme", "light");
-        } else {
-          this.disableTransitions();
+        } else if (localStorage.theme === "light") {
+          this.removeTransitions();
           this.darkMode = true;
           document.documentElement.setAttribute("data-theme", "dark");
           localStorage.setItem("theme", "dark");
         }
+
+        setTimeout(() => {
+          // Return transition effects back after 600ms because CSS buffer
+          this.transitionEls.forEach((element) => {
+            element.style.transition = "";
+          });
+        }, 600);
       },
     }));
   });
