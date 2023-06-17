@@ -73,26 +73,28 @@
     @apply grid grid-cols-1 gap-x-[2%] gap-y-[30px] sm:grid-cols-2 lg:grid-cols-3;
   }
 
-  .line {
-    @apply pl-6;
-  }
-
-  .line.highlighted {
-    @apply bg-green-900/30 pl-5 border-l-4 border-green-300/80;
-  }
-
-  .line span {
-    @apply font-mono;
-  }
-
-  .header-gradient {
-    @apply bg-gradient-to-r from-green-300 via-blue-500 to-purple-600;
-  }
-
   [data-theme="light"] .bg-base-50 {
     @apply bg-slate-200;
   }
   [data-theme="dark"] .bg-base-50 {
     @apply bg-neutral-800;
   }
+
+  /* CODEBLOCK */
+  .line {
+    @apply pl-6;
+  }
+
+  .line.highlighted {
+    @apply bg-green-900/40 pl-5 border-l-4 border-green-400;
+  }
+
+  .line span {
+    @apply font-mono;
+  }
+
+  .line > .word {
+    @apply rounded-lg p-1 bg-neutral-600/80;
+  }
+  /* CODEBLOCK */
 }
