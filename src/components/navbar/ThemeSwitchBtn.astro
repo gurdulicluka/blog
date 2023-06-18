@@ -10,19 +10,19 @@ import { Icon } from "astro-icon";
   @click="switchTheme">
   <Icon
     name="sun"
-    height="24"
+    height="26"
     x-cloak
     x-show="!darkMode"
-    x-transition:enter="animate__slideInRight"
-    class="fill-current animate__animated absolute animate__faster"
+    x-transition:enter="animate__zoomIn"
+    class="fill-current animate__animated absolut"
   />
   <Icon
     name="moon"
-    height="24"
+    height="26"
     x-cloak
     x-show="darkMode"
-    x-transition:enter="animate__slideInRight"
-    class="fill-current animate__animated absolute animate__faster"
+    x-transition:enter="animate__zoomIn"
+    class="fill-current animate__animated absolute"
   />
 </button>
 

@@ -1,0 +1,36 @@
+---
+import { getCollection } from "astro:content";
+import { slugify } from "../../js/utils";
+import { Icon } from "astro-icon";
+
+// components
+import HamburgerBtn from "./HamburgerBtn.astro";
+import ThemeSwitchBtn from "./ThemeSwitchBtn.astro";
+import SearchBar from "../search/SearchBar.astro";
+
+const allPosts = await getCollection("blog");
+const uniqueCategories = [
+  ...new Set(
+    allPosts.map((post) => {
+      return post.data.category;
+    })
+  ),
+];
+---
+
+<nav
+  x-cloak
+  x-show="open"
+  x-trap.noscroll="open"
+  x-transition:enter="animate__slideInRight"
+  x-transition:leave="animate__slideOutRight"
+  aria-label="sidebar menu"
+  class="fixed animate__animated overflow-y-scroll border-t border-base-200 h-[calc(100vh-64px)] z-50 top-[64px] bg-base-300 w-full sm:w-2/3 right-0 p-4 flex flex-col">
+  <SearchBar />
+</nav>
+
+<script>
+  import Alpine from "alpinejs";
+  import focus from "@alpinejs/focus";
+  Alpine.plugin(focus);
+</script>

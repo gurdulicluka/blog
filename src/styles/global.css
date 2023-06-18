@@ -53,12 +53,16 @@
   }
 
   /* ANIMATE CSS */
-  .animate__animated.animate__slideInDown,
-  .animate__animated.animate__slideOutUp {
-    --animate-duration: 200ms;
+  .animate__slideInRight,
+  .animate__slideOutRight {
+    --animate-duration: 350ms;
   }
-  .animate__animated.animate__fadeIn,
-  .animate__animated.animate__fadeOut {
+
+  .animate__zoomIn {
+    --animate-duration: 350ms;
+  }
+  .animate__fadeIn,
+  .animate__fadeOut {
     --animate-duration: 350ms;
   }
 
@@ -96,5 +100,4 @@
   .line > .word {
     @apply rounded-lg p-1 bg-neutral-600/80;
   }
-  /* CODEBLOCK */
 }
