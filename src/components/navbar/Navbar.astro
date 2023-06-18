@@ -37,7 +37,7 @@ import HamburgerBtn from "./HamburgerBtn.astro";
       <ThemeSwitchBtn />
     </div>
     <!-- Mobile only -->
-    <div class="navbar-end md:hidden items-center gap-3">
+    <div x-trap.noscroll="open" class="navbar-end md:hidden items-center gap-3">
       <div
         x-cloak
         x-show="open"
@@ -62,10 +62,3 @@ import HamburgerBtn from "./HamburgerBtn.astro";
     <!-- Mobile only end -->
   </nav>
 </header>
-
-<style>
-  .animate__zoomIn,
-  .animate__fadeOut {
-    --animate-duration: 400ms;
-  }
-</style>

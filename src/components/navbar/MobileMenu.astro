@@ -4,8 +4,6 @@ import { slugify } from "../../js/utils";
 import { Icon } from "astro-icon";
 
 // components
-import HamburgerBtn from "./HamburgerBtn.astro";
-import ThemeSwitchBtn from "./ThemeSwitchBtn.astro";
 import SearchBar from "../search/SearchBar.astro";
 
 const allPosts = await getCollection("blog");
@@ -21,7 +19,6 @@ const uniqueCategories = [
 <nav
   x-cloak
   x-show="open"
-  x-trap.noscroll="open"
   x-transition:enter="animate__slideInRight"
   x-transition:leave="animate__slideOutRight"
   aria-label="sidebar menu"

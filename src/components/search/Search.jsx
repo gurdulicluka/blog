@@ -22,6 +22,12 @@ const Search = ({ searchList }) => {
     setQuery(value);
   }
 
+  function handleBlur() {
+    setTimeout(() => {
+      setQuery("");
+    }, 300);
+  }
+
   return (
     <div className="w-full md:w-fit relative">
       <input
@@ -29,6 +35,7 @@ const Search = ({ searchList }) => {
         type="text"
         value={query}
         onChange={handleOnSearch}
+        onBlur={handleBlur}
         placeholder="Search posts"
       />
 
