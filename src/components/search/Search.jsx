@@ -1,6 +1,5 @@
 import Fuse from "fuse.js";
 import { useState } from "react";
-import React from "react";
 
 const options = {
   keys: ["title", "description", "category", "author", "slug"],
@@ -24,9 +23,9 @@ const Search = ({ searchList }) => {
   }
 
   return (
-    <div className="dropdown dropdown-bottom w-full md:w-fit dropdown-end">
+    <div className="w-full md:w-fit relative">
       <input
-        className="input md:input-sm focus:outline-accent w-full md:w-[220px] bg-base-50"
+        className="input md:h-[36px] focus:outline-accent text-sm w-full md:w-[220px] bg-base-50"
         type="text"
         value={query}
         onChange={handleOnSearch}
@@ -34,18 +33,17 @@ const Search = ({ searchList }) => {
       />
 
       {posts.length > 0 && (
-        <ul className="bg-base-300/60 backdrop-blur-sm dropdown-content rounded-b-lg menu translate-y-4 gap-2 p-3 z-50 shadow-xl md:max-w-[500px] max-w-full w-screen">
+        <ul className="bg-accent absolute top-[100%] right-0 p-[2px] rounded-lg menu gap-[1px] translate-y-4 z-50 shadow-xl md:max-w-[500px] max-w-full w-screen [&>*:last-child]:rounded-b-md [&>*:first-child]:rounded-t-md [&>*:only-child]:rounded-md">
           {posts.map((post) => (
-            <a
-              key={post.id}
-              className="inline-flex w-full flex-col p-4 bg-base-200 rounded-lg hover:bg-accent transition ease"
-              href={`/blog/${post.slug}`}>
-              <h3 className="font-semibold">{post.title}</h3>
-              <p className="text-sm my-2 line-clamp-2">{post.description}</p>
-              <time className="text-base-content/60 text-xs self-end">
-                {post.date}
-              </time>
-            </a>
+            <li key={post.id} className="overflow-hidden">
+              <a
+                className="inline-flex w-full rounded-none gap-0 flex-col items-start bg-base-200 transition ease"
+                href={`/blog/${post.slug}`}>
+                <h3 className="font-semibold">{post.title}</h3>
+                <p className="text-sm my-2 line-clamp-2">{post.description}</p>
+                <time className="text-xs self-end">{post.date}</time>
+              </a>
+            </li>
           ))}
         </ul>
       )}
