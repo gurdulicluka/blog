@@ -5,20 +5,23 @@ import MainLayout from "../layouts/MainLayout.astro";
 <MainLayout title="404 Page not found" description="Error 404, page not found">
   <div
     x-data
-    class="flex h-[80vh] container flex-col items-center justify-start">
+    class="flex min-h-[100svh] container text-center flex-col items-center justify-start">
+    <h1 class="font-bold text-4xl mt-12">Well, this is awkward..</h1>
     <lottie-player
-      class="w-full md:w-[600px] h-auto mt-[10vh] animate__animated animate__bounceIn"
+      class="w-full md:w-[600px] h-[400px] animate__animated animate__fadeIn"
       autoplay
       loop
       mode="normal"
       src="/lotties/404.json">
     </lottie-player>
-    <div class="animate__animated animate__jackInTheBox animate__fast">
-      <a
-        href="/"
-        class="btn hover:btn-primary btn-ghost btn-active px-[50px] mt-[50px]"
-        >Go back home</a
-      >
+    <h2 class="font-medium text-lg">
+      However you've got here, we're sorry but this page doesn't exist. <br
+      />Just a cat hanging around.
+    </h2>
+    <div class="my-[50px] flex flex-col gap-4 w-[200px]">
+      <a href="/" class="btn btn-primary btn-block">Homepage</a>
+      <a href="/blog" class="btn btn-ghost btn-active btn-block">Blog Posts</a>
+      <a href="/blog" class="btn btn-ghost btn-active btn-block">Contact</a>
     </div>
   </div>
 </MainLayout>
