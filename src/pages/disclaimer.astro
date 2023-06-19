@@ -1,14 +1,13 @@
 ---
-import HeadingGradient from "../components/HeadingGradient.astro";
-import MainLayout from "../layouts/MainLayout.astro";
+import HeadingGradient from "@components/HeadingGradient.astro";
+import MainLayout from "@layouts/MainLayout.astro";
 import * as DisclaimerProps from "../legal/disclaimer.mdx";
 import { Content as DisclaimerText } from "../legal/disclaimer.mdx";
 ---
 
 <MainLayout
   title="Disclaimer - Kodahead"
-  description="Disclaimer about using our website and the content provided"
->
+  description="Disclaimer about using our website and the content provided">
   <HeadingGradient>
     {DisclaimerProps.frontmatter.title}
   </HeadingGradient>

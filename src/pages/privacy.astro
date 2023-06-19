@@ -1,14 +1,13 @@
 ---
-import HeadingGradient from "../components/HeadingGradient.astro";
-import MainLayout from "../layouts/MainLayout.astro";
+import HeadingGradient from "@components/HeadingGradient.astro";
+import MainLayout from "@layouts/MainLayout.astro";
 import * as PrivacyPolicyProps from "../legal/privacy-policy.mdx";
 import { Content as PrivacyPolicyText } from "../legal/privacy-policy.mdx";
 ---
 
 <MainLayout
   title="Privacy Policy - Kodahead"
-  description="We respect your privacy and are committed to safeguarding your personal data."
->
+  description="We respect your privacy and are committed to safeguarding your personal data.">
   <HeadingGradient>
     {PrivacyPolicyProps.frontmatter.title}
   </HeadingGradient>

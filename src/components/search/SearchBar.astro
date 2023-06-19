@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import { formatDate } from "../../js/utils";
+import { formatDate } from "@js/utils";
 import Search from "./Search.jsx";
 const allPosts = await getCollection("blog");
 const posts = allPosts.filter((post) => !post.data.draft && post.slug);

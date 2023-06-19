@@ -13,8 +13,7 @@ const { title } = Astro.props as Props;
       href=`http://www.facebook.com/sharer.php?u=${url}`
       class="btn btn-ghost btn-sm btn-square"
       target="_blank"
-      aria-label="Share blog post on Facebook"
-    >
+      aria-label="Share blog post on Facebook">
       <Icon
         pack="mdi"
         name="facebook"
@@ -28,8 +27,7 @@ const { title } = Astro.props as Props;
       href=`http://twitter.com/share?url=${url}&text=${title}`
       class="btn btn-ghost btn-sm btn-square"
       target="_blank"
-      aria-label="Share blog post on Twitter"
-    >
+      aria-label="Share blog post on Twitter">
       <Icon
         pack="mdi"
         name="twitter"
@@ -43,8 +41,7 @@ const { title } = Astro.props as Props;
       href=`http://www.linkedin.com/shareArticle?mini=true&url=${url}`
       class="btn btn-ghost btn-sm btn-square"
       target="_blank"
-      aria-label="Share blog post on LinkedIn"
-    >
+      aria-label="Share blog post on LinkedIn">
       <Icon
         pack="mdi"
         name="linkedin"
@@ -58,8 +55,7 @@ const { title } = Astro.props as Props;
       href=`http://reddit.com/submit?url=${url}&title=${title}`
       class="btn btn-ghost btn-sm btn-square"
       target="_blank"
-      aria-label="Share blog post on Reddit"
-    >
+      aria-label="Share blog post on Reddit">
       <Icon
         pack="mdi"
         name="reddit"
@@ -75,8 +71,7 @@ const { title } = Astro.props as Props;
       aria-label="Copy URL to clipboard"
       :disabled="showToast"
       value={url.toString()}
-      class="btn btn-ghost btn-sm btn-square overflow-hidden relative"
-    >
+      class="btn btn-ghost btn-sm btn-square overflow-hidden relative">
       <Icon
         pack="mdi"
         name="link-variant"
@@ -101,7 +96,7 @@ const { title } = Astro.props as Props;
 <script>
   import Alpine from "alpinejs";
   import copy from "copy-to-clipboard";
-  import { toast } from "../../js/utils";
+  import { toast } from "@js/utils";
 
   document.addEventListener("alpine:init", () => {
     Alpine.data("clipboard", () => ({

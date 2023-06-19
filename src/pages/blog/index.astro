@@ -1,9 +1,9 @@
 ---
-import MainLayout from "../../layouts/MainLayout.astro";
+import MainLayout from "@layouts/MainLayout.astro";
 import { getCollection } from "astro:content";
-import { sortByDate } from "../../js/utils";
-import ArticleCard from "../../components/ArticleCard.astro";
-import HeadingGradient from "../../components/HeadingGradient.astro";
+import { sortByDate } from "@js/utils";
+import ArticleCard from "@components/ArticleCard.astro";
+import HeadingGradient from "@components/HeadingGradient.astro";
 
 const allPosts = await getCollection("blog");
 const formattedPosts = sortByDate(allPosts);

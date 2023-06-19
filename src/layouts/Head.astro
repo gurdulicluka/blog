@@ -1,5 +1,5 @@
 ---
-import Seo from "../components/Seo.astro";
+import Seo from "@components/Seo.astro";
 const { title, description, image, data, robots } = Astro.props;
 ---
 
@@ -91,7 +91,7 @@ const { title, description, image, data, robots } = Astro.props;
     }
   </script>
   <!-- Preload fonts -->
-  <script src="../js/copyCodeButton.ts"></script>
+  <script src="@js/copyCodeButton.ts"></script>
   <!-- Lottie Player -->
   <script
     defer

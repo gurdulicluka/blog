@@ -1,5 +1,5 @@
 ---
-import { formatDate } from "../js/utils";
+import { formatDate } from "@js/utils";
 
 interface Props {
   author: string;
@@ -13,8 +13,7 @@ const { author, date, horizontal } = Astro.props;
 <div
   class={`flex ${
     horizontal ? "flex-row items-center" : "flex-col"
-  } text-sm font-medium`}
->
+  } text-sm font-medium`}>
   <address class="not-italic">
     {author}
   </address>

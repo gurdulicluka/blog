@@ -1,11 +1,11 @@
 ---
 import { getCollection, CollectionEntry } from "astro:content";
-import { slugify, sortByDate } from "../../js/utils";
+import { slugify, sortByDate } from "@js/utils";
 
 // components
 import MainLayout from "../../layouts/MainLayout.astro";
-import ArticleCard from "../../components/ArticleCard.astro";
-import HeadingGradient from "../../components/HeadingGradient.astro";
+import ArticleCard from "@components/ArticleCard.astro";
+import HeadingGradient from "@components/HeadingGradient.astro";
 
 // generate props and params for each path
 export async function getStaticPaths() {

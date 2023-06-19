@@ -1,16 +1,16 @@
 ---
 import { getCollection, CollectionEntry } from "astro:content";
-import { sortByDate } from "../../js/utils";
+import { sortByDate } from "@js/utils";
 
 // components
-import MainLayout from "../../layouts/MainLayout.astro";
-import AuthorBadge from "../../components/AuthorBadge.astro";
-import SocialShare from "../../components/post/SocialShare.astro";
-import RelatedPosts from "../../components/post/RelatedPosts.astro";
-import Sidebar from "../../components/post/Sidebar.astro";
-import ReadNext from "../../components/post/ReadNext.astro";
-import MarkdownContent from "../../components/post/MarkdownContent.astro";
-import HeaderImage from "../../components/post/HeaderImage.astro";
+import MainLayout from "@layouts/MainLayout.astro";
+import AuthorBadge from "@components/AuthorBadge.astro";
+import SocialShare from "@components/post/SocialShare.astro";
+import RelatedPosts from "@components/post/RelatedPosts.astro";
+import Sidebar from "@components/post/Sidebar.astro";
+import ReadNext from "@components/post/ReadNext.astro";
+import MarkdownContent from "@components/post/MarkdownContent.astro";
+import HeaderImage from "@components/post/HeaderImage.astro";
 import { Icon } from "astro-icon";
 
 // generate props and params for each path
