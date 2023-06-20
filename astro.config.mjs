@@ -11,10 +11,12 @@ const prettyCodeOptions = {
   theme: "github-dark",
   onVisitLine(node) {
     if (node.children.length === 0) {
-      node.children = [{
-        type: "text",
-        value: " "
-      }];
+      node.children = [
+        {
+          type: "text",
+          value: " ",
+        },
+      ];
     }
   },
   onVisitHighlightedLine(node) {
@@ -26,7 +28,7 @@ const prettyCodeOptions = {
       // If the word spans across syntax boundaries (e.g. punctuation), remove
       // colors from the child nodes.
       if (node.properties["data-rehype-pretty-code-wrapper"]) {
-        node.children.forEach(childNode => {
+        node.children.forEach((childNode) => {
           childNode.properties.style = "";
         });
       }
@@ -34,23 +36,30 @@ const prettyCodeOptions = {
       node.properties["data-word-id"] = id;
     }
   },
-  tokensMap: {}
+  tokensMap: {},
 };
-
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://kodahead.netlify.app",
+  site: "https://www.kodahead.com",
   markdown: {
     extendDefaultPlugins: true,
     syntaxHighlight: false,
-    rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]]
+    rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
   },
-  integrations: [tailwind({
-    config: {
-      applyBaseStyles: false
-    }
-  }), alpinejs(), partytown(), image({
-    serviceEntryPoint: "@astrojs/image/sharp"
-  }), mdx(), sitemap(), react()]
+  integrations: [
+    tailwind({
+      config: {
+        applyBaseStyles: false,
+      },
+    }),
+    alpinejs(),
+    partytown(),
+    image({
+      serviceEntryPoint: "@astrojs/image/sharp",
+    }),
+    mdx(),
+    sitemap(),
+    react(),
+  ],
 });
