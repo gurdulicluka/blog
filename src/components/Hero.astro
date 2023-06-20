@@ -1,20 +1,29 @@
----
-import { Icon } from "astro-icon";
----
-
 <div class="bg-base-50">
   <section class="2xl:container">
-    <div
-      style="background-image: url('/images/homepage-hero.webp');"
-      class="w-full bg-cover bg-center h-[calc(100svh-58px)] sm:h-[500px]">
-      <div class="relative bg-neutral-900/30 w-full h-full">
-        <div
-          class="absolute flex flex-col items-center gap-5 bottom-0 left-0 right-0 top-[40%] h-fit w-fit mx-auto">
-          <Icon name="kodahead" height="40" class="[&>path]:fill-neutral-100" />
-          <a href="/blog" class="btn glass text-neutral-100 capitalize w-fit"
-            >See all posts</a
-          >
-        </div>
+    <div class="w-full relative h-[calc(100svh-58px)] sm:h-[500px]">
+      <div
+        class="absolute inset-0 animate__animated animate__fadeIn overflow-hidden">
+        <lottie-player
+          class="scale-[1.4]"
+          autoplay
+          loop
+          mode="bounce"
+          speed="0.5"
+          src="/lotties/blob.json">
+        </lottie-player>
+      </div>
+      <div
+        class="relative backdrop-blur-sm w-full h-full flex items-center justify-center flex-col gap-5">
+        <h1
+          class="text-4xl px-2 md:text-5xl xl:text-6xl font-semibold text-center">
+          Simplifying the digital landscape, <br class="hidden md:block" /> one line
+          of code at a time.
+        </h1>
+        <a
+          data-transition
+          href="/blog"
+          class="btn btn-accent text-white mt-5 capitalize">Explore now</a
+        >
       </div>
     </div>
   </section>
