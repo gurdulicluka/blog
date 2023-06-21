@@ -31,12 +31,12 @@ const Search = ({ searchList }) => {
   return (
     <div className="w-full md:w-fit relative">
       <input
-        className="input md:h-[36px] focus:outline-accent text-sm w-full md:w-[220px] bg-base-50"
+        className="input md:h-[36px] text-sm w-full placeholder:font-medium md:w-[220px] bg-base-50"
         type="text"
         value={query}
         onChange={handleOnSearch}
         onBlur={handleBlur}
-        placeholder="Search posts"
+        placeholder="Search..."
       />
 
       {posts.length > 0 && (
