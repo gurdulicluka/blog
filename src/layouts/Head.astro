@@ -4,7 +4,6 @@ const { title, description, image, data, robots } = Astro.props;
 ---
 
 <head>
-  {image && <link rel="preload" as="image" href={image.src} />}
   <link
     rel="preload"
     href="/fonts/Poppins-Regular.woff2"
@@ -69,8 +68,6 @@ const { title, description, image, data, robots } = Astro.props;
       f.parentNode.insertBefore(j, f);
     })(window, document, "script", "dataLayer", "GTM-TFRJX9T");
   </script>
-  <!-- End Google Tag Manager -->
-  <!-- Handle dark/light mode -->
   <script is:inline>
     const HTML = document.documentElement;
     if (
@@ -85,9 +82,7 @@ const { title, description, image, data, robots } = Astro.props;
       HTML.setAttribute("data-theme", "light");
     }
   </script>
-  <!-- Preload fonts -->
   <script src="@js/copyCodeButton.ts"></script>
-  <!-- Lottie Player -->
   <script
     defer
     src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"
