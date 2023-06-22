@@ -25,7 +25,7 @@ const Search = ({ searchList }) => {
   function handleBlur() {
     setTimeout(() => {
       setQuery("");
-    }, 200);
+    }, 0);
   }
 
   return (
