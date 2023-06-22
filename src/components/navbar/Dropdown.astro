@@ -13,21 +13,29 @@ const uniqueCategories = [
 ];
 ---
 
-<div class="dropdown">
-  <label tabindex="0" class="btn btn-ghost capitalize">
+<div x-data="{droppedDown:false}" class="dropdown">
+  <label
+    @click="droppedDown = true"
+    @click.outside="droppedDown = false"
+    tabindex="0"
+    class="btn btn-ghost capitalize">
     <span>Blog</span>
-    <span class="inline-block -mr-3 -ml-1">
+    <span
+      data-transition
+      class="inline-block -mr-3 -ml-1 transition duration-200"
+      :class="droppedDown && 'rotate-180'">
       <Icon name="mdi:chevron-down" height="22" />
     </span>
   </label>
   <div
+    @click.stop
     tabindex="0"
     class="menu dropdown-content shadow-xl translate-y-2 z-50 rounded-lg bg-base-200 border-2 border-accent w-52">
     <a href="/blog" class="btn btn-ghost btn-active hover:bg-accent capitalize"
       >All Posts</a
     >
     <ul class="menu menu-md">
-      <li class="menu-title">View by Category</li>
+      <li class="menu-title">Categories</li>
       {
         uniqueCategories.map((category) => (
           <li>
