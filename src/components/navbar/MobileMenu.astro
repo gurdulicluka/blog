@@ -22,17 +22,19 @@ const uniqueCategories = [
   x-transition:enter="animate__slideInRight"
   x-transition:leave="animate__slideOutRight"
   aria-label="sidebar menu"
-  class="fixed animate__animated overflow-y-scroll border-t border-base-200 h-[calc(100vh-64px)] z-50 top-[64px] bg-base-300 w-2/5 min-w-fit right-0 p-4 flex flex-col">
-  <SearchBar />
+  class="fixed animate__animated overflow-y-scroll border-t border-base-200 h-[calc(100vh-64px)] z-50 top-[64px] bg-base-300 w-3/5 min-w-fit right-0 flex flex-col">
+  <div class="p-2">
+    <SearchBar />
+  </div>
   <ul
-    class="flex flex-col mt-4 [&>:not(:last-child)]:border-b [&>li]:border-base-200/60">
+    class="flex flex-col [&>:not(:last-child)]:border-b [&>li]:border-base-200/60">
     <li>
       <a
-        class="px-2 py-4 w-full inline-flex items-center gap-4 font-medium"
+        class="p-4 w-full inline-flex items-center gap-4 font-medium"
         href="/blog">
         <span class="-mt-1">
           <Icon
-            name="lucide:layout-dashboard"
+            name="ic:round-space-dashboard"
             height="20"
             class="text-emerald-300"
           />
@@ -40,28 +42,48 @@ const uniqueCategories = [
         All Posts
       </a>
     </li>
+    <li x-data="{collapse:false}">
+      <button
+        data-transition
+        @click="collapse = !collapse"
+        :class="collapse && 'bg-info/40'"
+        class="p-4 w-full inline-flex duration-300 transition items-center gap-4 font-medium">
+        <span class="-mt-1">
+          <Icon name="ic:round-category" height="20" class="text-info" />
+        </span>
+        Categories
+        <span
+          data-transition
+          :class="collapse && 'rotate-180'"
+          class="transition duration-200 ml-auto">
+          <Icon name="mdi:chevron-down" height="22" />
+        </span>
+      </button>
+      <!-- categories collapse-->
+      <ul x-cloak x-show="collapse" class="py-2 px-3 flex flex-col gap-2 h-fit">
+        {
+          uniqueCategories.map((category) => (
+            <li class="bg-base-200 rounded-lg">
+              <a
+                class="text-sm font-medium py-3 block text-center"
+                href={`/category/${slugify(category)}`}>
+                {category}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </li>
+    <!-- categories collapse-->
     <li>
       <a
-        class="px-2 py-4 w-full inline-flex items-center gap-4 font-medium"
+        class="p-4 w-full inline-flex items-center gap-4 font-medium"
         href="/contact">
         <span class="-mt-1">
-          <Icon name="lucide:contact" height="20" class="text-accent" />
+          <Icon name="mdi:contact" height="20" class="text-accent" />
         </span>
         Contact
       </a>
     </li>
-    <li>
-      <button
-        class="px-2 py-4 w-full inline-flex items-center gap-4 font-medium">
-        <span class="-mt-1">
-          <Icon name="fluent:shapes-24-regular" height="20" class="text-info" />
-        </span>
-        Categories
-        <span class="-mt-1">
-          <Icon name="mdi:chevron-down" height="20" />
-        </span>
-      </button>
-    </li>
-    <!-- TODO Add collapse with categories -->
   </ul>
 </nav>
