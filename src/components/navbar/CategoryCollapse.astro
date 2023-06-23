@@ -1,0 +1,46 @@
+---
+import { getCollection } from "astro:content";
+import { slugify } from "@js/utils";
+import { Icon } from "astro-icon";
+
+const allPosts = await getCollection("blog");
+const uniqueCategories = [
+  ...new Set(
+    allPosts.map((post) => {
+      return post.data.category;
+    })
+  ),
+];
+---
+
+<li x-data="{collapse:false}">
+  <button
+    data-transition
+    @click="collapse = !collapse"
+    :class="collapse && 'bg-info/40'"
+    class="p-4 w-full inline-flex duration-300 transition items-center gap-4 font-medium">
+    <span class="-mt-1">
+      <Icon name="ic:round-category" height="20" class="text-info" />
+    </span>
+    Category
+    <span
+      data-transition
+      :class="collapse && 'rotate-180'"
+      class="transition duration-200 ml-auto">
+      <Icon name="mdi:chevron-down" height="26" />
+    </span>
+  </button>
+  <ul x-cloak x-show="collapse" class="py-2 px-3 flex flex-col gap-2 h-fit">
+    {
+      uniqueCategories.map((category) => (
+        <li class="bg-base-200 rounded-lg">
+          <a
+            class="text-sm font-medium py-3 block text-center"
+            href={`/category/${slugify(category)}`}>
+            {category}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</li>

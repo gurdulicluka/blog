@@ -2,7 +2,6 @@
 import { Icon } from "astro-icon";
 // components
 import ThemeSwitchBtn from "./ThemeSwitchBtn.astro";
-import MobileMenu from "./MobileMenu.astro";
 import SearchBar from "../search/SearchBar.astro";
 import Dropdown from "../navbar/Dropdown.astro";
 import HamburgerBtn from "./HamburgerBtn.astro";
@@ -10,9 +9,7 @@ import HamburgerBtn from "./HamburgerBtn.astro";
 
 <header
   class="border-b border-base-200/30 shadow-md animate__animated bg-base-300 min-h-16 sticky top-0 w-full z-50">
-  <nav
-    x-data="{open : false}"
-    class="2xl:container navbar justify-between md:px-4">
+  <nav class="2xl:container navbar justify-between md:px-4">
     <ul class="navbar-start hidden md:flex gap-2 [&>a]:capitalize">
       <li>
         <a href="/" class="btn btn-ghost capitalize">Home</a>
@@ -41,29 +38,6 @@ import HamburgerBtn from "./HamburgerBtn.astro";
       <SearchBar />
       <ThemeSwitchBtn />
     </div>
-    <!-- Mobile only -->
-    <div x-trap.noscroll="open" class="navbar-end md:hidden items-center gap-3">
-      <div
-        x-cloak
-        x-show="open"
-        x-transition:enter="animate__zoomIn"
-        x-transition:leave="animate__fadeOut"
-        class="rounded-full animate__animated animate__faster">
-        <a href="/" class="btn btn-circle btn-ghost">
-          <Icon name="mi:home" height="28" />
-        </a>
-      </div>
-      <div
-        x-cloak
-        x-show="open"
-        x-transition:enter="animate__zoomIn"
-        x-transition:leave="animate__fadeOut"
-        class="rounded-full animate__animated animate__faster">
-        <ThemeSwitchBtn />
-      </div>
-      <HamburgerBtn />
-      <MobileMenu />
-    </div>
-    <!-- Mobile only end -->
+    <HamburgerBtn />
   </nav>
 </header>

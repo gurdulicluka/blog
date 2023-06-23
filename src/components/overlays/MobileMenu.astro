@@ -1,0 +1,69 @@
+---
+// components
+import { Icon } from "astro-icon";
+import SearchBar from "../search/SearchBar.astro";
+import CategoryCollapse from "@components/navbar/CategoryCollapse.astro";
+import ThemeSwitchBtn from "@components/navbar/ThemeSwitchBtn.astro";
+---
+
+<!-- Backdrop -->
+<div
+  x-cloak
+  x-trap.noscroll="$store.overlays.mobileMenu"
+  x-show="$store.overlays.mobileMenu"
+  x-transition:enter="animate__fadeIn"
+  x-transition:leave="animate__fadeOut"
+  class="animate__animated animate__faster fixed bottom-0 top-[64px] inset-x-0 backdrop-blur-sm z-40 bg-neutral-900/70">
+</div>
+<!-- Sidebar -->
+<div
+  x-cloak
+  x-show="$store.overlays.mobileMenu"
+  x-transition:enter="animate__slideInRight"
+  x-transition:leave="animate__slideOutRight"
+  aria-label="sidebar menu"
+  class="fixed animate__animated overflow-y-scroll bottom-0 z-[60] top-[64px] bg-base-300 w-[250px] right-0 flex flex-col">
+  <div class="p-2">
+    <SearchBar />
+  </div>
+  <ul
+    class="flex flex-col [&>:not(:last-child)]:border-b [&>li]:border-base-200/60">
+    <li>
+      <a class="p-4 w-full inline-flex items-center gap-4 font-medium" href="/">
+        <span class="-mt-1">
+          <Icon name="fluent:home-12-filled" height="20" />
+        </span>
+        Homepage
+      </a>
+    </li>
+    <li>
+      <a
+        class="p-4 w-full inline-flex items-center gap-4 font-medium"
+        href="/blog">
+        <span class="-mt-1">
+          <Icon
+            name="ic:round-space-dashboard"
+            height="20"
+            class="text-emerald-300"
+          />
+        </span>
+        All Posts
+      </a>
+    </li>
+    <CategoryCollapse />
+    <li>
+      <a
+        class="p-4 w-full inline-flex items-center gap-4 font-medium"
+        href="/contact">
+        <span class="-mt-1">
+          <Icon name="mdi:contact" height="20" class="text-accent" />
+        </span>
+        Contact
+      </a>
+    </li>
+  </ul>
+  <div
+    class="[&>*]:w-full rounded-lg border-base-200 border-2 mx-8 mb-4 mt-auto">
+    <ThemeSwitchBtn />
+  </div>
+</div>
