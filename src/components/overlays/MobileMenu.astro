@@ -11,6 +11,7 @@ import ThemeSwitchBtn from "@components/navbar/ThemeSwitchBtn.astro";
   x-cloak
   x-trap.noscroll="$store.overlays.mobileMenu"
   x-show="$store.overlays.mobileMenu"
+  @click="$store.overlays.toggleModal('mobileMenu')"
   x-transition:enter="animate__fadeIn"
   x-transition:leave="animate__fadeOut"
   class="animate__animated animate__faster fixed bottom-0 top-[64px] inset-x-0 backdrop-blur-sm z-40 bg-neutral-900/70">
