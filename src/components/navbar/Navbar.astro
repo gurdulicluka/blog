@@ -38,6 +38,15 @@ import HamburgerBtn from "./HamburgerBtn.astro";
       <SearchBar />
       <ThemeSwitchBtn />
     </div>
+    <div
+      x-data
+      x-cloak
+      x-transition:enter="animate__fadeInRight"
+      x-transition:leave="animate__fadeOut"
+      x-show="$store.overlays.mobileMenu"
+      class="ml-auto mr-2 rounded-lg animate__animated animate__faster bg-base-200">
+      <ThemeSwitchBtn />
+    </div>
     <HamburgerBtn />
   </nav>
 </header>
