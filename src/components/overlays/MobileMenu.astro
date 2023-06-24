@@ -14,7 +14,7 @@ import ThemeSwitchBtn from "@components/navbar/ThemeSwitchBtn.astro";
   @click="$store.overlays.toggleModal('mobileMenu')"
   x-transition:enter="animate__fadeIn"
   x-transition:leave="animate__fadeOut"
-  class="animate__animated animate__faster fixed bottom-0 top-[64px] inset-x-0 backdrop-blur-sm z-40 bg-neutral-900/70">
+  class="animate__animated animate__faster fixed bottom-0 top-[64px] inset-x-0 backdrop-blur-sm z-40 bg-neutral-900/80">
 </div>
 <!-- Sidebar -->
 <div
@@ -23,8 +23,8 @@ import ThemeSwitchBtn from "@components/navbar/ThemeSwitchBtn.astro";
   x-transition:enter="animate__slideInRight"
   x-transition:leave="animate__slideOutRight"
   aria-label="sidebar menu"
-  class="fixed animate__animated overflow-y-scroll bottom-0 z-[60] top-[64px] bg-base-300 w-[250px] right-0 flex flex-col">
-  <div class="p-2">
+  class="fixed animate__animated overflow-y-scroll border-t border-base-200 bottom-0 z-[60] top-[64px] bg-base-300 w-[250px] right-0 flex flex-col">
+  <div class="p-3">
     <SearchBar />
   </div>
   <ul
