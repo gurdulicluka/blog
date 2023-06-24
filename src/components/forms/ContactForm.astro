@@ -24,6 +24,7 @@ const email = import.meta.env.FORM_SUBMIT_EMAIL; // Netlify .env
         spellcheck="false"
         required
         aria-required="true"
+        aria-labelledby="name"
       />
     </div>
     <!-- Email -->
@@ -38,6 +39,7 @@ const email = import.meta.env.FORM_SUBMIT_EMAIL; // Netlify .env
         spellcheck="false"
         required
         aria-required="true"
+        aria-labelledby="email"
       />
     </div>
   </div>
@@ -55,7 +57,8 @@ const email = import.meta.env.FORM_SUBMIT_EMAIL; // Netlify .env
       spellcheck="false"
       maxlength="300"
       required
-      aria-required="true"></textarea>
+      aria-required="true"
+      aria-labelledby="message"></textarea>
     <!-- Characters remaining -->
     <div
       class="flex justify-start animate__animated animate__fadeIn h-[22px] mt-3 items-center text-sm font-semibold">
@@ -78,6 +81,7 @@ const email = import.meta.env.FORM_SUBMIT_EMAIL; // Netlify .env
   <div class="flex sm:justify-end">
     <button
       type="submit"
+      aria-label="Send message"
       :disabled="loading === true"
       class="btn btn-primary btn-block capitalize md:w-1/4 disabled:opacity-50 disabled:bg-primary/50 disabled:text-primary-content">
       <span x-cloak x-show="loading" class="loading loading-spinner loading-sm"
