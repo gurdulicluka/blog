@@ -8,7 +8,7 @@
   }
 
   * {
-    @apply font-poppins antialiased scroll-smooth;
+    @apply font-poppins antialiased scroll-smooth focus:outline-none;
   }
 
   svg {
@@ -20,7 +20,7 @@
   }
 
   *:not(input, textarea):focus-visible {
-    @apply outline-fuchsia-600 outline-4 !important;
+    @apply outline-fuchsia-600 outline-2 !important;
   }
 
   [data-validate]:not(:placeholder-shown):invalid {
