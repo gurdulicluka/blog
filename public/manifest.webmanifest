@@ -1,0 +1,11 @@
+{
+  "name": "Kodahead",
+  "icons": [
+    {
+      "src": "/favicons/logo-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    { "src": "/favicons/logo-512.png", "type": "image/png", "sizes": "512x512" }
+  ]
+}
