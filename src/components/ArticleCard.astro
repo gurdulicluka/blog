@@ -1,6 +1,6 @@
 ---
 import { CollectionEntry } from "astro:content";
-import { Picture } from "@astrojs/image/components";
+import { Image } from "@astrojs/image/components";
 
 // components
 import CategoryBadge from "./CategoryBadge.astro";
@@ -23,14 +23,16 @@ const { title, description, category, image, author, date } = post.data;
       tabindex="-1"
       class="absolute z-10 inset-0"
       aria-label=`Read article about "${title}"`></a>
-    <Picture
-      aspectRatio="16:9"
-      widths={[480]}
-      sizes="(min-width: 320px) 100vw"
-      formats={["webp"]}
+    <Image
+      aspectRatio={16 / 9}
+      fit="cover"
+      height={350}
+      width={0}
+      quality={60}
+      position="center"
+      format="webp"
       src={image.src}
       alt={image.alt}
-      class="object-cover object-center w-full h-[255px]"
     />
   </div>
   <!-- INFO -->
