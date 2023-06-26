@@ -2,7 +2,7 @@
   "title": "Kodahead",
   "description": "An educational web development blog. From mastering HTML, CSS, and JavaScript to diving into the latest frameworks and design trends, we got you covered.",
   "image": {
-    "src": "/images/default-image-kodahead.jpg",
+    "src": "/images/og-image-default.jpg",
     "alt": "Kodahead wallpaper"
   }
 }
