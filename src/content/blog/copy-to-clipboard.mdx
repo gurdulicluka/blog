@@ -1,0 +1,188 @@
+---
+title: How to build a copy to clipboard button
+date: 2023-06-27
+author: Luka Gurdulić
+image: { src: "/images/copy-clipboard/copy-clipboard-hero.jpg", alt: "A clipboard on a desk beside newspapers" }
+description: Add a copy to clipboard functionality to your buttons and give users a simple way to copy and paste bits of content.
+draft: false
+category: Javascript
+---
+import CodeBlock from "../../components/mdx/CodeBlock.astro";
+
+---
+Have you ever been in a situation where you are researching something new about Javascript or any other technology to implement in your projects, following along documentation or a tutorial, only to be forced to select and copy code blocks manually? Or even worse, the blocks you are looking at are actually just screenshots?!
+
+Well in todays article we will talk about how to make user experience much more enjoyable and simple by implementing a copy to clipboard button in your code blocks or anywhere else you want it.
+
+There appears to be two *simple* ways of doing it:
+
+    * #### **Navigator API:** 
+        A powerful tool that allows developers to access various features of a user's browsing environment. One of the useful functionalities provided by the Navigator API is the ability to interact with the system clipboard.
+
+    * #### **Copy to clipboard package:**
+        A npm package that exposes copy function that will try to use `execCommand` with fallback to IE-specific `clipboardData` interface and finally, resort to usual `prompt` with proper text content and message.
+
+### The Navigator API
+
+Before diving into clipboard operations, it's essential to ensure that the browser being used supports the Navigator API. Most modern browsers, including Chrome, Firefox, Safari, and Edge, offer support for it. However, it's always a good practice to check for compatibility using feature detection methods or consulting the browser's documentation.
+
+To access the Navigator API, you can make use of the `navigator` object, which is readily available in JavaScript. This object provides access to various properties and methods related to the browsing environment.
+
+For interacting with the clipboard, some browsers require explicit user permission due to security and privacy concerns. Although To request permission, use the `navigator.permissions.query()` method, passing the clipboard-write permission as an argument. This prompts the user to grant or deny access to the clipboard.
+
+<CodeBlock filename='app.js'>
+```javascript
+navigator.permissions.query({ name: 'clipboard-write' }).then(result => {
+  if (result.state === 'granted' || result.state === 'prompt') {
+    // Proceed with clipboard operations
+  } else {
+    // Display an error or alternative solution
+  }
+});
+```
+</CodeBlock>
+
+Once permission is granted, you can copy text or other data to the clipboard using the `navigator.clipboard.writeText()` method. This method takes a string as its parameter, representing the text to be copied.
+
+Also add an error solution in case something goes wrong. If the user denies clipboard access or if the browser doesn't support the clipboard-write permission, an error will be thrown.
+
+<CodeBlock filename='app.js'>
+```javascript {3-8, 10, 13-15}
+navigator.permissions.query({ name: 'clipboard-write' }).then(result => {
+  if (result.state === 'granted' || result.state === 'prompt') {
+    const textToCopy = "Hello, world!";
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      console.log("Text copied to clipboard successfully!");
+    }).catch(err => {
+      console.error("Failed to copy text: ", err);
+    });
+  } else {
+    console.error("Permission to access clipboard denied by the user.");
+    // Display an error message or provide an alternative solution
+  }
+}).catch(err => {
+  console.error("Error occurred while requesting permission: ", err);
+})
+```
+</CodeBlock>
+
+In the above example we are hardcoding some piece of text to be copied but that will hardly be the case when you are implementing this feature to an actual site so here is an final example of using it to copy some text from an HTML element.
+
+<CodeBlock filename='index.html'>
+```html
+<div>
+  <p data-text>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt ducimus
+    voluptas incidunt nulla impedit, laudantium qui magni labore dolor veniam
+    maiores nobis commodi dolorum eum. Nam necessitatibus repellat consectetur
+    accusamus.
+  </p>
+  <button data-copyBtn>
+    Copy Text
+  </button>
+</div>
+
+<script>
+  const paragraph = document.querySelector("[data-text]");
+  const button = document.querySelector("[data-copyBtn]").innerText;
+
+  button.addEventListener("click", () => CopyToClipboard(paragraph))
+
+  function CopyToClipboard(text) {
+    navigator.permissions
+      .query({ name: "clipboard-write" })
+      .then((result) => {
+        if (result.state === "granted" || result.state === "prompt") {
+          navigator.clipboard
+            .writeText(text)
+            .then(() => {
+              console.log("Text copied to clipboard successfully!");
+            })
+            .catch((err) => {
+              console.error("Failed to copy text: ", err);
+            });
+        } else {
+          console.error("Permission to access clipboard denied by the user.");
+        }
+      })
+      .catch((err) => {
+        console.error("Error occurred while requesting permission: ", err);
+      });
+  }
+</script>
+```
+</CodeBlock>
+
+We select the desired DOM elements via `data-` attributes and make a function to handle all of our logic we wrote before for copying the `innerText` of an element.
+
+## Copy to clipboard package
+
+Now this is the preferred way of adding a copy to clipboard function to a button (duuh, packages!) and I agree, abstracting almost the entirety of that wall of javascript in the previous method is a *lot* more clean and simple. 
+
+You'll see what I mean.
+
+#### Installing the package:
+* With npm
+
+  `npm i --save copy-to-clipboard{:shell}`
+
+* or quick add via CDN
+
+  `<script src="https://wzrd.in/standalone/copy-to-clipboard@latest" async></script>{:html}`
+
+
+Now lets use it in with the example of the previous method and see how simple and easy it is:
+
+<CodeBlock filename='index.html'>
+```html {14} /copy(paragraph)/
+<div>
+  <p data-text>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt ducimus
+    voluptas incidunt nulla impedit, laudantium qui magni labore dolor veniam
+    maiores nobis commodi dolorum eum. Nam necessitatibus repellat consectetur
+    accusamus.
+  </p>
+  <button data-copyBtn>
+    Copy Text
+  </button>
+</div>
+
+<script>
+  import copy from "copy-to-clipboard";
+
+  const paragraph = document.querySelector("[data-text]");
+  const button = document.querySelector("[data-copyBtn]").innerText;
+
+  button.addEventListener("click", () => copy(paragraph))
+</script>
+```
+</CodeBlock>
+
+See? This package offers a straightforward and cross-browser compatible solution for clipboard operations, handling the necessary steps behind the scenes.
+
+Lastly what I want to mention is that we can also pass an `options` object argument to the `copy()` function to further enhance the usage and handle errors.
+
+`copy(text: string, options: object): boolean`
+
+Returns true if no additional keystrokes were required from user (so, `execCommand`, IE's `clipboardData` worked) or `false`.
+
+See the [docs](https://www.npmjs.com/package/copy-to-clipboard) for more options information.
+
+<CodeBlock filename='app.js'>
+```javascript
+import copy from "copy-to-clipboard";
+
+copy(text, {
+  debug: false
+  // Boolean, enables output to console
+  message: "Press #{key} to copy"
+  // String value for prompt message
+  format: "text/html"
+  // Set the MIME type of what you want to copy as.
+  // "text/html" to copy as HTML 
+  // "text/plain" to avoid inherited styles showing when pasted into rich text editor.
+})
+```
+</CodeBlock>
+
+Overall, the "copy-to-clipboard" npm package simplifies the process of copying content to the clipboard, offering a reliable and consistent solution across different browsers. By leveraging this package, developers can enhance their applications with efficient clipboard functionality, enabling users to easily copy and transfer data with just a few clicks.
