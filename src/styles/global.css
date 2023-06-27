@@ -53,7 +53,7 @@
   }
 
   code {
-    @apply inline-block bg-base-200/60;
+    @apply inline-block bg-base-200/70 !rounded-md !py-0;
   }
 
   /* ANIMATE CSS */
@@ -89,6 +89,10 @@
   }
 
   /* CODEBLOCK */
+  [data-rehype-pretty-code-fragment] > code {
+    @apply rounded-md bg-[#24292e] font-medium;
+  }
+
   pre > code > .line {
     @apply pl-6;
   }
