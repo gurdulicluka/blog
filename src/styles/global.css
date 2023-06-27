@@ -48,8 +48,12 @@
     @apply py-8 relative m-0 bg-[#24292e] px-0 rounded-tl-none !important;
   }
 
+  pre > code {
+    @apply [&>*]:font-serif grid lg:whitespace-pre-wrap;
+  }
+
   code {
-    @apply [&>*]:font-serif grid text-sm lg:whitespace-pre-wrap;
+    @apply inline-block bg-base-200/60;
   }
 
   /* ANIMATE CSS */
@@ -85,7 +89,7 @@
   }
 
   /* CODEBLOCK */
-  .line {
+  pre > code > .line {
     @apply pl-6;
   }
 
