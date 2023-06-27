@@ -9,7 +9,9 @@ const allPosts = await getCollection("blog");
 const formattedPosts = sortByDate(allPosts);
 ---
 
-<MainLayout title="Blog | Kodahead" description="See all our blog posts">
+<MainLayout
+  title="All Posts"
+  description="View our collection of blog posts all about web development">
   <HeadingGradient>Blog Posts</HeadingGradient>
   <section class="2xl:container bg-base-300 px-4 lg:px-10 min-h-screen py-12">
     <div class="cards-grid">
