@@ -13,7 +13,7 @@ const { post } = Astro.props as Props;
 const { title, category, image, date } = post.data;
 ---
 
-<article class="flex gap-4 items-center">
+<article class="flex items-center gap-4">
   <figure class="relative overflow-hidden rounded-lg">
     <Picture
       aspectRatio="1:1"
@@ -30,17 +30,17 @@ const { title, category, image, date } = post.data;
       class="absolute z-10 inset-0 lg:hover:bg-zinc-900/40 transition duration-[300ms]"
       aria-label=`Read article about"${title}"`></a>
   </figure>
-  <div class="flex-1 flex flex-col gap-2">
-    <h3 class="font-semibold leading-snug mb-2">
+  <div class="flex flex-col flex-1 gap-2">
+    <h3 class="mb-2 font-semibold leading-snug">
       <a
         href={`/blog/${post.slug}`}
         class="hover:underline underline-offset-2"
         aria-label=`Read article about "${title}"`>{title}</a
       >
     </h3>
-    <div class="flex justify-between items-end">
+    <div class="flex items-end justify-between">
       <CategoryBadge category={category} />
-      <span class="text-sm block">{formatDate(date)}</span>
+      <span class="block text-sm">{formatDate(date)}</span>
     </div>
   </div>
 </article>

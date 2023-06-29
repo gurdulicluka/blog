@@ -18,7 +18,7 @@ const { author, date, horizontal } = Astro.props;
     {author}
   </address>
   {horizontal && <span class="mx-2">&#9679;</span>}
-  <time class="text-base-content/80 text-sm" datetime={date.toISOString()}>
+  <time class="text-sm text-base-content/80" datetime={date.toISOString()}>
     {formatDate(date)}
   </time>
 </div>

@@ -6,7 +6,7 @@ import { Icon } from "astro-icon";
   x-data="themebtn"
   name="Switch website theme"
   aria-label="Toggle website light and dark mode"
-  class="z-50 btn btn-ghost overflow-hidden btn-circle relative align-middle"
+  class="relative z-50 overflow-hidden align-middle btn btn-ghost btn-circle"
   @click="switchTheme">
   <Icon
     name="sun"
@@ -14,7 +14,7 @@ import { Icon } from "astro-icon";
     x-cloak
     x-show="!darkMode"
     x-transition:enter="animate__zoomIn"
-    class="fill-current animate__animated absolute"
+    class="absolute fill-current animate__animated"
   />
   <Icon
     name="moon"
@@ -22,7 +22,7 @@ import { Icon } from "astro-icon";
     x-cloak
     x-show="darkMode"
     x-transition:enter="animate__zoomIn"
-    class="fill-current animate__animated absolute"
+    class="absolute fill-current animate__animated"
   />
 </button>
 

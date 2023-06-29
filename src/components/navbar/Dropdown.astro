@@ -18,11 +18,11 @@ const uniqueCategories = [
     @click="droppedDown = true"
     @click.outside="droppedDown = false"
     tabindex="0"
-    class="btn btn-ghost capitalize">
+    class="capitalize btn btn-ghost">
     <span>Blog</span>
     <span
       data-transition
-      class="inline-block -mr-3 -ml-1 transition"
+      class="inline-block -ml-1 -mr-3 transition"
       :class="droppedDown && 'rotate-180'">
       <Icon name="mdi:chevron-down" height="22" />
     </span>
@@ -30,8 +30,8 @@ const uniqueCategories = [
   <div
     @click.stop
     tabindex="0"
-    class="menu dropdown-content shadow-xl translate-y-2 z-50 rounded-lg bg-base-200 border-2 border-accent w-52">
-    <a href="/blog" class="btn btn-ghost btn-active hover:bg-accent capitalize"
+    class="z-50 border-2 rounded-lg shadow-xl menu dropdown-content translate-y-2 bg-base-200 border-accent w-52">
+    <a href="/blog" class="capitalize btn btn-ghost btn-active hover:bg-accent"
       >All Posts</a
     >
     <ul class="menu menu-md">

@@ -18,7 +18,7 @@ const uniqueCategories = [
     data-transition
     @click="collapse = !collapse"
     :class="collapse && 'bg-info/40'"
-    class="p-4 w-full inline-flex duration-200 transition items-center gap-4 font-medium">
+    class="inline-flex items-center w-full p-4 font-medium duration-200 transition gap-4">
     <span class="-mt-1">
       <Icon name="ic:round-category" height="20" class="text-info" />
     </span>
@@ -26,16 +26,16 @@ const uniqueCategories = [
     <span
       data-transition
       :class="collapse && 'rotate-180'"
-      class="transition duration-200 ml-auto">
+      class="ml-auto transition duration-200">
       <Icon name="mdi:chevron-down" height="26" />
     </span>
   </button>
-  <ul x-cloak x-show="collapse" class="py-2 px-3 flex flex-col gap-2 h-fit">
+  <ul x-cloak x-show="collapse" class="flex flex-col px-3 py-2 gap-2 h-fit">
     {
       uniqueCategories.map((category) => (
-        <li class="bg-base-200 rounded-lg">
+        <li class="rounded-lg bg-base-200">
           <a
-            class="text-sm font-medium py-3 block text-center"
+            class="block py-3 text-sm font-medium text-center"
             href={`/category/${slugify(category)}`}>
             {category}
           </a>

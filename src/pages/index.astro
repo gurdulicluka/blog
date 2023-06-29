@@ -16,8 +16,8 @@ const recentPosts = sortByDate(allPosts);
   title="Kodahead"
   description="An educational web development blog. From mastering HTML, CSS, and JavaScript to diving into the latest frameworks and design trends, we got you covered.">
   <Hero />
-  <section class="2xl:container py-12 px-4 lg:px-10 bg-base-300">
-    <h2 class="text-4xl font-medium mb-6">Recent Posts</h2>
+  <section class="px-4 py-12 2xl:container lg:px-10 bg-base-300">
+    <h2 class="mb-6 text-4xl font-medium">Recent Posts</h2>
     <div class="cards-grid">
       {
         recentPosts.slice(0, 6).map((post) => {
@@ -28,7 +28,7 @@ const recentPosts = sortByDate(allPosts);
     <div class="flex justify-center mt-12">
       <a
         href="/blog"
-        class="inline-flex items-center gap-2 group btn btn-accent capitalize">
+        class="inline-flex items-center capitalize gap-2 group btn btn-accent">
         <span>See all posts</span>
         <span>
           <Icon name="gg:arrow-right" height="28" />

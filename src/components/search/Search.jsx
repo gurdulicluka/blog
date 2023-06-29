@@ -29,7 +29,7 @@ const Search = ({ searchList }) => {
   }
 
   return (
-    <div className="w-full md:w-fit relative">
+    <div className="relative w-full md:w-fit">
       <input
         className="input md:h-[36px] text-sm w-full placeholder:font-medium md:w-[220px] bg-base-50"
         type="text"
@@ -44,11 +44,11 @@ const Search = ({ searchList }) => {
           {posts.map((post) => (
             <li key={post.id} className="overflow-hidden">
               <a
-                className="inline-flex w-full rounded-none gap-0 flex-col items-start bg-base-200 hover:bg-accent hover:text-white transition ease"
+                className="inline-flex flex-col items-start w-full rounded-none gap-0 bg-base-200 hover:bg-accent hover:text-white transition ease"
                 href={`/blog/${post.slug}`}>
                 <h3 className="font-semibold">{post.title}</h3>
-                <p className="text-sm my-2 line-clamp-2">{post.description}</p>
-                <time className="text-xs self-end">{post.date}</time>
+                <p className="my-2 text-sm line-clamp-2">{post.description}</p>
+                <time className="self-end text-xs">{post.date}</time>
               </a>
             </li>
           ))}

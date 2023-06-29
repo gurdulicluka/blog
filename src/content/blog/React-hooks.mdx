@@ -25,8 +25,8 @@ const Card = memo((product) => {
   return (
     <article
       className="flex h-[600px] w-full max-w-[345px] animate-fadeIn flex-col overflow-hidden rounded-2xl bg-white text-start shadow-2xl">
-      <div className="flex flex-1 flex-col justify-between p-6">
-        <div className="flex flex-1 flex-col gap-1" style={{ color: color }}>
+      <div className="flex flex-col justify-between flex-1 p-6">
+        <div className="flex flex-col flex-1 gap-1" style={{ color: color }}>
           {discount && <div className="text-xl">kn{calculateDiscount()}</div>}
           <div
             className={`${discount && "line-through"} text-3xl font-semibold`}>

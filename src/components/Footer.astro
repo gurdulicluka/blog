@@ -2,10 +2,10 @@
 import { Icon } from "astro-icon";
 ---
 
-<footer class="bg-zinc-950 pb-6">
-  <div class="2xl:container px-8">
+<footer class="pb-6 bg-zinc-950">
+  <div class="px-8 2xl:container">
     <div
-      class="flex md:text-sm py-8 flex-col gap-5 justify-between items-start lg:flex-row">
+      class="flex flex-col items-start justify-between py-8 md:text-sm gap-5 lg:flex-row">
       <div x-data class="text-neutral-100">
         &copy; <span id="copyright" x-text="new Date().getFullYear().toString()"
         ></span> Kodahead | All rights reserved
@@ -38,7 +38,7 @@ import { Icon } from "astro-icon";
     </div>
     <div class="h-[1px] bg-neutral-700"></div>
     <div
-      class="flex justify-between flex-col sm:flex-row gap-6 py-10 lg:py-6 items-center text-xs text-neutral-400">
+      class="flex flex-col items-center justify-between py-10 text-xs sm:flex-row gap-6 lg:py-6 text-neutral-400">
       <div class="flex">
         <script
           type="text/javascript"

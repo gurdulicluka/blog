@@ -13,14 +13,14 @@
     @input.debounce.300ms="validateInput"
     @keydown="preventSpace($event)"
     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-    class="input mb-3 input-bordered disabled:opacity-40 lightBase w-full bg-base-200"
+    class="w-full mb-3 input input-bordered disabled:opacity-40 lightBase bg-base-200"
     data-validate
   />
   <button
     type="submit"
     disabled
     :disabled="!inputValid || isLoading"
-    class="btn btn-primary btn-block capitalize disabled:opacity-50 disabled:bg-primary/50 disabled:text-primary-content">
+    class="capitalize btn btn-primary btn-block disabled:opacity-50 disabled:bg-primary/50 disabled:text-primary-content">
     <span x-cloak x-show="isLoading" class="loading loading-spinner loading-md"
     ></span>
     <span x-show="!isLoading" x-text="'Subscribe'"></span>

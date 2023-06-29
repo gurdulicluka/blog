@@ -9,6 +9,6 @@ const { category } = Astro.props as Props;
 <a
   data-transition
   href={`/category/${slugify(category)}`}
-  class="btn btn-ghost btn-active btn-sm md:btn-xs w-fit text-xs normal-case rounded-2xl font-semibold">
+  class="text-xs font-semibold normal-case btn btn-ghost btn-active btn-sm md:btn-xs w-fit rounded-2xl">
   {category}
 </a>

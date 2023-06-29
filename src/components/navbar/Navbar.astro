@@ -9,16 +9,16 @@ import HamburgerBtn from "./HamburgerBtn.astro";
 
 <header
   class="border-b bg-base-300/80 border-base-200/50 backdrop-blur min-h-16 sticky top-0 w-full z-[100]">
-  <nav class="2xl:container navbar justify-between md:px-4">
+  <nav class="justify-between 2xl:container navbar md:px-4">
     <ul class="navbar-start hidden md:flex gap-2 [&>a]:capitalize">
       <li>
-        <a href="/" class="btn btn-ghost capitalize">Home</a>
+        <a href="/" class="capitalize btn btn-ghost">Home</a>
       </li>
       <li>
         <Dropdown />
       </li>
       <li>
-        <a href="/contact" class="btn btn-ghost capitalize">Contact</a>
+        <a href="/contact" class="capitalize btn btn-ghost">Contact</a>
       </li>
     </ul>
     <div class="navbar-center">
@@ -35,7 +35,7 @@ import HamburgerBtn from "./HamburgerBtn.astro";
         />
       </a>
     </div>
-    <div class="navbar-end hidden md:flex items-center gap-3">
+    <div class="items-center hidden navbar-end md:flex gap-3">
       <SearchBar />
       <ThemeSwitchBtn />
     </div>

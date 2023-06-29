@@ -11,7 +11,7 @@ const email = import.meta.env.FORM_SUBMIT_EMAIL; // Netlify .env
   <input type="hidden" name="_template" value="box" />
   <input type="hidden" name="_subject" value="Kodahead Contact" />
   <input type="hidden" name="_next" value={Astro.site?.toString()} />
-  <div class="flex flex-col sm:flex-row w-full gap-4">
+  <div class="flex flex-col w-full sm:flex-row gap-4">
     <!-- Name -->
     <div class="flex flex-col flex-1">
       <label for="name" class="mb-1 text-lg font-medium">Name:</label>
@@ -72,7 +72,7 @@ const email = import.meta.env.FORM_SUBMIT_EMAIL; // Netlify .env
       <span
         x-cloak
         x-show="remaining <= 0"
-        class="font-normal text-xs ml-2 text-error"
+        class="ml-2 text-xs font-normal text-error"
         >You've reached the maximum character limit.</span
       >
     </div>
@@ -83,7 +83,7 @@ const email = import.meta.env.FORM_SUBMIT_EMAIL; // Netlify .env
       type="submit"
       aria-label="Send message"
       :disabled="loading === true"
-      class="btn btn-primary btn-block capitalize md:w-1/4 disabled:opacity-50 disabled:bg-primary/50 disabled:text-primary-content">
+      class="capitalize btn btn-primary btn-block md:w-1/4 disabled:opacity-50 disabled:bg-primary/50 disabled:text-primary-content">
       <span x-cloak x-show="loading" class="loading loading-spinner loading-sm"
       ></span>
       <span x-cloak x-show="!loading">Send Message</span>

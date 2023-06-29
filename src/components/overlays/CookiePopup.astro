@@ -7,34 +7,34 @@
   aria-modal="true"
   class="rounded-lg animate__animated animate__faster border border-neutral-300 w-[96vw] max-w-[500px] bg-neutral-50 shadow-lg z-30 fixed bottom-4 left-0 right-0 mx-auto md:left-auto md:bottom-10 md:right-5 md:mx-0">
   <div class="p-6">
-    <header class="text-neutral-900 mb-4 sm:p-2">
-      <h2 class="font-semibold text-lg mb-2">We care about your privacy.</h2>
+    <header class="mb-4 text-neutral-900 sm:p-2">
+      <h2 class="mb-2 text-lg font-semibold">We care about your privacy.</h2>
       <p class="text-sm">
         This website uses cookies to analyze traffic and enhance your browsing
         experience. By clicking "Accept", you agree to our use of cookies as
         described in our <a
-          class="link font-medium inline-block rounded-md"
+          class="inline-block font-medium link rounded-md"
           href="/privacy">Privacy Policy</a
         >.
       </p>
-      <p class="text-neutral-900/50 text-xs mt-2">
+      <p class="mt-2 text-xs text-neutral-900/50">
         *You can change your consent later by clicking Cookie Settings at the
         bottom of the page.
       </p>
     </header>
     <div
       x-data="cookieConsent"
-      class="flex gap-2 items-center text-neutral-900">
+      class="flex items-center gap-2 text-neutral-900">
       <button
         @click="handleCookieConsent('Reject');$store.overlays.toggleModal('cookiePopup')"
-        class="flex-1 px-4 py-3 text-sm border border-neutral-300 transition hover:bg-neutral-300 rounded-lg"
+        class="flex-1 px-4 py-3 text-sm border rounded-lg border-neutral-300 transition hover:bg-neutral-300"
         >Reject</button
       >
       <button
         id="cookiepopup"
         x-data
         @click="handleCookieConsent('Accept');$store.overlays.toggleModal('cookiePopup')"
-        class="flex-1 px-4 py-3 text-sm bg-blue-500 text-blue-50 hover:bg-blue-600 transition rounded-lg"
+        class="flex-1 px-4 py-3 text-sm bg-blue-500 rounded-lg text-blue-50 hover:bg-blue-600 transition"
         >Accept</button
       >
     </div>

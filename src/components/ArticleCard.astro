@@ -21,7 +21,7 @@ const { title, description, category, image, author, date } = post.data;
     <a
       href=`/blog/${post.slug}`
       tabindex="-1"
-      class="absolute z-10 inset-0"
+      class="absolute inset-0 z-10"
       aria-label=`Read article about "${title}"`></a>
     <Image
       aspectRatio={16 / 9}
@@ -39,11 +39,11 @@ const { title, description, category, image, author, date } = post.data;
   <div
     data-transition
     class="card-body px-6 border-t-2 border-base-200 py-4 bg-gradient-to-b from-neutral/50 transition lg:group-hover:bg-neutral/60 ease duration-[200ms]">
-    <div class="card-actions justify-between items-center mb-2">
+    <div class="items-center justify-between mb-2 card-actions">
       <CategoryBadge category={category} />
       <AuthorBadge author={author} date={date} />
     </div>
-    <h2 class="card-title font-bold">
+    <h2 class="font-bold card-title">
       <a
         href=`/blog/${post.slug}`
         class="hover:underline"
