@@ -3,8 +3,8 @@ title: "Will AI replace frontend developers in the future?"
 date: 2023-04-22
 author: Luka Gurdulić
 image:
-  { src: "/images/ai-frontend-threat/hero.webp", alt: "Open Laptop on Desk" }
-description: Lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor sit
+  { src: "/images/ai-frontend-threat/hero.webp", alt: "Open Laptop on a Desk" }
+description: What are the odds of you getting replaced by an AI developer? Let's find out.
 draft: false
 category: AI
 ---
