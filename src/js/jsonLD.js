@@ -5,7 +5,7 @@ function jsonLDGenerator({ type, post, url }) {
     return `<script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "BlogPosting",
+        "@type": "BlogPost",
         "mainEntityOfPage": {
           "@type": "WebPage",
           "@id": "${url}"
@@ -27,6 +27,7 @@ function jsonLDGenerator({ type, post, url }) {
       "@type": "WebSite",
       "name": "${siteData.title}",
       "url": "${import.meta.env.SITE}"
+      "logo": "${siteData.logo}"
       }
     </script>`;
 }
