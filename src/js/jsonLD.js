@@ -26,7 +26,7 @@ function jsonLDGenerator({ type, post, url }) {
       "@context": "https://schema.org/",
       "@type": "WebSite",
       "name": "${siteData.title}",
-      "url": "${import.meta.env.SITE}"
+      "url": "${import.meta.env.SITE}",
       "logo": "${siteData.logo}"
       }
     </script>`;
