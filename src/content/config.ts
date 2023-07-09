@@ -22,6 +22,7 @@ const blog = defineCollection({
       "Javascript",
       "CSS",
       "HTML",
+      "Development",
     ]),
   }),
 });
