@@ -22,13 +22,13 @@ if (buttons.length > 0) {
     button.addEventListener("click", () => {
       copy(text);
       button.disabled = true;
-      button.classList.toggle("outline-success");
+      button.classList.toggle("ring-success");
       copySuccess.classList.toggle("hidden");
       copyIcon.classList.toggle("hidden");
 
       setTimeout(() => {
         button.disabled = false;
-        button.classList.toggle("outline-success");
+        button.classList.toggle("ring-success");
         copySuccess.classList.toggle("hidden");
         copyIcon.classList.toggle("hidden");
       }, 2000);
